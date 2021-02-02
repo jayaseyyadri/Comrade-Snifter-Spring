@@ -1,0 +1,8 @@
+[ ] As a visitor I can see drinks but can not see the ingredients or how to make it on the landing page
+        - Only show 3 drinks form each of our preferences
+        - The most recent Highest 3 votes from rating ( like or not like )
+        - Want to see more about this? Register here
+
+[ ] Profile page with liked drinks and added drinks
+
+[ ] Main page to view all drinks
