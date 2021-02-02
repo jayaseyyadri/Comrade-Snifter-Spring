@@ -1,8 +1,10 @@
+CREATE DATABASE IF NOT EXISTS comrade_snifter_db;
+
 use comrade_snifter_db;
-drop table category;
-drop table drink_Category;
-drop table drinks;
-drop table users;
+drop table IF EXISTS category;
+drop table IF EXISTS drink_Category;
+drop table IF EXISTS drinks;
+drop table IF EXISTS users;
 Create table if not exists users(
                                     id int unsigned not null auto_increment primary key,
                                     username varchar(255) not null,
