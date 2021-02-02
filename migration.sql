@@ -40,3 +40,7 @@ insert into drinks(user_id, name, instructions, ingredients, image) VALUES (1, '
 insert into drinks(user_id, name, instructions, ingredients, image) VALUES (1, 'Porto flip', 'Shake ingredients together in a mixer with ice. Strain into glass, garnish and serve.', 'Brandy 3 parts, Port 9 parts, Egg Yolk 2 parts', 'https://www.thecocktaildb.com/images/media/drink/64x5j41504351518.jpg');
 insert into drinks(user_id, name, instructions, ingredients, image) VALUES (1, 'Stinger', 'Pour in a mixing glass with ice, stir and strain into a cocktail glass. May also be served on rocks in a rocks glass.', 'Brandy 1 1/2 oz, White Creme de Menthe 1/2 oz', 'https://www.thecocktaildb.com/images/media/drink/2ahv791504352433.jpg');
 insert into drinks(user_id, name, instructions, ingredients, image) VALUES (1, 'Kioki Coffee', 'Stir. Add whipped cream to the top.', 'Kahlua 1 oz, Brandy 1/2 oz, Coffee', 'https://www.thecocktaildb.com/images/media/drink/uppqty1441247374.jpg');
+
+
+select *
+from drinks;
