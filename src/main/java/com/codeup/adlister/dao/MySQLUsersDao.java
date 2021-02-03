@@ -5,6 +5,7 @@ import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLUsersDao implements Users {
@@ -91,6 +92,19 @@ public class MySQLUsersDao implements Users {
         }
     }
 
+//    public Long likeDrink(long drinkILikeId, long currentUserId){
+//        String query = "Select liked_drinks from  users where id = ?";
+//        String insertQuery = "UPDATE users SET liked_drinks where id = ?";
+//        // going to query the liked drinks and if there are currently liked drinks in the specific user's list
+//        //
+//    }
+//
+    private static List<Long> makeList(String ids){
+        List<Long> idList = new ArrayList<>();
 
+
+
+        return idList;
+    }
 
 }
