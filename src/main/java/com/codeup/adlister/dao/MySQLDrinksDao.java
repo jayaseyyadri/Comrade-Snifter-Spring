@@ -101,6 +101,7 @@ public class MySQLDrinksDao implements Drinks {
         }
     }
 
+
     @Override
     public List<Drink> getUsersDrinks(long userId) {
         PreparedStatement stmt = null;
@@ -126,5 +127,36 @@ public class MySQLDrinksDao implements Drinks {
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving all ads.", e);
         }
+
+    @Override
+    public void delete(int id){
+        try{
+            String deleteQuery = "Delete from comrade_snifter_db.drinks where id = ?";
+            PreparedStatement statement = connection.prepareStatement(deleteQuery, Statement.RETURN_GENERATED_KEYS);
+            statement.setInt(1, id);
+            statement.execute();
+            ResultSet rs = statement.getGeneratedKeys();
+            rs.next();
+        } catch (SQLException e){
+            throw new RuntimeException("Error deleting ad", e);
+        }
+    }
+
+    @Override
+    public void edit(int id, Drink newDrink){
+        try{
+            String editQuery = "Update comrade_snifter_db.drinks Set name = ?, instructions = ?, ingredients = ?, image = ? where id = ?";
+            PreparedStatement statement = connection.prepareStatement(editQuery, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, newDrink.getName());
+            statement.setString(2, newDrink.getInstructions());
+            statement.setString(3, newDrink.getIngredients());
+            statement.setString(4, newDrink.getImage());
+            statement.setInt(5, id);
+            statement.executeUpdate();
+        } catch (SQLException e){
+            throw new RuntimeException("Error editing ad", e);
+        }
+
+
     }
 }
