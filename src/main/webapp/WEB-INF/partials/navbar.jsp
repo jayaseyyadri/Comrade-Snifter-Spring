@@ -2,7 +2,7 @@
 
 <c:choose>
 <%--    admin--%>
-    <c:when test="${isLoggedIn} && ${isAdmin}">
+    <c:when test="${sessionScope.isAdmin && sessionScope.isLoggedIn}">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
@@ -13,6 +13,7 @@
                 </div>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/logout">Logout</a></li>
+                    <li><a href="/users">See Users</a></li>
                 </ul>
             </div>
         </nav>
