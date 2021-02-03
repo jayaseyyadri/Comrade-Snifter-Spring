@@ -12,4 +12,6 @@ public interface Drinks {
     void delete(int id);
     void edit(int id, Drink newDrink);
     Drink getDrink(long drinkId);
+
+    List<Drink> getUsersDrinks(long user_id);
 }

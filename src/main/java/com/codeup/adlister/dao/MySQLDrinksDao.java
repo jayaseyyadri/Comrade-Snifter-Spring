@@ -100,6 +100,34 @@ public class MySQLDrinksDao implements Drinks {
             throw new RuntimeException("Error retrieving ad.", e);
         }
     }
+
+
+    @Override
+    public List<Drink> getUsersDrinks(long userId) {
+        PreparedStatement stmt = null;
+        String sqlQuery = "SELECT * FROM comrade_snifter_db.drinks WHERE user_id = ?";
+        List<Drink> drinks = new ArrayList<>();
+        try {
+            stmt = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, userId);
+            stmt.executeQuery();
+            ResultSet rs = stmt.getResultSet();
+            while(rs.next()){
+                Drink drink = new Drink(
+            rs.getLong("id"),
+            rs.getLong("user_id"),
+            rs.getString("name"),
+            rs.getString("instructions"),
+            rs.getString("ingredients"),
+            rs.getString("image")
+            );
+                drinks.add(drink);
+            }
+            return drinks;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+
     @Override
     public void delete(int id){
         try{
@@ -128,6 +156,7 @@ public class MySQLDrinksDao implements Drinks {
         } catch (SQLException e){
             throw new RuntimeException("Error editing ad", e);
         }
+
 
     }
 }
