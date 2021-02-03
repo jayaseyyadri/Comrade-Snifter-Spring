@@ -112,21 +112,22 @@ public class MySQLDrinksDao implements Drinks {
             stmt.setLong(1, userId);
             stmt.executeQuery();
             ResultSet rs = stmt.getResultSet();
-            while(rs.next()){
+            while (rs.next()) {
                 Drink drink = new Drink(
-            rs.getLong("id"),
-            rs.getLong("user_id"),
-            rs.getString("name"),
-            rs.getString("instructions"),
-            rs.getString("ingredients"),
-            rs.getString("image")
-            );
+                        rs.getLong("id"),
+                        rs.getLong("user_id"),
+                        rs.getString("name"),
+                        rs.getString("instructions"),
+                        rs.getString("ingredients"),
+                        rs.getString("image")
+                );
                 drinks.add(drink);
             }
             return drinks;
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving all ads.", e);
         }
+    }
 
     @Override
     public void delete(int id){

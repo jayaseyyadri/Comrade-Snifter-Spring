@@ -93,6 +93,24 @@ public class MySQLUsersDao implements Users {
         }
     }
 
+    @Override
+    public boolean isAdmin(long userId){
+        String query = "SELECT is_admin FROM users where id = ?";
+        int thisId = 0;
+        try{
+            PreparedStatement stm = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stm.setLong(1, userId);
+            stm.executeQuery();
+            ResultSet rs = stm.getResultSet();
+            rs.next();
+            thisId = (int) rs.getLong("is_admin");
+
+        } catch (SQLException e){
+            throw new RuntimeException("Error validating user", e);
+        }
+        return thisId == 1;
+    }
+
 //    public Long likeDrink(long drinkILikeId, long currentUserId){
 //        String query = "Select liked_drinks from  users where id = ?";
 //        String insertQuery = "UPDATE users SET liked_drinks where id = ?";
@@ -102,7 +120,10 @@ public class MySQLUsersDao implements Users {
 //
     private static List<Long> makeList(String ids){
         List<Long> idList = new ArrayList<>();
-
+        String[] list = ids.split(" ");
+        for(String s : list){
+            idList.add(Long.parseLong(s));
+        }
 
 
         return idList;
