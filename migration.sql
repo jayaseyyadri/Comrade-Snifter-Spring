@@ -4,7 +4,7 @@ use comrade_snifter_db;
 drop table IF EXISTS category;
 drop table IF EXISTS drink_Category;
 drop table IF EXISTS drinks;
-# drop table IF EXISTS users;
+drop table IF EXISTS users;
 Create table if not exists users(
                                     id int unsigned not null auto_increment primary key,
                                     username varchar(255) not null,
@@ -31,6 +31,8 @@ create table if not exists category(
                                        FOREIGN KEY (alcohol_id) references drinks(id),
                                        FOREIGN KEY (liquor_type) references drink_Category(id)
 );
+
+insert into users(username, email, password) VALUES ('admin', 'admin@ad.min', '$2a$12$o5y9Peq1GDMgGQiR5gyS6OtROQO4SKe0uWrSg8rq0wSNXoLEEpn5e');
 
 insert into drinks(user_id, name, instructions, ingredients, image) VALUES (1, 'Bermuda Highball', 'Pour brandy, gin, and dry vermouth into a highball glass over ice cubes. Fill with carbonated water and stir. Add the twist of lemon and serve. (Ginger ale may be substituted for carbonated water, if preferred.', 'Brandy 3/4 oz, Gin 3/4 oz, Dry Vermouth 3/4 oz, Carbonated water, Lemon peel', 'https://www.thecocktaildb.com/images/media/drink/qrvtww1441206528.jpg');
 insert into drinks(user_id, name, instructions, ingredients, image) VALUES (1, 'Brandon and Will''s Coke Float', 'Scoop two large scoops of vanilla ice-cream into frosted beer mug. Next, add 2 ounces Maker''s Mark. Then, pour in coke. Gently stir and enjoy.', 'Vanilla ice-cream 2 scoops, Coca-Cola 1 can, Bourbon 2 oz', 'https://www.thecocktaildb.com/images/media/drink/xspxyr1472719185.jpg');
