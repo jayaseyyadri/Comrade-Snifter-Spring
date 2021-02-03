@@ -9,4 +9,6 @@ public interface Drinks {
     List<Drink> all();
     // insert a new ad and return the new ad's id
     Long insert(Drink drink);
+
+    Drink getDrink(long drinkId);
 }

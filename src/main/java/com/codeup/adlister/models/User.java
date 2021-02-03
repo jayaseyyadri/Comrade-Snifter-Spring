@@ -2,13 +2,25 @@ package com.codeup.adlister.models;
 
 import com.codeup.adlister.util.Password;
 
+import java.util.List;
+
 public class User {
     private long id;
     private String username;
     private String email;
     private String password;
+    private String image;
+    private List<Long> createdDrinksIds;
+    private List<Long> likedDrinksIds;
 
     public User() {}
+
+    public User(String username, String image, List<Long> createdDrinksIds, List<Long> likedDrinksIds) {
+        this.username = username;
+        this.image = image;
+        this.createdDrinksIds = createdDrinksIds;
+        this.likedDrinksIds = likedDrinksIds;
+    }
 
     public User(String username, String email, String password) {
         this.username = username;
@@ -54,4 +66,29 @@ public class User {
     public void setPassword(String password) {
         this.password = Password.hash(password);
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public List<Long> getCreatedDrinksIds() {
+        return createdDrinksIds;
+    }
+
+    public void setCreatedDrinksIds(List<Long> createdDrinksIds) {
+        this.createdDrinksIds = createdDrinksIds;
+    }
+
+    public List<Long> getLikedDrinksIds() {
+        return likedDrinksIds;
+    }
+
+    public void setLikedDrinksIds(List<Long> likedDrinksIds) {
+        this.likedDrinksIds = likedDrinksIds;
+    }
 }
+

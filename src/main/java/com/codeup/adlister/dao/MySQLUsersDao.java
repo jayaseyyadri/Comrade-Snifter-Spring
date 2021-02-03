@@ -1,9 +1,11 @@
 package com.codeup.adlister.dao;
 
+import com.codeup.adlister.models.Drink;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
+import java.util.List;
 
 public class MySQLUsersDao implements Users {
     private Connection connection;
@@ -62,5 +64,33 @@ public class MySQLUsersDao implements Users {
             rs.getString("password")
         );
     }
+
+    public User getUser(long userId) {
+        PreparedStatement stmt = null;
+        String sqlQuery = "SELECT * FROM comrade_snifter_db.users WHERE id = ?";
+
+        try {
+            stmt = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, userId);
+
+            stmt.executeQuery();
+
+            ResultSet rs = stmt.getResultSet();
+
+            rs.next();
+
+            User user = new User(
+                rs.getString("username"),
+                rs.getString("image"),
+                makeList(rs.getString("created_drinks")),
+                makeList(rs.getString("liked_drinks"))
+            );
+            return user;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving ad.", e);
+        }
+    }
+
+
 
 }
