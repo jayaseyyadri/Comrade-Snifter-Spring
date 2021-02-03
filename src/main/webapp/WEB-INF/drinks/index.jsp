@@ -22,6 +22,14 @@
                 <input type="hidden" name="drinkId" value="${drink.id}">
                 <button type="submit" class="btn btn-primary">View Drink Details</button>
             </form>
+            <form action="/delete" method="post">
+                <input type="hidden" name="deleteThisDrink" value="${drink.id}">
+                <button type="submit" class="btn btn-primary">Delete</button>
+            </form>
+            <form action="/editForm" method="get">
+                <input type="hidden" name="editThisDrink" value="${drink.id}">
+                <button type="submit" class="btn btn-primary">Edit Drink Details</button>
+            </form>
         </div>
     </c:forEach>
 </div>
