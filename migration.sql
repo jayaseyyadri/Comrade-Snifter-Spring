@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS comrade_snifter_db;
 CREATE DATABASE IF NOT EXISTS comrade_snifter_db;
 
 use comrade_snifter_db;
@@ -10,7 +11,9 @@ Create table if not exists users(
                                     username varchar(255) not null,
                                     email varchar(255) not null,
                                     password varchar(255) not null,
-                                    drink_favorite varchar(255) # a list of drink id's as favorites can be queried and pulled out as an int list
+                                    image TEXT,
+                                    created_drinks varchar(255),
+                                    liked_drinks varchar(255) # a list of drink id's as favorites can be queried and pulled out as an int list
 );
 CREATE table if not exists drinks(
                                      id int unsigned not null auto_increment primary key,
@@ -18,7 +21,7 @@ CREATE table if not exists drinks(
                                      name varchar(255) not null,
                                      instructions varchar(255) not null,
                                      ingredients varchar(255) not null,
-                                     image varchar(255),
+                                     image TEXT,
                                      FOREIGN KEY (user_id) references users(id)
 );
 create table if not exists drink_Category(
@@ -46,4 +49,4 @@ insert into drinks(user_id, name, instructions, ingredients, image) VALUES (1, '
 insert into drinks(user_id, name, instructions, ingredients, image) VALUES (1, 'Kioki Coffee', 'Stir. Add whipped cream to the top.', 'Kahlua 1 oz, Brandy 1/2 oz, Coffee', 'https://www.thecocktaildb.com/images/media/drink/uppqty1441247374.jpg');
 
 select *
-from drinks;
+from users;

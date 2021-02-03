@@ -54,7 +54,7 @@ public class MySQLDrinksDao implements Drinks {
         }
     }
 
-    private Drink extractAd(ResultSet rs) throws SQLException {
+    private Drink extractDrink(ResultSet rs) throws SQLException {
         return new Drink(
             rs.getLong("id"),
             rs.getLong("user_id"),
@@ -68,8 +68,36 @@ public class MySQLDrinksDao implements Drinks {
     private List<Drink> createDrinksFromResults(ResultSet rs) throws SQLException {
         List<Drink> drinks = new ArrayList<>();
         while (rs.next()) {
-            drinks.add(extractAd(rs));
+            drinks.add(extractDrink(rs));
         }
         return drinks;
+    }
+
+     public Drink getDrink(long drinkId) {
+        PreparedStatement stmt = null;
+        String sqlQuery = "SELECT * FROM comrade_snifter_db.drinks WHERE id = ?";
+
+        try {
+            stmt = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, drinkId);
+
+            stmt.executeQuery();
+
+            ResultSet rs = stmt.getResultSet();
+
+            rs.next();
+
+            Drink drink = new Drink(
+            rs.getLong("id"),
+            rs.getLong("user_id"),
+            rs.getString("name"),
+            rs.getString("instructions"),
+            rs.getString("ingredients"),
+            rs.getString("image")
+            );
+            return drink;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving ad.", e);
+        }
     }
 }

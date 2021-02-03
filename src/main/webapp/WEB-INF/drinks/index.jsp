@@ -18,6 +18,10 @@
             <p>${drink.instructions}</p>
             <p>${drink.ingredients}</p>
             <img src="${drink.image}" alt="drink">
+            <form action="/show" method="post">
+                <input type="hidden" name="drinkId" value="${drink.id}">
+                <button type="submit" class="btn btn-primary">View Drink Details</button>
+            </form>
         </div>
     </c:forEach>
 </div>
