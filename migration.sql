@@ -1,3 +1,4 @@
+
 CREATE DATABASE IF NOT EXISTS comrade_snifter_db;
 
 use comrade_snifter_db;
