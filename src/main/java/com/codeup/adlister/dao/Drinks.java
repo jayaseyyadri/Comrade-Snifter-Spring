@@ -11,4 +11,6 @@ public interface Drinks {
     Long insert(Drink drink);
 
     Drink getDrink(long drinkId);
+
+    List<Drink> getUsersDrinks(long user_id);
 }
