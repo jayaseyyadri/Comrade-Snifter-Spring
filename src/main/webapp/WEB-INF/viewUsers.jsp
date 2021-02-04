@@ -18,11 +18,13 @@
             <th>User Name</th>
 
         </tr>
-<c:forEach var="user" items="${sessionScope.allUsers}">
+        <c:forEach var="user" items="${sessionScope.allUsers}">
         <tr>
             <td><c:out value="${user.id}"/></td>
                 <td><c:out value="${user.username}"/></td>
         </tr>
         </c:forEach>
+
+        <jsp:include page="./partials/bootstrap.jsp"/>
 </div>
 </html>

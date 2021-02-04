@@ -23,6 +23,7 @@
 
 </div>
 
+
 <form action="/vote" method="POST">
     <input type="hidden" value="1" name="vote">
     <button type="submit"><i class="fas fa-thumbs-up"></i></button>
@@ -33,6 +34,9 @@
     <button type="submit"><i class="fas fa-thumbs-down"></i></button>
 </form>
 
+
+
+<jsp:include page="../partials/bootstrap.jsp"/>
 
 </body>
 </html>
