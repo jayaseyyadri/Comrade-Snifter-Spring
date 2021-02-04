@@ -7,7 +7,7 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-    <div class="container">
+    <div class="container" style="margin-top: 15px">
         <h1>Please Log In</h1>
         <form action="/login" method="POST">
             <div class="form-group">
@@ -21,7 +21,7 @@
             <div class="form-group">
                 <a href="#">Forgot Password?</a>
             </div>
-            <input type="submit" class="btn btn-primary btn-block" value="Log In">
+            <input type="submit" class="btn btn-danger btn-block" value="Log In">
         </form>
     </div>
 
