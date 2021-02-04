@@ -23,7 +23,6 @@ public class ShowServlet extends HttpServlet {
         System.out.println(drinkId);
         Drink drink = DaoFactory.getDrinksDao().getDrink(drinkId);
 
-        request.getSession().setAttribute("drink", drink);
         User creator = DaoFactory.getUsersDao().getDrinkCreator(drinkId);
         request.setAttribute("creatorName", creator.getUsername());
         request.setAttribute("creatorImage", creator.getImage());
