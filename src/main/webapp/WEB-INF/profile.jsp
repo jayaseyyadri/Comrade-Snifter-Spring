@@ -14,15 +14,18 @@
     </div>
 
     <div class="container">
-    <form action="/drinks/create" method="get">
-        <input type="submit" class="btn" value="Create Drink Here!">
-    </form>
+      <form action="/drinks/create" method="get">
+          <input type="submit" class="btn" value="Create Drink Here!">
+      </form>
+    </div>
+  
     <h3>Here Are Your Drinks!</h3>
 
     <div class="container-fluid">
         <jsp:include page="partials/drink-cards.jsp"></jsp:include>
     </div>
-    </div>
+
+    
 
 
 
