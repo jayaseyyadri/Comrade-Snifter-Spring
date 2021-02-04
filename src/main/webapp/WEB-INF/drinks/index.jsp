@@ -12,34 +12,39 @@
     <jsp:param name="linkTitle" value="Home"/>
 </jsp:include>
 
-<div class="container-fluid" style="display: flex; justify-content: center">
+<c:if test="${sessionScope.user == null}">
 
-    <img src="${pageContext.request.contextPath}/resources/img/comrade.png" alt="Comrade">
+    <div class="container-fluid" style="display: flex; justify-content: center">
+
+        <img src="${pageContext.request.contextPath}/resources/img/comrade.png" alt="Comrade">
 
 
-            <div class="card text-white bg-secondary border-warning mt-4" style="width: 18rem;">
-                <div class="card-header">
-                    <h5 class="card-title text-center">
-                        Here are all th drinks listed on the site!
-                    </h5>
+                <div class="card text-white bg-secondary border-warning mt-4" style="width: 18rem;">
+                    <div class="card-header">
+                        <h5 class="card-title text-center">
+                            Here are all th drinks listed on the site!
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">In order to view ingredients and instructions, simply login or create an account.</p>
+                    </div>
+                    <div class="card-footer" style="display: flex;justify-content: space-between; align-items: center">
+                        <form action="/register" method="get">
+                            <button type="submit" class="btn btn-danger">Register</button>
+                        </form>
+                        <form action="/login" method="get">
+                            <button type="submit" class="btn btn-danger">Login</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <p class="card-text">In order to view ingredients and instructions, simply login or create an account.</p>
-                </div>
-                <div class="card-footer" style="display: flex;justify-content: space-between; align-items: center">
-                    <form action="/register" method="get">
-                        <button type="submit" class="btn btn-danger">Register</button>
-                    </form>
-                    <form action="/login" method="get">
-                        <button type="submit" class="btn btn-danger">Login</button>
-                    </form>
-                </div>
-            </div>
 
-    <img src="${pageContext.request.contextPath}/resources/img/Snifter.png" alt="Snifter">
 
-</div>
 
+        <img src="${pageContext.request.contextPath}/resources/img/Snifter.png" alt="Snifter">
+
+    </div>
+
+</c:if>
 
 <div class="container">
     <jsp:include page="/WEB-INF/partials/drink-cards.jsp"></jsp:include>
