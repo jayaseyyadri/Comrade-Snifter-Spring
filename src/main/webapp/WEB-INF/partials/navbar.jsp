@@ -47,9 +47,6 @@
                   <ul class="nav navbar-nav navbar-right">
                       <li><a href="/login">Login</a></li>
                   </ul>
-                  <ul class="nav navbar-nav navbar-right">
-                      <li><a href="/register">Register</a> </li>
-                  </ul>
               </div>
             </nav>
     </c:otherwise>
