@@ -33,7 +33,7 @@
                 <div class="card-footer">
                     <form action="/show" method="post">
                         <input type="hidden" value="${drink.id}" name="adId">
-                        <button type="submit">View Ad</button>
+                        <button type="submit">View Drink</button>
                     </form>
                 </div>
             </div>
