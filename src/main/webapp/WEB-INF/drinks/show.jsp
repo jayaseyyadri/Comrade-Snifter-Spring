@@ -5,6 +5,7 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Ad" />
     </jsp:include>
+    <script src="https://kit.fontawesome.com/36f035c426.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
@@ -22,6 +23,21 @@
 
 </div>
 
+
+<form action="/vote" method="POST">
+    <input type="hidden" value="1" name="vote">
+    <button type="submit"><i class="fas fa-thumbs-up"></i></button>
+</form>
+
+<form action="/vote" method="POST">
+    <input type="hidden" value="0" name="vote">
+    <button type="submit"><i class="fas fa-thumbs-down"></i></button>
+</form>
+
+
+
 <jsp:include page="../partials/bootstrap.jsp"/>
+
+
 </body>
 </html>

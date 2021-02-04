@@ -20,6 +20,9 @@ public class ShowServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println(request.getParameter("drinkId"));
         long drinkId = Long.parseLong(request.getParameter("drinkId"));
+
+        request.getSession().setAttribute("viewingDrink", drinkId);
+
         System.out.println(drinkId);
         Drink drink = DaoFactory.getDrinksDao().getDrink(drinkId);
 

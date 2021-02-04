@@ -9,26 +9,26 @@
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
+    <jsp:include page="/WEB-INF/partials/profile-card.jsp" />
+
     <div class="container">
-        <h1 class="text-center">Welcome, ${sessionScope.user.username}!</h1>
+
+      <form action="/drinks/create" method="get">
+          <input type="submit" class="btn" value="Create Drink Here!">
+      </form>
+
     </div>
 
     <jsp:include page="/WEB-INF/partials/profile-card.jsp" />
 
     <div class="container">
-      <form action="/drinks/create" method="get">
-          <input type="submit" class="btn" value="Create Drink Here!">
-      </form>
+
+        <h3 class="text-center">Here Are Your Drinks!</h3>
+        <jsp:include page="partials/drink-cards.jsp"></jsp:include>
     </div>
-  
-    <h3>Here Are Your Drinks!</h3>
 
 
         <jsp:include page="partials/drink-cards.jsp"></jsp:include>
-
-
-    
-
 
 <jsp:include page="./partials/bootstrap.jsp"/>
 </body>
