@@ -51,3 +51,14 @@ insert into drinks(user_id, name, instructions, ingredients, image) VALUES (1, '
 
 select *
 from users;
+
+select *
+from drinks;
+
+select username from users where id In (
+    select user_id
+    from drinks
+    where id = 1
+);
+
+update users set image = 'https://static6.depositphotos.com/1128837/646/v/950/depositphotos_6464166-stock-illustration-isolated-rubber-duck.jpg' where id = 1;

@@ -62,7 +62,18 @@ public class MySQLUsersDao implements Users {
                 rs.getLong("id"),
                 rs.getString("username"),
                 rs.getString("email"),
-                rs.getString("password")
+                rs.getString("password"),
+                rs.getString("image")
+        );
+    }
+
+    private User extractUserPublicInfo(ResultSet rs) throws SQLException {
+        if (!rs.next()) {
+            return null;
+        }
+        return new User(
+                rs.getString("username"),
+                rs.getString("image")
         );
     }
 
@@ -157,6 +168,25 @@ public class MySQLUsersDao implements Users {
         }
 
         return allCurrentUserNames;
+    }
+
+    @Override
+    public User getDrinkCreator(long drinkId){
+        Drink thisDrink = DaoFactory.getDrinksDao().getDrink(drinkId);
+        String query = "SELECT * from comrade_snifter_db.users where id  = ?";
+
+        try{
+
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.setLong(1, thisDrink.getUserId());
+            statement.executeQuery();
+            ResultSet rs = statement.getResultSet();
+            return extractUserPublicInfo(rs);
+
+        } catch (SQLException e){
+            throw new RuntimeException("Error finding creator for this drink", e);
+        }
+
     }
 
 

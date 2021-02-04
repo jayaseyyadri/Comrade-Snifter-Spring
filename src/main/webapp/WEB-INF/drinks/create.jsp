@@ -28,5 +28,7 @@
             <input type="submit" class="btn btn-block btn-primary">
         </form>
     </div>
+
+    <jsp:include page="../partials/bootstrap.jsp"/>
 </body>
 </html>

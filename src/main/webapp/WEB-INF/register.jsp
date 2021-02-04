@@ -33,12 +33,14 @@
             <div class="form-group">
                 <label for="confirm_password">Confirm Password</label>
                 <input id="confirm_password" name="confirm_password" class="form-control" type="password">
-                <c:if test="${sessionScope.poorQualityPassword}">
+                <c:if test="${sessionScope.passwordsDoNotMatch}">
                     <small class="errorMessage"> * Passwords Do Not Match</small>
                 </c:if>
             </div>
             <input type="submit" class="btn btn-primary btn-block">
         </form>
     </div>
+
+<jsp:include page="./partials/bootstrap.jsp"/>
 </body>
 </html>

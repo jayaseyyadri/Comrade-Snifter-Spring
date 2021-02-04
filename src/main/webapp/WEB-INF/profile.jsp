@@ -10,41 +10,26 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <div class="container">
-        <h1>Welcome, ${sessionScope.user.username}!</h1>
+        <h1 class="text-center">Welcome, ${sessionScope.user.username}!</h1>
     </div>
+
+    <jsp:include page="/WEB-INF/partials/profile-card.jsp" />
 
     <div class="container">
-    <form action="/drinks/create" method="get">
-        <input type="submit" class="btn" value="Create Drink Here!">
-    </form>
+      <form action="/drinks/create" method="get">
+          <input type="submit" class="btn" value="Create Drink Here!">
+      </form>
+    </div>
+  
     <h3>Here Are Your Drinks!</h3>
 
-    <c:forEach var="drink" items="${drinks}">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-title">
-                    <h2>${drink.name}</h2>
-                </div>
-                <div class="card-body">
-                    <img src="${drink.image}" alt="drink">
-                    <p>${drink.ingredients}</p>
-                    <p>${drink.instructions}</p>
-                </div>
-                <div class="card-footer">
-                    <form action="/show" method="post">
-                        <input type="hidden" value="${drink.id}" name="adId">
-                        <button type="submit">View Drink</button>
-                    </form>
-                </div>
-            </div>
+
+        <jsp:include page="partials/drink-cards.jsp"></jsp:include>
 
 
-
-        </div>
-    </c:forEach>
-    </div>
+    
 
 
-
+<jsp:include page="./partials/bootstrap.jsp"/>
 </body>
 </html>
