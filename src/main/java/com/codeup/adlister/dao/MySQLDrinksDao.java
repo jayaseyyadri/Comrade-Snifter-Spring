@@ -5,6 +5,7 @@ import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class MySQLDrinksDao implements Drinks {
@@ -61,7 +62,8 @@ public class MySQLDrinksDao implements Drinks {
             rs.getString("name"),
             rs.getString("instructions"),
             rs.getString("ingredients"),
-            rs.getString("image")
+            rs.getString("image"),
+            rs.getInt("votes")
         );
     }
 
@@ -191,6 +193,43 @@ public class MySQLDrinksDao implements Drinks {
             throw new RuntimeException("Error editing ad", e);
         }
 
-
     }
+
+    @Override
+    public void updateThisDrinksVotes(int drinkVotes, long drinkIdToUpdate){
+        String query = "UPDATE comrade_snifter_db.drinks set votes = ? where id = ?";
+
+        try {
+
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.setInt(1, drinkVotes);
+            statement.setLong(2, drinkIdToUpdate);
+            statement.executeUpdate();
+
+        } catch (SQLException e){
+            throw new RuntimeException("Error voting on drink", e);
+        }
+    }
+
+
+
+
+
+
+    @Override
+    public int getDrinkVotes(long id){
+        String query = "SELECT votes from comrade_snifter_db.drinks where id = ?";
+        try {
+
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.setLong(1, id);
+            statement.executeQuery();
+            ResultSet rs = statement.getResultSet();
+            return rs.getInt("votes");
+
+        } catch (SQLException e){
+            throw new RuntimeException("Error retrieving votes", e);
+        }
+    }
+
 }

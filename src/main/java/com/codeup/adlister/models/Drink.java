@@ -1,5 +1,7 @@
 package com.codeup.adlister.models;
 
+import com.codeup.adlister.dao.DaoFactory;
+
 public class Drink {
     private long id;
     private long userId;
@@ -7,6 +9,7 @@ public class Drink {
     private String instructions;
     private String ingredients;
     private String image;
+    private int votes;
 
     public Drink(){};
 
@@ -25,6 +28,16 @@ public class Drink {
         this.instructions = instructions;
         this.ingredients = ingredients;
         this.image = image;
+    }
+
+    public Drink(long id, long userId, String name, String instructions, String ingredients, String image, int votes) {
+        this.id = id;
+        this.userId = userId;
+        this.name = name;
+        this.instructions = instructions;
+        this.ingredients = ingredients;
+        this.image = image;
+        this.votes = votes;
     }
 
     public String getIngredients() {
@@ -75,4 +88,12 @@ public class Drink {
         this.instructions = instructions;
     }
 
+    public int getVotes() {
+//        return DaoFactory.getDrinksDao().getDrinkVotes(this.id);
+        return this.votes;
+    }
+
+    public void setVotes(int votes) {
+        this.votes = votes;
+    }
 }
