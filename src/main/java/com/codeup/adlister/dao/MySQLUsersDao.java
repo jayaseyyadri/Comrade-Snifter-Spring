@@ -1,9 +1,12 @@
 package com.codeup.adlister.dao;
 
+import com.codeup.adlister.models.Drink;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MySQLUsersDao implements Users {
     private Connection connection;
@@ -61,6 +64,69 @@ public class MySQLUsersDao implements Users {
             rs.getString("email"),
             rs.getString("password")
         );
+    }
+
+
+    public User getUser(long userId) {
+        PreparedStatement stmt = null;
+        String sqlQuery = "SELECT * FROM comrade_snifter_db.users WHERE id = ?";
+
+        try {
+            stmt = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, userId);
+
+            stmt.executeQuery();
+
+            ResultSet rs = stmt.getResultSet();
+
+            rs.next();
+
+            User user = new User(
+                rs.getString("username"),
+                rs.getString("image"),
+                makeList(rs.getString("created_drinks")),
+                makeList(rs.getString("liked_drinks"))
+            );
+            return user;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving ad.", e);
+        }
+    }
+
+    @Override
+    public boolean isAdmin(long userId){
+        String query = "SELECT is_admin FROM users where id = ?";
+        int thisId = 0;
+        try{
+            PreparedStatement stm = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stm.setLong(1, userId);
+            stm.executeQuery();
+            ResultSet rs = stm.getResultSet();
+            rs.next();
+            thisId = (int) rs.getLong("is_admin");
+
+        } catch (SQLException e){
+            throw new RuntimeException("Error validating user", e);
+        }
+        return thisId == 1;
+    }
+
+//    public Long likeDrink(long drinkILikeId, long currentUserId){
+//        String query = "Select liked_drinks from  users where id = ?";
+//        String insertQuery = "UPDATE users SET liked_drinks where id = ?";
+//        // going to query the liked drinks and if there are currently liked drinks in the specific user's list
+//        //
+//    }
+//
+    private static List<Long> makeList(String ids){
+        List<Long> idList = new ArrayList<>();
+        String[] list = ids.split(" ");
+        for(String s : list){
+            idList.add(Long.parseLong(s));
+        }
+
+
+        return idList;
     }
 
 }
