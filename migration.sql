@@ -56,9 +56,9 @@ from users;
 select *
 from drinks;
 
+
 select votes
 from drinks where id = 1;
-
 select username from users where id In (
     select user_id
     from drinks

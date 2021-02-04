@@ -38,6 +38,7 @@
                 <a class="nav-link" href="/logout"><h3>Logout</h3></a>
               </li>
             </ul>
+
           </div>
         </nav>
     </c:when>
@@ -97,10 +98,11 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent2">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="${param.link}"> <h3>${param.linkTitle}</h3><span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="${param.link}"> <h3>${param.linkTitle}</h3><span class="sr-only">(current)</span></a>
               </li>
             </ul>
             <ul class="navbar-nav ml-auto">
+
               <li class="nav-item">
                 <a class="nav-link" href="/login"><h3>Login</h3></a>
               </li>

@@ -19,7 +19,7 @@
                 <input id="password" name="password" class="form-control" type="password">
             </div>
             <div class="form-group">
-                <a href="#">Forgot Password?</a>
+                <a href="/forgotPassword">Forgot Password?</a>
             </div>
             <input type="submit" class="btn btn-danger btn-block" value="Log In">
         </form>

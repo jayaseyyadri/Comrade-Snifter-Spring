@@ -13,6 +13,8 @@ public class Drink {
 
     public Drink(){};
 
+    public Drink(){};
+
     public Drink(long id, long userId, String name, String instructions, String ingredients, String image) {
         this.id = id;
         this.userId = userId;
@@ -87,6 +89,7 @@ public class Drink {
     public void setInstructions(String instructions) {
         this.instructions = instructions;
     }
+
 
     public int getVotes() {
 //        return DaoFactory.getDrinksDao().getDrinkVotes(this.id);

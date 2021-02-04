@@ -34,21 +34,21 @@ public class EmailUtil {
             msg.addHeader("format", "flowed");
             msg.addHeader("Content-Transfer-Encoding", "8bit");
 
-            msg.setFrom(new InternetAddress("no_reply@example.com", "NoReply-JD"));
+            msg.setFrom(new InternetAddress("seyyadrijaya.com"));
 
             msg.setReplyTo(InternetAddress.parse("no_reply@example.com", false));
 
-            msg.setSubject(subject, "UTF-8");
+            msg.setSubject("My first Email from Java app","UTF-8");
 
-            msg.setText(body, "UTF-8");
+            msg.setText("Hello There", "UTF-8");
 
             msg.setSentDate(new Date());
 
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail, false));
-            System.out.println("Message is ready");
+
             Transport.send(msg);
 
-            System.out.println("EMail Sent Successfully!!");
+            System.out.println("Email Sent Successfully!!");
         }
         catch (Exception e) {
             e.printStackTrace();
