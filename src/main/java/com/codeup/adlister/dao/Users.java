@@ -10,4 +10,5 @@ public interface Users {
     boolean isAdmin(long userId);
     List<User> viewUsers();
     List<String> currentUsernames();
+    User getDrinkCreator(long drinkId);
 }

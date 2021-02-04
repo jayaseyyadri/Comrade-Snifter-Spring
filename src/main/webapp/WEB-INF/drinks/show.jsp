@@ -8,6 +8,8 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<jsp:include page="/WEB-INF/partials/creator-profile-card.jsp" />
+
 
 <div class="container">
     <h2>${sessionScope.drink.name}</h2>
