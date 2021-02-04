@@ -20,11 +20,15 @@
           <input type="submit" class="btn" value="Create Drink Here!">
       </form>
     </div>
-  
-    <h3>Here Are Your Drinks!</h3>
 
-
+    <div class="container">
+        <h3 class="text-center">Here Are Your Drinks!</h3>
         <jsp:include page="partials/drink-cards.jsp"></jsp:include>
+    </div>
+
+
+
+
 
 
     

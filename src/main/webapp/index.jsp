@@ -7,11 +7,11 @@
     </jsp:include>
 </head>
 <body>
-    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<jsp:include page="/WEB-INF/partials/navbar.jsp">
+    <jsp:param name="link" value="/drinks"/>
+    <jsp:param name="linkTitle" value="Drinks"/>
+</jsp:include>
 
-    <div class="container">
-        <h1>Welcome to the Comrade Snifter!</h1>
-    </div>
 
     <jsp:include page="WEB-INF/partials/bootstrap.jsp"/>
 </body>

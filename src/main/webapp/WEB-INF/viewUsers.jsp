@@ -18,7 +18,7 @@
             <th>User Name</th>
 
         </tr>
-<c:forEach var="user" items="${sessionScope.allUsers}">
+        <c:forEach var="user" items="${sessionScope.allUsers}">
         <tr>
             <td><c:out value="${user.id}"/></td>
                 <td><c:out value="${user.username}"/></td>
