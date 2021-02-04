@@ -12,10 +12,7 @@
 
 
 <div class="container">
-    <h2>${sessionScope.drink.name}</h2>
-    <p>${sessionScope.drink.instructions}</p>
-    <p>${sessionScope.drink.ingredients}</p>
-    <img src="${sessionScope.drink.image}" alt="drink">
+    <jsp:include page="/WEB-INF/partials/drink-cards.jsp"></jsp:include>
 </div>
 
 <div class="container">

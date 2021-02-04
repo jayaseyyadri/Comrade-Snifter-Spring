@@ -30,7 +30,7 @@
               </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" action="/drinks" method="post">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchBy">
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
           </div>
@@ -65,7 +65,7 @@
               </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" action="/drinks" method="post">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchBy">
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
           </div>
@@ -80,6 +80,9 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent2">
             <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/drinks">Drinks<span class="sr-only">(current)</span></a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link" href="/login">Login</a>
               </li>
