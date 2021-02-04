@@ -111,23 +111,6 @@ public class MySQLUsersDao implements Users {
         return thisId == 1;
     }
 
-    //    public Long likeDrink(long drinkILikeId, long currentUserId){
-//        String query = "Select liked_drinks from  users where id = ?";
-//        String insertQuery = "UPDATE users SET liked_drinks where id = ?";
-//        // going to query the liked drinks and if there are currently liked drinks in the specific user's list
-//        //
-//    }
-//
-    private static List<Long> makeList(String ids) {
-        List<Long> idList = new ArrayList<>();
-        String[] list = ids.split(" ");
-        for (String s : list) {
-            idList.add(Long.parseLong(s));
-        }
-
-
-        return idList;
-    }
 
     // view all users
     public List<User> viewUsers() {
@@ -150,5 +133,51 @@ public class MySQLUsersDao implements Users {
             throw new RuntimeException("Error retrieving all ads.", e);
         }
 
+    }
+
+    @Override
+    public List<String> currentUsernames(){
+        List<String> allCurrentUserNames = new ArrayList<>();
+
+        String query = "SELECT username FROM comrade_snifter_db.users";
+
+        try{
+
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.executeQuery();
+            ResultSet rs = statement.getResultSet();
+            while(rs.next()){
+                allCurrentUserNames.add(
+                  rs.getString("username")
+                );
+            }
+
+        } catch (SQLException e){
+            throw new RuntimeException("Error retrieving current user list", e);
+        }
+
+        return allCurrentUserNames;
+    }
+
+
+
+
+
+    //    public Long likeDrink(long drinkILikeId, long currentUserId){
+//        String query = "Select liked_drinks from  users where id = ?";
+//        String insertQuery = "UPDATE users SET liked_drinks where id = ?";
+//        // going to query the liked drinks and if there are currently liked drinks in the specific user's list
+//        //
+//    }
+//
+    private static List<Long> makeList(String ids) {
+        List<Long> idList = new ArrayList<>();
+        String[] list = ids.split(" ");
+        for (String s : list) {
+            idList.add(Long.parseLong(s));
+        }
+
+
+        return idList;
     }
 }

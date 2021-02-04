@@ -9,4 +9,5 @@ public interface Users {
     Long insert(User user);
     boolean isAdmin(long userId);
     List<User> viewUsers();
+    List<String> currentUsernames();
 }
