@@ -12,5 +12,9 @@
     <div class="container">
         <h1>Welcome to the Comrade Snifter!</h1>
     </div>
+
+    <div class="container">
+        <jsp:include page="/WEB-INF/partials/top3-drinks.jsp" />
+    </div>
 </body>
 </html>
