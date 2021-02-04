@@ -6,11 +6,7 @@
             <c:when test="${sessionScope.isAdmin && sessionScope.isLoggedIn}">
                 <c:forEach var="drink" items="${drinks}">
                     <div class="col col-md-6 col-lg-4 d-flex align-items-stretch">
-
-                        <div class="card mt-4" style="width: 18rem;">
-
                         <div class="card text-white bg-secondary border-warning mt-4" style="width: 18rem;">
-
                             <div class="card-header">
                                 <h5 class="card-title text-center">
                                     <c:choose>
@@ -25,9 +21,7 @@
                             </div>
                             <img class="card-img-top" src="<c:out value="${drink.image}"/>" alt="drink">
                             <div class="card-body">
-
                                 <small><strong>Ingredients</strong></small>
-
                                 <p class="card-text"><c:out value="${drink.ingredients}"/></p>
                                 <small><strong>Instructions</strong></small>
                                 <p class="card-text"><c:out value=" ${drink.instructions}"/></p>
@@ -45,7 +39,6 @@
                                <form action="/delete" method="post">
                                     <input type="hidden" name="deleteThisDrink" value="${drink.id}">
                                     <button type="submit" class="btn btn-danger">Delete</button>
-
                                </form>
                             </div>
                         </div>
@@ -56,10 +49,7 @@
             <c:when test="${sessionScope.isLoggedIn}">
                 <c:forEach var="drink" items="${drinks}">
                     <div class="col col-md-6 col-lg-4 d-flex align-items-stretch">
-
-                        <div class="card mt-4" style="width: 18rem;">
                         <div class="card text-white bg-secondary border-warning mt-4" style="width: 18rem;">
-
                             <div class="card-header">
                                 <h5 class="card-title text-center">
                                     <c:choose>
@@ -74,9 +64,7 @@
                             </div>
                             <img class="card-img-top" src="<c:out value="${drink.image}"/>" alt="drink">
                             <div class="card-body">
-
                                 <small><strong>Ingredients</strong></small>
-
                                 <p class="card-text"><c:out value="${drink.ingredients}"/></p>
                                 <small><strong>Instructions</strong></small>
                                 <p class="card-text"><c:out value=" ${drink.instructions}"/></p>
@@ -84,10 +72,7 @@
                             <div class="card-footer" style="display: flex;justify-content: space-between; align-items: center">
                                 <form action="/show" method="post">
                                     <input type="hidden" name="drinkId" value="${drink.id}">
-
-
                                     <button type="submit" class="btn btn-danger">View</button>
-
                                 </form>
                                 <c:if test="${sessionScope.user != null}">
                                     <c:if test="${drink.userId == sessionScope.user.id}">
@@ -112,7 +97,6 @@
             <c:otherwise>
                 <c:forEach var="drink" items="${drinks}">
                     <div class="col col-md-6 col-lg-4 d-flex align-items-stretch">
-
                         <div class="card text-white bg-secondary border-warning mt-4" style="width: 18rem;">
                             <div class="card-header">
                                 <h5 class="card-title text-center">

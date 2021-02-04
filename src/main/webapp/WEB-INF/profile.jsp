@@ -19,16 +19,7 @@
 
     </div>
 
-    <jsp:include page="/WEB-INF/partials/profile-card.jsp" />
-
-    <div class="container">
-
-        <h3 class="text-center">Here Are Your Drinks!</h3>
-        <jsp:include page="partials/drink-cards.jsp"></jsp:include>
-    </div>
-
-
-        <jsp:include page="partials/drink-cards.jsp"></jsp:include>
+    <jsp:include page="partials/drink-cards.jsp"></jsp:include>
 
 <jsp:include page="./partials/bootstrap.jsp"/>
 </body>

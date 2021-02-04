@@ -6,6 +6,7 @@
     </jsp:include>
 </head>
 <body>
+    <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
     <div class="container">
         <h1>Create a new Drink</h1>
         <form action="/drinks/create" method="post">
@@ -25,7 +26,7 @@
                 <label for="image">Image Url</label>
                 <input id="image" name="image" class="form-control" type="text" placeholder="Optional">
             </div>
-            <input type="submit" class="btn btn-block btn-primary">
+            <input type="submit" class="btn btn-block btn-danger">
         </form>
     </div>
 
