@@ -2,6 +2,7 @@ package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Drink;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface Drinks {
@@ -15,4 +16,6 @@ public interface Drinks {
 
     List<Drink> getUsersDrinks(long user_id);
     List<Drink> searchDrinks(String search);
+    int getDrinkVotes(long id);
+    void updateThisDrinksVotes(int drinkVotes, long drinkIdToUpdate);
 }
