@@ -36,9 +36,22 @@ public class User {
     }
 //CREATED NEW CONSTRUCTOR
 
+    public User(long id, String username, String email, String password, String image) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.image = image;
+    }
+
     public User(long id, String username) {
         this.id = id;
         this.username = username;
+    }
+
+    public User(String username, String image) {
+        this.username = username;
+        this.image = image;
     }
 
     public long getId() {

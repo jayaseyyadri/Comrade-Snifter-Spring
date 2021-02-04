@@ -13,6 +13,8 @@
         <h1>Welcome, ${sessionScope.user.username}!</h1>
     </div>
 
+    <jsp:include page="/WEB-INF/partials/profile-card.jsp" />
+
     <div class="container">
       <form action="/drinks/create" method="get">
           <input type="submit" class="btn" value="Create Drink Here!">

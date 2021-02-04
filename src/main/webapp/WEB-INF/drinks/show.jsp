@@ -8,6 +8,8 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<jsp:include page="/WEB-INF/partials/creator-profile-card.jsp" />
+
 
 <div class="container">
     <jsp:include page="/WEB-INF/partials/drink-cards.jsp"></jsp:include>

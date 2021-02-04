@@ -4,6 +4,7 @@ import com.codeup.adlister.*;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.dao.MySQLDrinksDao;
 import com.codeup.adlister.models.Drink;
+import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,6 +22,12 @@ public class ShowServlet extends HttpServlet {
         long drinkId = Long.parseLong(request.getParameter("drinkId"));
         System.out.println(drinkId);
         Drink drink = DaoFactory.getDrinksDao().getDrink(drinkId);
+
+        request.getSession().setAttribute("drink", drink);
+        User creator = DaoFactory.getUsersDao().getDrinkCreator(drinkId);
+        request.setAttribute("creatorName", creator.getUsername());
+        request.setAttribute("creatorImage", creator.getImage());
+
         List<Drink> drinks = new ArrayList<>();
         drinks.add(drink);
         request.getSession().setAttribute("drinks", drinks);

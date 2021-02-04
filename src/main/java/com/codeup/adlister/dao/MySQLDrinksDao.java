@@ -130,7 +130,7 @@ public class MySQLDrinksDao implements Drinks {
             );
             return drink;
         } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving ad.", e);
+            throw new RuntimeException("Error retrieving drink.", e);
         }
     }
 
