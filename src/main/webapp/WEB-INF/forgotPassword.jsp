@@ -8,10 +8,11 @@
 </head>
 <body>
 <div>
+    <form action="/forgotPassword" method="post">
 <h3>Please enter your email address </h3>
-    <label for="email"><input type="email" placeholder="abc@xyz.com" id="email"></label>
+    <label for="forgotPassword"><input type="email" placeholder="abc@xyz.com" id="forgotPassword" name="forgotPassword"></label>
     <button type="submit">Submit</button>
-
+    </form>
 </div>
 </body>
 </html>
