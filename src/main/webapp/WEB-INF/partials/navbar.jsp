@@ -12,7 +12,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="${param.link}"> <h1>${param.linkTitle}</h1><span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="${param.link}"> <h3>${param.linkTitle}</h3><span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <form class="form-inline my-auto my-lg-0" action="/drinks" method="post">
@@ -24,10 +24,10 @@
             <ul class="navbar-nav ml-auto">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <h1>Utilities</h1>
+                  <h3>Utilities</h3>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="/drinks/create"><h3></h3>Add Drink</a>
+                  <a class="dropdown-item" href="/drinks/create"><h3>Add Drink</h3></a>
                   <a class="dropdown-item" href="#"><h3>View Favorites</h3></a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#"><h3>Edit Profile</h3></a>
@@ -35,7 +35,7 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/logout"><h1>Logout</h1></a>
+                <a class="nav-link" href="/logout"><h3>Logout</h3></a>
               </li>
             </ul>
           </div>
@@ -52,7 +52,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent1">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="${param.link}"> <h1>${param.linkTitle}<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="${param.link}"> <h3>${param.linkTitle}</h3><span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <form class="form-inline my-auto my-lg-0" action="/drinks" method="post">
@@ -64,7 +64,7 @@
             <ul class="navbar-nav ml-auto">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <h1>Utilities</h1>
+                  <h3>Utilities</h3>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
                   <a class="dropdown-item" href="/drinks/create"><h3></h3>Add Drink</a>
@@ -74,7 +74,7 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/logout"><h1>Logout</h1></a>
+                <a class="nav-link" href="/logout"><h3>Logout</h3></a>
               </li>
             </ul>
           </div>
@@ -90,12 +90,12 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent2">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="${param.link}"> <h1>${param.linkTitle}<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="${param.link}"> <h3>${param.linkTitle}</h3><span class="sr-only">(current)</span></a>
               </li>
             </ul>
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="nav-link" href="/login"><h1>Login</h1></a>
+                <a class="nav-link" href="/login"><h3>Login</h3></a>
               </li>
             </ul>
           </div>

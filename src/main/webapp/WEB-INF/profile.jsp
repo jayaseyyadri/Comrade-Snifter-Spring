@@ -9,10 +9,6 @@
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
-    <div class="container">
-        <h1 class="text-center">Welcome, ${sessionScope.user.username}!</h1>
-    </div>
-
     <jsp:include page="/WEB-INF/partials/profile-card.jsp" />
 
     <div class="container">
