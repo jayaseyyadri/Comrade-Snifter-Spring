@@ -9,15 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLUsersDao implements Users {
-    private Connection connection;
+    private Connection connection= null;
 
     public MySQLUsersDao(Config config) {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
-                config.getUrl(),
-                config.getUser(),
-                config.getPassword()
+                    config.getUrl(),
+                    config.getUser(),
+                    config.getPassword()
             );
         } catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
@@ -55,14 +55,14 @@ public class MySQLUsersDao implements Users {
     }
 
     private User extractUser(ResultSet rs) throws SQLException {
-        if (! rs.next()) {
+        if (!rs.next()) {
             return null;
         }
         return new User(
-            rs.getLong("id"),
-            rs.getString("username"),
-            rs.getString("email"),
-            rs.getString("password")
+                rs.getLong("id"),
+                rs.getString("username"),
+                rs.getString("email"),
+                rs.getString("password")
         );
     }
 
@@ -82,10 +82,10 @@ public class MySQLUsersDao implements Users {
             rs.next();
 
             User user = new User(
-                rs.getString("username"),
-                rs.getString("image"),
-                makeList(rs.getString("created_drinks")),
-                makeList(rs.getString("liked_drinks"))
+                    rs.getString("username"),
+                    rs.getString("image"),
+                    makeList(rs.getString("created_drinks")),
+                    makeList(rs.getString("liked_drinks"))
             );
             return user;
         } catch (SQLException e) {
@@ -94,10 +94,10 @@ public class MySQLUsersDao implements Users {
     }
 
     @Override
-    public boolean isAdmin(long userId){
-        String query = "SELECT is_admin FROM users where id = ?";
+    public boolean isAdmin(long userId) {
+        String query = "SELECT is_admin FROM comrade_snifter_db.users where id = ?";
         int thisId = 0;
-        try{
+        try {
             PreparedStatement stm = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             stm.setLong(1, userId);
             stm.executeQuery();
@@ -105,23 +105,23 @@ public class MySQLUsersDao implements Users {
             rs.next();
             thisId = (int) rs.getLong("is_admin");
 
-        } catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException("Error validating user", e);
         }
         return thisId == 1;
     }
 
-//    public Long likeDrink(long drinkILikeId, long currentUserId){
+    //    public Long likeDrink(long drinkILikeId, long currentUserId){
 //        String query = "Select liked_drinks from  users where id = ?";
 //        String insertQuery = "UPDATE users SET liked_drinks where id = ?";
 //        // going to query the liked drinks and if there are currently liked drinks in the specific user's list
 //        //
 //    }
 //
-    private static List<Long> makeList(String ids){
+    private static List<Long> makeList(String ids) {
         List<Long> idList = new ArrayList<>();
         String[] list = ids.split(" ");
-        for(String s : list){
+        for (String s : list) {
             idList.add(Long.parseLong(s));
         }
 
@@ -129,4 +129,26 @@ public class MySQLUsersDao implements Users {
         return idList;
     }
 
+    // view all users
+    public List<User> viewUsers() {
+        PreparedStatement stmt = null;
+        String query = "Select username,id from comrade_snifter_db.users";
+        List<User> usersList = new ArrayList<>();
+        try {
+            stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.executeQuery();
+            ResultSet rs = stmt.getResultSet();
+            while (rs.next()) {
+                User user = new User(
+                        rs.getLong("id"),
+                        rs.getString("username")
+                );
+                usersList.add(user);
+            }
+            return usersList;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+
+    }
 }

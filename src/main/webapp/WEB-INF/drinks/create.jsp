@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Create a new Ad</h1>
+        <h1>Create a new Drink</h1>
         <form action="/drinks/create" method="post">
             <div class="form-group">
                 <label for="name">Drink Name</label>
