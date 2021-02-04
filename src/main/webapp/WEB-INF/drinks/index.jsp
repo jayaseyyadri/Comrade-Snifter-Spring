@@ -15,5 +15,6 @@
     <jsp:include page="/WEB-INF/partials/drink-cards.jsp"></jsp:include>
 </div>
 
+<jsp:include page="../partials/bootstrap.jsp"/>
 </body>
 </html>

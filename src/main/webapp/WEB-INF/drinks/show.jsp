@@ -22,5 +22,6 @@
 
 </div>
 
+<jsp:include page="../partials/bootstrap.jsp"/>
 </body>
 </html>

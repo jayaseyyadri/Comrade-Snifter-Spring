@@ -10,7 +10,7 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <div class="container">
-        <h1>Welcome, ${sessionScope.user.username}!</h1>
+        <h1 class="text-center">Welcome, ${sessionScope.user.username}!</h1>
     </div>
 
     <jsp:include page="/WEB-INF/partials/profile-card.jsp" />
@@ -23,13 +23,13 @@
   
     <h3>Here Are Your Drinks!</h3>
 
-    <div class="container-fluid">
+
         <jsp:include page="partials/drink-cards.jsp"></jsp:include>
-    </div>
+
 
     
 
 
-
+<jsp:include page="./partials/bootstrap.jsp"/>
 </body>
 </html>
