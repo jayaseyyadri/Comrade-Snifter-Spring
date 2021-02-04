@@ -14,6 +14,12 @@ public class DrinksIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("drinks", DaoFactory.getDrinksDao().all());
         request.getRequestDispatcher("/WEB-INF/drinks/index.jsp").forward(request, response);
+    }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String searchBy = request.getParameter("searchBy");
+        request.setAttribute("drinks", DaoFactory.getDrinksDao().searchDrinks(searchBy));
+        request.getRequestDispatcher("/WEB-INF/drinks/index.jsp").forward(request, response);
     }
 }
