@@ -8,6 +8,8 @@ public class Drink {
     private String ingredients;
     private String image;
 
+    public Drink(){};
+
     public Drink(long id, long userId, String name, String instructions, String ingredients, String image) {
         this.id = id;
         this.userId = userId;
@@ -72,4 +74,5 @@ public class Drink {
     public void setInstructions(String instructions) {
         this.instructions = instructions;
     }
+
 }
