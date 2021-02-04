@@ -77,6 +77,13 @@
                 <a class="nav-link" href="/logout"><h3>Logout</h3></a>
               </li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/viewProfile">View Profile</a> </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="/drinks" method="post">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchBy">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
           </div>
         </nav>
     </c:when>
@@ -97,6 +104,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="/login"><h3>Login</h3></a>
               </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/register">Register</a> </li>
             </ul>
           </div>
         </nav>

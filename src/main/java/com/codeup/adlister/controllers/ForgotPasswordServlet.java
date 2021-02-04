@@ -8,12 +8,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "emailServlet",urlPatterns = "/forgotPassword")
-public class MailServlet extends HttpServlet {
+public class ForgotPasswordServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getSession().getAttribute("user") == null) {
             resp.sendRedirect("/login");
             return;
         }
+        req.getRequestDispatcher("/WEB-INF/forgotPassword.jsp").forward(req, resp);
+
     }
 }
