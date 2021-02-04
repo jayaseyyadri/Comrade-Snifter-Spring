@@ -13,5 +13,7 @@
     <button type="submit">Submit</button>
 
 </div>
+
+<jsp:include page="./partials/bootstrap.jsp"/>
 </body>
 </html>
