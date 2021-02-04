@@ -55,7 +55,7 @@ public class MySQLDrinksDao implements Drinks {
         }
     }
 
-    private Drink extractDrink(ResultSet rs) throws SQLException {
+    private Drink extractAd(ResultSet rs) throws SQLException {
         return new Drink(
             rs.getLong("id"),
             rs.getLong("user_id"),
@@ -70,7 +70,7 @@ public class MySQLDrinksDao implements Drinks {
     private List<Drink> createDrinksFromResults(ResultSet rs) throws SQLException {
         List<Drink> drinks = new ArrayList<>();
         while (rs.next()) {
-            drinks.add(extractDrink(rs));
+            drinks.add(extractAd(rs));
         }
         return drinks;
     }
@@ -231,5 +231,6 @@ public class MySQLDrinksDao implements Drinks {
             throw new RuntimeException("Error retrieving votes", e);
         }
     }
+
 
 }

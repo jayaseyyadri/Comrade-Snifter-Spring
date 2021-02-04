@@ -26,7 +26,7 @@ public class CreateDrinkServlet extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
         String imageUrl = request.getParameter("image");
         if(imageUrl == null){
-            imageUrl = "/img/logo.png";
+            imageUrl = "#";
         }
         Drink drink = new Drink(
             user.getId(),

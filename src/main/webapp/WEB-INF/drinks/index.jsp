@@ -22,7 +22,7 @@
                 <div class="card text-white bg-secondary border-warning mt-4" style="width: 18rem;">
                     <div class="card-header">
                         <h5 class="card-title text-center">
-                            Here are all th drinks listed on the site!
+                            Here are all the drinks listed on the site!
                         </h5>
                     </div>
                     <div class="card-body">
@@ -48,9 +48,8 @@
 
 <div class="container">
 
+    <jsp:include page="/WEB-INF/partials/drink-cards.jsp"/>
 
-
-    <jsp:include page="/WEB-INF/partials/drink-cards.jsp"></jsp:include>
 </div>
 
 <jsp:include page="../partials/bootstrap.jsp"/>

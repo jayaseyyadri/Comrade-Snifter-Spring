@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -11,6 +10,7 @@
 
     <jsp:include page="/WEB-INF/partials/profile-card.jsp" />
 
+
     <div class="container">
 
       <form action="/drinks/create" method="get">
@@ -19,7 +19,7 @@
 
     </div>
 
-    <jsp:include page="partials/drink-cards.jsp"></jsp:include>
+    <jsp:include page="partials/drink-cards.jsp"/>
 
 <jsp:include page="./partials/bootstrap.jsp"/>
 </body>
