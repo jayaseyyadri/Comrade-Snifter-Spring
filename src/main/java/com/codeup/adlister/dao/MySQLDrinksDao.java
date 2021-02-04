@@ -54,7 +54,7 @@ public class MySQLDrinksDao implements Drinks {
         }
     }
 
-    private Drink extractDrink(ResultSet rs) throws SQLException {
+    private Drink extractAd(ResultSet rs) throws SQLException {
         return new Drink(
             rs.getLong("id"),
             rs.getLong("user_id"),
@@ -68,96 +68,8 @@ public class MySQLDrinksDao implements Drinks {
     private List<Drink> createDrinksFromResults(ResultSet rs) throws SQLException {
         List<Drink> drinks = new ArrayList<>();
         while (rs.next()) {
-            drinks.add(extractDrink(rs));
+            drinks.add(extractAd(rs));
         }
         return drinks;
-    }
-
-     public Drink getDrink(long drinkId) {
-        PreparedStatement stmt = null;
-        String sqlQuery = "SELECT * FROM comrade_snifter_db.drinks WHERE id = ?";
-
-        try {
-            stmt = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS);
-            stmt.setLong(1, drinkId);
-
-            stmt.executeQuery();
-
-            ResultSet rs = stmt.getResultSet();
-
-            rs.next();
-
-            Drink drink = new Drink(
-            rs.getLong("id"),
-            rs.getLong("user_id"),
-            rs.getString("name"),
-            rs.getString("instructions"),
-            rs.getString("ingredients"),
-            rs.getString("image")
-            );
-            return drink;
-        } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving ad.", e);
-        }
-    }
-
-
-    @Override
-    public List<Drink> getUsersDrinks(long userId) {
-        PreparedStatement stmt = null;
-        String sqlQuery = "SELECT * FROM comrade_snifter_db.drinks WHERE user_id = ?";
-        List<Drink> drinks = new ArrayList<>();
-        try {
-            stmt = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS);
-            stmt.setLong(1, userId);
-            stmt.executeQuery();
-            ResultSet rs = stmt.getResultSet();
-            while (rs.next()) {
-                Drink drink = new Drink(
-                        rs.getLong("id"),
-                        rs.getLong("user_id"),
-                        rs.getString("name"),
-                        rs.getString("instructions"),
-                        rs.getString("ingredients"),
-                        rs.getString("image")
-                );
-                drinks.add(drink);
-            }
-            return drinks;
-        } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving all ads.", e);
-        }
-    }
-
-    @Override
-    public void delete(int id){
-        try{
-            String deleteQuery = "Delete from comrade_snifter_db.drinks where id = ?";
-            PreparedStatement statement = connection.prepareStatement(deleteQuery, Statement.RETURN_GENERATED_KEYS);
-            statement.setInt(1, id);
-            statement.execute();
-            ResultSet rs = statement.getGeneratedKeys();
-            rs.next();
-        } catch (SQLException e){
-            throw new RuntimeException("Error deleting ad", e);
-        }
-    }
-
-    @Override
-    public void edit(int id, Drink newDrink){
-        try{
-            String editQuery = "Update comrade_snifter_db.drinks Set name = ?, instructions = ?, ingredients = ?, image = ? where id = ?";
-            PreparedStatement statement = connection.prepareStatement(editQuery, Statement.RETURN_GENERATED_KEYS);
-            statement.setString(1, newDrink.getName());
-            statement.setString(2, newDrink.getInstructions());
-            statement.setString(3, newDrink.getIngredients());
-            statement.setString(4, newDrink.getImage());
-            statement.setInt(5, id);
-            statement.executeUpdate();
-        } catch (SQLException e){
-            throw new RuntimeException("Error editing ad", e);
-        }
-
-
     }
 }

@@ -1,4 +1,3 @@
-DROP DATABASE IF EXISTS comrade_snifter_db;
 CREATE DATABASE IF NOT EXISTS comrade_snifter_db;
 
 use comrade_snifter_db;
@@ -11,10 +10,7 @@ Create table if not exists users(
                                     username varchar(255) not null,
                                     email varchar(255) not null,
                                     password varchar(255) not null,
-                                    is_admin tinyint not null default 0,
-                                    image TEXT,
-                                    created_drinks varchar(255),
-                                    liked_drinks varchar(255) # a list of drink id's as favorites can be queried and pulled out as an int list
+                                    drink_favorite varchar(255) # a list of drink id's as favorites can be queried and pulled out as an int list
 );
 CREATE table if not exists drinks(
                                      id int unsigned not null auto_increment primary key,
@@ -22,7 +18,7 @@ CREATE table if not exists drinks(
                                      name varchar(255) not null,
                                      instructions varchar(255) not null,
                                      ingredients varchar(255) not null,
-                                     image TEXT,
+                                     image varchar(255),
                                      FOREIGN KEY (user_id) references users(id)
 );
 create table if not exists drink_Category(
@@ -36,7 +32,7 @@ create table if not exists category(
                                        FOREIGN KEY (liquor_type) references drink_Category(id)
 );
 
-insert into users(username, email, password, is_admin) VALUES ('admin', 'admin@ad.min', '$2a$12$o5y9Peq1GDMgGQiR5gyS6OtROQO4SKe0uWrSg8rq0wSNXoLEEpn5e', 1);
+insert into users(username, email, password) VALUES ('admin', 'admin@ad.min', '$2a$12$o5y9Peq1GDMgGQiR5gyS6OtROQO4SKe0uWrSg8rq0wSNXoLEEpn5e');
 
 insert into drinks(user_id, name, instructions, ingredients, image) VALUES (1, 'Bermuda Highball', 'Pour brandy, gin, and dry vermouth into a highball glass over ice cubes. Fill with carbonated water and stir. Add the twist of lemon and serve. (Ginger ale may be substituted for carbonated water, if preferred.', 'Brandy 3/4 oz, Gin 3/4 oz, Dry Vermouth 3/4 oz, Carbonated water, Lemon peel', 'https://www.thecocktaildb.com/images/media/drink/qrvtww1441206528.jpg');
 insert into drinks(user_id, name, instructions, ingredients, image) VALUES (1, 'Brandon and Will''s Coke Float', 'Scoop two large scoops of vanilla ice-cream into frosted beer mug. Next, add 2 ounces Maker''s Mark. Then, pour in coke. Gently stir and enjoy.', 'Vanilla ice-cream 2 scoops, Coca-Cola 1 can, Bourbon 2 oz', 'https://www.thecocktaildb.com/images/media/drink/xspxyr1472719185.jpg');
@@ -50,4 +46,4 @@ insert into drinks(user_id, name, instructions, ingredients, image) VALUES (1, '
 insert into drinks(user_id, name, instructions, ingredients, image) VALUES (1, 'Kioki Coffee', 'Stir. Add whipped cream to the top.', 'Kahlua 1 oz, Brandy 1/2 oz, Coffee', 'https://www.thecocktaildb.com/images/media/drink/uppqty1441247374.jpg');
 
 select *
-from users;
+from drinks;
