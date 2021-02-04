@@ -29,7 +29,6 @@
             <input type="submit" class="btn btn-block btn-danger">
         </form>
     </div>
-
     <jsp:include page="../partials/bootstrap.jsp"/>
 </body>
 </html>
