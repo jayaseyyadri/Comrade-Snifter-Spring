@@ -8,6 +8,7 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+
     <div class="container">
         <h1>Welcome to the Comrade Snifter!</h1>
     </div>

@@ -42,5 +42,9 @@
             <version>6.0.5</version>
         </dependency>
     </dependencies>
+    <servlet-mapping>
+    <servlet-name>FileServlet</servlet-name>
+    <url-pattern>/file/*</url-pattern>
+    </servlet-mapping>
 
 </project>

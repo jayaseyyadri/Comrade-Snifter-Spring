@@ -73,6 +73,39 @@ public class MySQLDrinksDao implements Drinks {
         return drinks;
     }
 
+    @Override
+    public List<Drink> searchDrinks(String search) {
+        PreparedStatement stmt = null;
+        String sqlQuery = "SELECT * FROM comrade_snifter_db.drinks WHERE name LIKE (?)";
+        List<Drink> drinks = new ArrayList<>();
+        String userInput = '%' + search + '%';
+        try {
+            stmt = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, userInput);
+
+            stmt.executeQuery();
+
+            ResultSet rs = stmt.getResultSet();
+
+            while(rs.next()){
+                Drink drink = new Drink(
+                rs.getLong("id"),
+                rs.getLong("user_id"),
+                rs.getString("name"),
+                rs.getString("instructions"),
+                rs.getString("ingredients"),
+                rs.getString("image")
+                );
+                drinks.add(drink);
+            };
+
+
+            return drinks;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving ad.", e);
+        }
+    }
+
      public Drink getDrink(long drinkId) {
         PreparedStatement stmt = null;
         String sqlQuery = "SELECT * FROM comrade_snifter_db.drinks WHERE id = ?";
