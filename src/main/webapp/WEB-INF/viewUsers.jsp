@@ -24,5 +24,7 @@
                 <td><c:out value="${user.username}"/></td>
         </tr>
         </c:forEach>
+
+        <jsp:include page="./partials/bootstrap.jsp"/>
 </div>
 </html>
