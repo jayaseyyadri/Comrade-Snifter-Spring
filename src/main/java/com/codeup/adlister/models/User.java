@@ -86,6 +86,10 @@ public class User {
         this.password = Password.hash(password);
     }
 
+    public void notHashedTest(String password){
+        this.password = password;
+    }
+
     public String getImage() {
         return image;
     }

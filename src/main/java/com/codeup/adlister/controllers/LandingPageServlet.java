@@ -30,9 +30,9 @@ public class LandingPageServlet extends HttpServlet {
                 }
             }
         }
-//        for(Drink best : top3){
-//            System.out.printf("Drink name: %s, Votes: %d%n", best.getName(), best.getVotes());
-//        }
+        for(Drink best : top3){
+            System.out.printf("Drink name: %s, Votes: %d%n", best.getName(), best.getVotes());
+        }
 
 
         request.getSession().setAttribute("topDrinks", top3);

@@ -13,26 +13,27 @@
 
 
 <div class="container">
-    <jsp:include page="/WEB-INF/partials/drink-cards.jsp"></jsp:include>
+    <jsp:include page="/WEB-INF/partials/drink-cards.jsp"/>
 </div>
 
 <div class="container">
+
     <form action="/drinks" method="get">
         <button type="submit">Go Back</button>
+    </form>
+    <form action="/vote" method="POST">
+        <input type="hidden" value="1" name="vote">
+        <button type="submit"><i class="fas fa-thumbs-up"></i></button>
+    </form>
+
+    <form action="/vote" method="POST">
+        <input type="hidden" value="0" name="vote">
+        <button type="submit"><i class="fas fa-thumbs-down"></i></button>
     </form>
 
 </div>
 
 
-<form action="/vote" method="POST">
-    <input type="hidden" value="1" name="vote">
-    <button type="submit"><i class="fas fa-thumbs-up"></i></button>
-</form>
-
-<form action="/vote" method="POST">
-    <input type="hidden" value="0" name="vote">
-    <button type="submit"><i class="fas fa-thumbs-down"></i></button>
-</form>
 
 
 
