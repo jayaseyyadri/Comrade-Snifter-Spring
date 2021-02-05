@@ -35,7 +35,7 @@ public class LandingPageServlet extends HttpServlet {
         }
 
 
-        request.getSession().setAttribute("topDrinks", top3);
+        request.getSession().setAttribute("drinks", top3);
 
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
