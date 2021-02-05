@@ -12,4 +12,5 @@ public interface Users {
     List<User> viewUsers();
     Set<String> currentUsernames();
     User getDrinkCreator(long drinkId);
+    void  updateUserInformation(User user);
 }
