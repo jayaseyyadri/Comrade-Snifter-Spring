@@ -6,7 +6,9 @@ import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class MySQLUsersDao implements Users {
     private Connection connection= null;
@@ -77,33 +79,6 @@ public class MySQLUsersDao implements Users {
         );
     }
 
-
-    public User getUser(long userId) {
-        PreparedStatement stmt = null;
-        String sqlQuery = "SELECT * FROM comrade_snifter_db.users WHERE id = ?";
-
-        try {
-            stmt = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS);
-            stmt.setLong(1, userId);
-
-            stmt.executeQuery();
-
-            ResultSet rs = stmt.getResultSet();
-
-            rs.next();
-
-            User user = new User(
-                    rs.getString("username"),
-                    rs.getString("image"),
-                    makeList(rs.getString("created_drinks")),
-                    makeList(rs.getString("liked_drinks"))
-            );
-            return user;
-        } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving ad.", e);
-        }
-    }
-
     @Override
     public boolean isAdmin(long userId) {
         String query = "SELECT is_admin FROM comrade_snifter_db.users where id = ?";
@@ -147,9 +122,8 @@ public class MySQLUsersDao implements Users {
     }
 
     @Override
-    public List<String> currentUsernames(){
-        List<String> allCurrentUserNames = new ArrayList<>();
-
+    public Set<String> currentUsernames(){
+        Set<String> allCurrentUserNames = new HashSet<>();
         String query = "SELECT username FROM comrade_snifter_db.users";
 
         try{
@@ -189,9 +163,27 @@ public class MySQLUsersDao implements Users {
 
     }
 
+    public User getUser(long userId) {
+        PreparedStatement stmt = null;
+        String sqlQuery = "SELECT * FROM comrade_snifter_db.users WHERE id = ?";
 
-
-
+        try {
+            stmt = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, userId);
+            stmt.executeQuery();
+            ResultSet rs = stmt.getResultSet();
+            rs.next();
+            User user = new User(
+                    rs.getString("username"),
+                    rs.getString("image"),
+                    makeList(rs.getString("created_drinks")),
+                    makeList(rs.getString("liked_drinks"))
+            );
+            return user;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving ad.", e);
+        }
+    }
 
     //    public Long likeDrink(long drinkILikeId, long currentUserId){
 //        String query = "Select liked_drinks from  users where id = ?";
@@ -206,7 +198,6 @@ public class MySQLUsersDao implements Users {
         for (String s : list) {
             idList.add(Long.parseLong(s));
         }
-
 
         return idList;
     }

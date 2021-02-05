@@ -56,7 +56,7 @@ from users;
 select *
 from drinks;
 
-
+update drinks set votes = 4 where id = 1;
 select votes
 from drinks where id = 1;
 select username from users where id In (

@@ -90,11 +90,10 @@ public class Drink {
 
 
     public int getVotes() {
-//        return DaoFactory.getDrinksDao().getDrinkVotes(this.id);
-        return this.votes;
+        return DaoFactory.getDrinksDao().getDrinkVotes(this.id);
     }
 
     public void setVotes(int votes) {
-        this.votes = votes;
+        DaoFactory.getDrinksDao().updateThisDrinksVotes(votes, this.id);
     }
 }

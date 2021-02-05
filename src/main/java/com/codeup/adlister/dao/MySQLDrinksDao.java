@@ -225,6 +225,7 @@ public class MySQLDrinksDao implements Drinks {
             statement.setLong(1, id);
             statement.executeQuery();
             ResultSet rs = statement.getResultSet();
+            rs.next();
             return rs.getInt("votes");
 
         } catch (SQLException e){

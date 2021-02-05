@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 @WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
@@ -33,7 +34,6 @@ public class RegisterServlet extends HttpServlet {
         session.setAttribute("poorQualityPassword", false);
 
 
-        // validate input
         boolean inputHasErrors = username.isEmpty()
             || email.isEmpty()
             || password.isEmpty();
@@ -42,7 +42,7 @@ public class RegisterServlet extends HttpServlet {
             response.sendRedirect("/register");
             return;
         }
-        List<String> allCurrentUsernames = DaoFactory.getUsersDao().currentUsernames();
+        Set<String> allCurrentUsernames = DaoFactory.getUsersDao().currentUsernames();
         if(Validation.userNameExists(allCurrentUsernames, username)){
             session.setAttribute("currentUserExists", true);
             response.sendRedirect("/register");
@@ -62,7 +62,7 @@ public class RegisterServlet extends HttpServlet {
         }
 
 
-        // create and save a new user
+
         User user = new User(username, email, password);
         DaoFactory.getUsersDao().insert(user);
         response.sendRedirect("/login");
