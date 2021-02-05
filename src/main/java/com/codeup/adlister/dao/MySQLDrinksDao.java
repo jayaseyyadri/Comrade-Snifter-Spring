@@ -171,8 +171,18 @@ public class MySQLDrinksDao implements Drinks {
             PreparedStatement statement = connection.prepareStatement(deleteQuery, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, id);
             statement.execute();
-            ResultSet rs = statement.getGeneratedKeys();
-            rs.next();
+        } catch (SQLException e){
+            throw new RuntimeException("Error deleting ad", e);
+        }
+    }
+
+    @Override
+    public void deleteDrinkCategories(int id){
+        try{
+            String deleteQuery = "Delete from comrade_snifter_db.category where alcohol_id = ?";
+            PreparedStatement statement = connection.prepareStatement(deleteQuery, Statement.RETURN_GENERATED_KEYS);
+            statement.setInt(1, id);
+            statement.execute();
         } catch (SQLException e){
             throw new RuntimeException("Error deleting ad", e);
         }

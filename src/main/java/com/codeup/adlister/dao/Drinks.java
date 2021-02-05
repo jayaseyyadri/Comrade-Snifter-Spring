@@ -22,4 +22,5 @@ public interface Drinks {
     void giveDrinkACategory(long id, int categoryId);
     int getCategoryId(String name);
     long getDrinkIdByName(String name);
+    void deleteDrinkCategories(int id);
 }

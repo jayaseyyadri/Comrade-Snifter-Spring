@@ -94,4 +94,6 @@ select id from drink_Category where name = 'Brandy';
 
 select * from drink_Category;
 
-select id from drinks where name = 'asd';
+select * from category where alcohol_id = 32;
+delete from category where alcohol_id = 32;
+delete from drinks where id = 32;
