@@ -7,7 +7,7 @@
     </jsp:include>
     <style>
         .footer {
-            margin: 15px 0;
+          margin: 15px 0 0 0;
           left: 0;
           bottom: 0;
           height: 40%;
@@ -20,7 +20,14 @@
           align-items: center;
         }
         .jumbotron {
-            background: url("${pageContext.request.contextPath}/resources/img/fizzy.jpg");
+            background: linear-gradient(to top, rgba(0,0,0,0.6) 100%,rgba(0,0,0,0.6) 100%), url("${pageContext.request.contextPath}/resources/img/fizzy.jpeg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+            height: 30vh;
+            color: white;
+        }
+        body {
+            background: #cccecf;
         }
     </style>
 </head>
@@ -41,13 +48,9 @@
 </div>
 
 
-    <div class="container" style="margin-top: 15px">
+    <div class="container center" style="margin-top: 15px">
         <h1 class="text-center">Current Top Rated Drinks!</h1>
-    </div>
-
-
-    <div class="container">
-        <jsp:include page="/WEB-INF/partials/drink-cards.jsp" />
+        <jsp:include page="/WEB-INF/partials/top3.jsp" />
     </div>
 
     <div class="footer">

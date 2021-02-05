@@ -5,6 +5,11 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Viewing All The Drinks" />
     </jsp:include>
+    <style>
+        body {
+            background: #cccecf;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp">

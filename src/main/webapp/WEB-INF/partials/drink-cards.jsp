@@ -29,7 +29,7 @@
                             <div class="card-footer" style="display: flex;justify-content: space-between; align-items: center">
                                 <form action="/show" method="post">
                                     <input type="hidden" name="drinkId" value="${drink.id}">
-
+                                    <input type="hidden" name="currentPage" value="${pageContext.request.getRequestURI()}">
                                     <button type="submit" class="btn btn-danger">View</button>
                                 </form>
                                 <form action="/editForm" method="get">
@@ -72,13 +72,13 @@
                             <div class="card-footer" style="display: flex;justify-content: space-between; align-items: center">
                                 <form action="/show" method="post">
                                     <input type="hidden" name="drinkId" value="${drink.id}">
+                                    <input type="hidden" name="currentPage" value="${pageContext.request.getRequestURI()}">
                                     <button type="submit" class="btn btn-danger">View</button>
                                 </form>
                                 <c:if test="${sessionScope.user != null}">
                                     <c:if test="${drink.userId == sessionScope.user.id}">
                                         <form action="/editForm" method="get">
                                             <input type="hidden" name="editThisDrink" value="${drink.id}">
-
                                             <button type="submit" class="btn btn-danger">Edit</button>
                                         </form>
                                        <form action="/delete" method="post">
