@@ -11,7 +11,7 @@
           position: fixed;
           left: 0;
           bottom: 0;
-          height: 35%;
+          height: 20%;
           width: 100%;
           background-color: #343a40;
           color: white;
