@@ -8,8 +8,8 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp">
-    <jsp:param name="link" value="/home"/>
-    <jsp:param name="linkTitle" value="Home"/>
+    <jsp:param name="linkV" value="/login"/>
+    <jsp:param name="linkVisitor" value="Login"/>
 </jsp:include>
 
 <c:if test="${sessionScope.user == null}">

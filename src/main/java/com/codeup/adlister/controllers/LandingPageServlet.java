@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.*;
 
-@WebServlet(name = "controllers.HelloWorldServlet", urlPatterns = "/home")
+@WebServlet(name = "controllers.HelloWorldServlet", urlPatterns = "")
 public class LandingPageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         List<Drink> allDrinks = DaoFactory.getDrinksDao().all();

@@ -5,7 +5,7 @@
 <%--    admin--%>
             <c:when test="${sessionScope.isAdmin && sessionScope.isLoggedIn}">
                 <c:forEach var="drink" items="${drinks}">
-                    <div class="col col-md-6 col-lg-4 d-flex align-items-stretch">
+                    <div class="col col-md-6 col-lg-4 d-flex align-items-stretch" style="display: flex; justify-content: center">
                         <div class="card text-white bg-secondary border-warning mt-4" style="width: 18rem;">
                             <div class="card-header">
                                 <h5 class="card-title text-center">
@@ -48,7 +48,7 @@
 <%--    user--%>
             <c:when test="${sessionScope.isLoggedIn}">
                 <c:forEach var="drink" items="${drinks}">
-                    <div class="col col-md-6 col-lg-4 d-flex align-items-stretch">
+                    <div class="col col-md-6 col-lg-4 d-flex align-items-stretch" style="display: flex; justify-content: center">
                         <div class="card text-white bg-secondary border-warning mt-4" style="width: 18rem;">
                             <div class="card-header">
                                 <h5 class="card-title text-center">
@@ -96,7 +96,7 @@
         <%--    visitor--%>
             <c:otherwise>
                 <c:forEach var="drink" items="${drinks}">
-                    <div class="col col-md-6 col-lg-4 d-flex align-items-stretch">
+                    <div class="col col-md-6 col-lg-4 d-flex align-items-stretch" style="display: flex; justify-content: center">
                         <div class="card text-white bg-secondary border-warning mt-4" style="width: 18rem;">
                             <div class="card-header">
                                 <h5 class="card-title text-center">

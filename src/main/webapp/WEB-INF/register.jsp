@@ -6,10 +6,25 @@
     <jsp:include page="partials/head.jsp">
         <jsp:param name="title" value="Register For Our Site!" />
     </jsp:include>
+    <style>
+        .footer {
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          height: 35%;
+          width: 100%;
+          background-color: #343a40;
+          color: white;
+          text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <jsp:include page="partials/navbar.jsp" />
-    <div class="container">
+<jsp:include page="/WEB-INF/partials/navbar.jsp">
+    <jsp:param name="linkV" value="/login"/>
+    <jsp:param name="linkVisitor" value="Login"/>
+</jsp:include>
+    <div class="container" style="margin-top: 15px">
         <h1>Please fill in your information.</h1>
         <form action="/register" method="post">
             <div class="form-group">
@@ -37,9 +52,11 @@
                     <small class="errorMessage"> * Passwords Do Not Match</small>
                 </c:if>
             </div>
-            <input type="submit" class="btn btn-primary btn-block">
+            <input type="submit" class="btn btn-danger btn-block">
         </form>
     </div>
+
+    <div class="footer"></div>
 
 <jsp:include page="./partials/bootstrap.jsp"/>
 </body>
