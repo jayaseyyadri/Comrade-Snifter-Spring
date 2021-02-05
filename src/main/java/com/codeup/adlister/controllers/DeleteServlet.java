@@ -19,6 +19,7 @@ public class DeleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         int deleteId = Integer.parseInt(req.getParameter("deleteThisDrink"));
+        DaoFactory.getDrinksDao().deleteDrinkCategories(deleteId);
         DaoFactory.getDrinksDao().delete(deleteId);
         res.sendRedirect("/drinks");
     }
