@@ -4,7 +4,7 @@
 <%--    admin--%>
     <c:when test="${sessionScope.isAdmin && sessionScope.isLoggedIn}">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-">
-          <a class="navbar-brand" href="/home"><img src="${pageContext.request.contextPath}/resources/img/logo.png" alt="Comrade Snifter" width="120px"></a>
+          <a class="navbar-brand" href="/"><img src="${pageContext.request.contextPath}/resources/img/logo.png" alt="Comrade Snifter" width="120px"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -45,7 +45,7 @@
 <%--    user--%>
     <c:when test="${isLoggedIn}">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a class="navbar-brand" href="/home"><img src="${pageContext.request.contextPath}/resources/img/logo.png" alt="Comrade Snifter" width="120px"></a>
+          <a class="navbar-brand" href="/"><img src="${pageContext.request.contextPath}/resources/img/logo.png" alt="Comrade Snifter" width="120px"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>

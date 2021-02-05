@@ -13,6 +13,7 @@ public class UserTest {
     User testUser = new User();
     User testUser2 = new User();
     User testUser3 = new User();
+    User testUser4 = new User();
     Set<String> users = new HashSet<>();
 
     @Before
@@ -30,6 +31,8 @@ public class UserTest {
         users.add(testUser2.getUsername());
         users.add(testUser3.getUsername());
 
+        testUser4.setUsername("tester");
+        testUser4.notHashedTest("Jupiter2021!");
 
 
     }
@@ -39,6 +42,7 @@ public class UserTest {
         assertFalse(Validation.goodQualityPassword(testUser.getPassword()));
         assertTrue(Validation.goodQualityPassword(testUser2.getPassword()));
         assertFalse(Validation.goodQualityPassword(testUser3.getPassword()));
+        assertTrue(Validation.goodQualityPassword(testUser4.getPassword()));
     }
 
     @Test
