@@ -48,6 +48,28 @@
                     <small class="errorMessage">Ingredients Can Not Be Empty</small>
                 </c:if>
             </div>
+                Pick A Drink Category
+                <label>
+                    Brandy
+                    <input type="checkbox" value="Brandy" name="Brandy"/>
+                </label>
+                <label>
+                    Bourbon
+                    <input type="checkbox" value="Bourbon" name="Bourbon"/>
+                </label>
+                <label>
+                    Whiskey
+                    <input type="checkbox" value="Whiskey" name="Whiskey"/>
+                </label>
+                <label>
+                    Fruity
+                    <input type="checkbox" value="Fruity" name="Fruity"/>
+                </label>
+                <label>
+                    Desert
+                    <input type="checkbox" value="Desert" name="Desert"/>
+                </label>
+
             <div class="form-group">
                 <label for="image">Image Url</label>
                 <input id="image" name="image" class="form-control" type="text" placeholder="Optional">

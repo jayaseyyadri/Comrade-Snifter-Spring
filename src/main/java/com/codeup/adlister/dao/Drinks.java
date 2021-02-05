@@ -18,4 +18,8 @@ public interface Drinks {
     List<Drink> searchDrinks(String search);
     int getDrinkVotes(long id);
     void updateThisDrinksVotes(int drinkVotes, long drinkIdToUpdate);
+    List<Drink> getAllByCategory(String category);
+    void giveDrinkACategory(long id, int categoryId);
+    int getCategoryId(String name);
+    long getDrinkIdByName(String name);
 }

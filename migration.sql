@@ -56,13 +56,42 @@ from users;
 select *
 from drinks;
 
-update drinks set votes = 4 where id = 1;
-select votes
-from drinks where id = 1;
-select username from users where id In (
-    select user_id
-    from drinks
-    where id = 1
-);
+select *
+from drink_Category;
 
 update users set image = 'https://static6.depositphotos.com/1128837/646/v/950/depositphotos_6464166-stock-illustration-isolated-rubber-duck.jpg' where id = 1;
+
+insert into drink_Category (name) values ('Brandy');
+insert into drink_Category (name) values ('Bourbon');
+insert into drink_Category (name) values ('Whiskey');
+insert into drink_Category (name) values ('Fruity');
+insert into drink_Category (name) values ('Desert');
+
+
+insert into category(alcohol_id, liquor_type) VALUES (1, 1);
+insert into category(alcohol_id, liquor_type) VALUES (2, 5);
+insert into category(alcohol_id, liquor_type) VALUES (2, 2);
+insert into category(alcohol_id, liquor_type) VALUES (3, 4);
+insert into category(alcohol_id, liquor_type) VALUES (3, 2);
+insert into category(alcohol_id, liquor_type) VALUES (4, 2);
+insert into category(alcohol_id, liquor_type) VALUES (5, 1);
+insert into category(alcohol_id, liquor_type) VALUES (5, 5);
+insert into category(alcohol_id, liquor_type) VALUES (6, 1);
+insert into category(alcohol_id, liquor_type) VALUES (7, 1);
+insert into category(alcohol_id, liquor_type) VALUES (8, 1);
+insert into category(alcohol_id, liquor_type) VALUES (9, 1);
+insert into category(alcohol_id, liquor_type) VALUES (10, 1);
+
+select * from category;
+
+select * from drinks where id in (
+    select alcohol_id from category where liquor_type in (
+        select id from drink_Category where drink_Category.name = 'Desert'
+        )
+    );
+
+select id from drink_Category where name = 'Brandy';
+
+select * from drink_Category;
+
+select id from drinks where name = 'asd';

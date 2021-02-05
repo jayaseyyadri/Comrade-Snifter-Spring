@@ -19,7 +19,12 @@ public class DrinksIndexServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String searchBy = request.getParameter("searchBy");
-        request.setAttribute("drinks", DaoFactory.getDrinksDao().searchDrinks(searchBy));
+        if(searchBy != null) {
+            request.setAttribute("drinks", DaoFactory.getDrinksDao().searchDrinks(searchBy));
+        } else {
+            String selectValue = request.getParameter("selectValue");
+            request.setAttribute("drinks", DaoFactory.getDrinksDao().getAllByCategory(selectValue));
+        }
         request.getRequestDispatcher("/WEB-INF/drinks/index.jsp").forward(request, response);
     }
 }

@@ -233,4 +233,67 @@ public class MySQLDrinksDao implements Drinks {
         }
     }
 
+
+    @Override
+    public List<Drink> getAllByCategory(String category){
+        String query = "SELECT * FROM comrade_snifter_db.drinks where id IN ( select alcohol_id from comrade_snifter_db.category where liquor_type in ( select id from comrade_snifter_db.drink_Category where drink_Category.name = ?))";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, category);
+            statement.executeQuery();
+            ResultSet rs = statement.getResultSet();
+            return createDrinksFromResults(rs);
+
+        } catch (SQLException e){
+            throw new RuntimeException("Unable to find drinks for this category", e);
+        }
+    }
+
+    @Override
+    public void giveDrinkACategory(long id, int categoryId){
+        System.out.println(id);
+        String query = "insert into comrade_snifter_db.category(alcohol_id, liquor_type) VALUES (?, ?)";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.setLong(1, id);
+            statement.setInt(2, categoryId);
+            statement.executeUpdate();
+
+        } catch (SQLException e){
+            throw new RuntimeException("Error adding category to this drink", e);
+        }
+    }
+
+    @Override
+    public int getCategoryId(String name){
+        String query = "select id from comrade_snifter_db.drink_Category where name = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, name);
+            statement.executeQuery();
+            ResultSet rs = statement.getResultSet();
+            rs.next();
+            return rs.getInt("id");
+
+        } catch (SQLException e){
+            throw new RuntimeException("Error finding category id", e);
+        }
+    }
+
+    @Override
+    public long getDrinkIdByName(String name){
+        String query = "SELECT id from comrade_snifter_db.drinks where name = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, name);
+            statement.executeQuery();
+            ResultSet rs = statement.getResultSet();
+            rs.next();
+            return rs.getLong("id");
+
+        } catch (SQLException e){
+            throw new RuntimeException("Error finding drink id by name", e);
+        }
+    }
+
 }
