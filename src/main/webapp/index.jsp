@@ -36,7 +36,7 @@
 
 
     <div class="container">
-        <jsp:include page="/WEB-INF/partials/top3-drinks.jsp" />
+        <jsp:include page="/WEB-INF/partials/drink-cards.jsp" />
     </div>
 
     <div class="footer">

@@ -46,12 +46,9 @@
 
 </c:if>
 
-<div class="container">
 
+<jsp:include page="/WEB-INF/partials/drink-cards.jsp"/>
 
-
-    <jsp:include page="/WEB-INF/partials/drink-cards.jsp"/>
-</div>
 
 <jsp:include page="../partials/bootstrap.jsp"/>
 </body>
