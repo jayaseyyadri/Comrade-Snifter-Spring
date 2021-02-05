@@ -32,7 +32,7 @@
 </style>
 
 
-<div id="mainCard">
+<div id="mainCard" class="border-warning">
     <div id="profileImage">
         <img src="${creatorImage}" alt="Creator's Profile Picture" id="image" />
     </div>

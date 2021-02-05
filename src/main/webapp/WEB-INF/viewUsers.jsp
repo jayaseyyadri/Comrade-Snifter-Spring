@@ -9,7 +9,10 @@
 
 </head>
 <body>
-<jsp:include page="/WEB-INF/partials/navbar.jsp"/>
+<jsp:include page="/WEB-INF/partials/navbar.jsp">
+    <jsp:param name="profileOne" value="/profile"/>
+    <jsp:param name="profileTwo" value="Profile"/>
+</jsp:include>
 </body>
 <div align="center">
     <table border="1" cellpadding="5">

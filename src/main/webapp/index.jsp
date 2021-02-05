@@ -19,6 +19,9 @@
           justify-content: center;
           align-items: center;
         }
+        .jumbotron {
+            background: url("${pageContext.request.contextPath}/resources/img/fizzy.jpg");
+        }
     </style>
 </head>
 <body>
@@ -29,9 +32,17 @@
     <jsp:param name="linkVisitor" value="Login"/>
 </jsp:include>
 
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Comrade Snifter</h1>
+    <p class="lead text-center"><strong>com•rade</strong> - a companion who shares one's activities</p>
+    <p class="lead text-right"><strong>snif•ter</strong> - <small>(INFORMAL)</small> a small quantity of an alcoholic drink</p>
+  </div>
+</div>
+
 
     <div class="container" style="margin-top: 15px">
-        <h1 class="text-center">Current Top Ranked Drinks!</h1>
+        <h1 class="text-center">Current Top Rated Drinks!</h1>
     </div>
 
 

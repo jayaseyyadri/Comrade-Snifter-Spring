@@ -6,9 +6,24 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Create a new Drink" />
     </jsp:include>
+    <style>
+        .footer {
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          height: 35%;
+          width: 100%;
+          background-color: #343a40;
+          color: white;
+          text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
+<jsp:include page="/WEB-INF/partials/navbar.jsp">
+    <jsp:param name="profileOne" value="/profile"/>
+    <jsp:param name="profileTwo" value="Profile"/>
+</jsp:include>
     <div class="container">
         <h1>Create a new Drink</h1>
         <form action="/drinks/create" method="post">
@@ -40,6 +55,8 @@
             <input type="submit" class="btn btn-block btn-danger">
         </form>
     </div>
+
+    <div class="footer"></div>
 
     <jsp:include page="../partials/bootstrap.jsp"/>
 </body>

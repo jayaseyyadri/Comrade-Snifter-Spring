@@ -35,7 +35,10 @@
     </style>
 </head>
 <body>
-<jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<jsp:include page="/WEB-INF/partials/navbar.jsp">
+    <jsp:param name="profileOne" value="/profile"/>
+    <jsp:param name="profileTwo" value="Profile"/>
+</jsp:include>
 <jsp:include page="/WEB-INF/partials/creator-profile-card.jsp" />
 
 

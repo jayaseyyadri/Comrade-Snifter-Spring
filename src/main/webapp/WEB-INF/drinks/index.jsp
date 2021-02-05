@@ -10,6 +10,8 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp">
     <jsp:param name="linkV" value="/login"/>
     <jsp:param name="linkVisitor" value="Login"/>
+    <jsp:param name="profileOne" value="/profile"/>
+    <jsp:param name="profileTwo" value="Profile"/>
 </jsp:include>
 
 <c:if test="${sessionScope.user == null}">
