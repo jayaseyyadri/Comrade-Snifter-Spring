@@ -163,6 +163,23 @@ public class MySQLUsersDao implements Users {
 
     }
 
+    @Override
+    public void updateUserInformation(User user)  {
+        //update info based on current user's id
+        PreparedStatement stmt =null;
+        String sqlQuery ="UPDATE comrade_snifter_db.users SET username = ?,email = ?,password=? WHERE id = ?";
+        try{
+            stmt=connection.prepareStatement(sqlQuery,Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1,user.getUsername());
+            stmt.setString( 2,user.getEmail());
+            stmt.setString(  3,user.getPassword());
+            stmt.setLong(4,user.getId());
+            stmt.executeUpdate();
+        }catch(SQLException e){
+            throw new RuntimeException("Error retrieving drink.", e);
+        }
+    }
+
     public User getUser(long userId) {
         PreparedStatement stmt = null;
         String sqlQuery = "SELECT * FROM comrade_snifter_db.users WHERE id = ?";
