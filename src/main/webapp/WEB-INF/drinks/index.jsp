@@ -52,6 +52,9 @@
     </div>
 
 </c:if>
+<c:if test="${sessionScope.user != null}">
+    <jsp:include page="../partials/select-category.jsp"/>
+</c:if>
 
 
 <jsp:include page="/WEB-INF/partials/drink-cards.jsp"/>
