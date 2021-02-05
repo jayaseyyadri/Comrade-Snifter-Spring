@@ -6,27 +6,22 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: #b6babe;
     }
     #mainCard{
-        border: 2px solid black;
         border-radius: 5px;
         width: 35vw;
         max-width: 450px;
         display: flex;
         justify-content: center;
         flex-direction: column;
-        height: 45vh;
-        float: right;
-        margin-right: 15px;
+        height: 30vh;
+        margin: auto;
     }
     #profileImage{
         height: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 2px solid black;
-        border-radius: 110px;
         width: 50%;
         margin: auto;
     }
