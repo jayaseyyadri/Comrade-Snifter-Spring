@@ -35,6 +35,8 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp">
     <jsp:param name="link" value="/drinks"/>
     <jsp:param name="linkTitle" value="View Drinks"/>
+    <jsp:param name="profileOne" value="/profile"/>
+    <jsp:param name="profileTwo" value="Profile"/>
     <jsp:param name="linkV" value="/login"/>
     <jsp:param name="linkVisitor" value="Login"/>
 </jsp:include>
