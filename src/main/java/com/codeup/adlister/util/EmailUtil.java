@@ -40,7 +40,7 @@ public class EmailUtil {
 
             msg.setSubject("My first Email from Java app","UTF-8");
 
-            msg.setText("Hello There", "UTF-8");
+            msg.setText(body, "UTF-8");
 
             msg.setSentDate(new Date());
 
