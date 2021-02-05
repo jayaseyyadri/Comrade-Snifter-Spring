@@ -42,22 +42,24 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
     }
     if (editPassword.isEmpty()) {
         editPassword = currentUser.getPassword();
-    }else{
+    }else {
+        if(!Validation.goodQualityPassword(editPassword)){
+        session.setAttribute("poorQualityPassword", true);
+        resp.sendRedirect("/editProfile");
+        return;
+    }
         editPassword=Password.hash(editPassword);
-        }
+    }
 
     if (editEmailAddress.isEmpty()){
         editEmailAddress=currentUser.getEmail();
     }
 
-    if(!Validation.goodQualityPassword(editPassword)){
-        resp.sendRedirect("/editProfile");
-        return;
-    }
+
 
     if(Validation.userNameExists(DaoFactory.getUsersDao().currentUsernames(),editUserName)){
-        resp.sendRedirect(("/editProfile"));
         session.setAttribute("UsernameExists",true);
+        resp.sendRedirect(("/editProfile"));
         return;
     }
     User updatedUserInformation =new User(
