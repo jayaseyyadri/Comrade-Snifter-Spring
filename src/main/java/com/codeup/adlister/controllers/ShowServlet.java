@@ -35,6 +35,7 @@ public class ShowServlet extends HttpServlet {
 
         List<Drink> drinks = new ArrayList<>();
         drinks.add(drink);
+        request.getSession().setAttribute("name", drinks.get(0).getName());
         request.getSession().setAttribute("drinks", drinks);
         request.getRequestDispatcher("/WEB-INF/drinks/show.jsp").forward(request, response);
     }

@@ -3,7 +3,7 @@
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Comrade Snifter" />
+        <jsp:param name="title" value="${sessionScope.name}" />
     </jsp:include>
     <script src="https://kit.fontawesome.com/36f035c426.js" crossorigin="anonymous"></script>
     <style>
