@@ -25,8 +25,9 @@ public class ForgotPasswordServlet extends HttpServlet {
 
         if(user!= null) {
             System.out.println(" Email "+ user.getEmail());
-            TLSEmail.sendEmail(user.getEmail(), user.getPassword());
-            req.getRequestDispatcher("/WEB-INF/forgotPassword.jsp").forward(req, resp);
+            TLSEmail.sendEmail(user.getEmail(), user.getUsername());
+            user.setPassword("Jupiter2021!");
+            req.getRequestDispatcher("/WEB-INF/emailWasSent.jsp").forward(req, resp);
         }else{
             resp.sendRedirect("/");
         }

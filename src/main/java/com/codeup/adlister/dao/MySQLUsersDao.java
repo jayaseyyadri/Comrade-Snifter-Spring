@@ -180,6 +180,14 @@ public class MySQLUsersDao implements Users {
         }
     }
 
+
+
+
+
+
+
+
+
     public User getUser(long userId) {
         PreparedStatement stmt = null;
         String sqlQuery = "SELECT * FROM comrade_snifter_db.users WHERE id = ?";

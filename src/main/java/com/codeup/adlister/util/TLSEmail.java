@@ -22,7 +22,7 @@ public class TLSEmail {
      * Port for TLS/STARTTLS: 587
      */
     public static void sendEmail(
-            final String toEmail, String userPassword) throws ServletException, IOException  // can be any email id
+            final String toEmail, String userName) throws ServletException, IOException  // can be any email id
     {
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
@@ -41,7 +41,7 @@ public class TLSEmail {
         };
         Session session = Session.getInstance(props, auth);
 
-        EmailUtil.sendEmail(session, toEmail, "TLSEmail Testing Subject", "Your password is " + userPassword);
+        EmailUtil.sendEmail(session, toEmail, "TLSEmail Testing Subject", "Hello " + userName + " your new password is Jupiter2021! please go to http://localhost:8080/newPassword");
         System.out.println("Email Sent");
     }
 
