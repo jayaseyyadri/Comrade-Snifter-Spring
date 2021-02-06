@@ -84,9 +84,7 @@ public class MySQLDrinksDao implements Drinks {
         try {
             stmt = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, userInput);
-
             stmt.executeQuery();
-
             ResultSet rs = stmt.getResultSet();
 
             while(rs.next()){
@@ -101,10 +99,10 @@ public class MySQLDrinksDao implements Drinks {
                 drinks.add(drink);
             };
 
-
             return drinks;
+
         } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving ad.", e);
+            throw new RuntimeException("Error retrieving drink List.", e);
         }
     }
 
@@ -160,7 +158,7 @@ public class MySQLDrinksDao implements Drinks {
             }
             return drinks;
         } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving all ads.", e);
+            throw new RuntimeException("Error retrieving all drinks.", e);
         }
     }
 
@@ -172,7 +170,7 @@ public class MySQLDrinksDao implements Drinks {
             statement.setInt(1, id);
             statement.execute();
         } catch (SQLException e){
-            throw new RuntimeException("Error deleting ad", e);
+            throw new RuntimeException("Error deleting drink", e);
         }
     }
 
@@ -184,7 +182,7 @@ public class MySQLDrinksDao implements Drinks {
             statement.setInt(1, id);
             statement.execute();
         } catch (SQLException e){
-            throw new RuntimeException("Error deleting ad", e);
+            throw new RuntimeException("Error deleting drink categories", e);
         }
     }
 
@@ -200,7 +198,7 @@ public class MySQLDrinksDao implements Drinks {
             statement.setInt(5, id);
             statement.executeUpdate();
         } catch (SQLException e){
-            throw new RuntimeException("Error editing ad", e);
+            throw new RuntimeException("Error editing drink", e);
         }
 
     }

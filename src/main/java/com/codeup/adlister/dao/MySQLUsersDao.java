@@ -98,7 +98,7 @@ public class MySQLUsersDao implements Users {
     }
 
 
-    // view all users
+    @Override
     public List<User> viewUsers() {
         PreparedStatement stmt = null;
         String query = "Select username, id, is_admin from comrade_snifter_db.users";
@@ -112,13 +112,36 @@ public class MySQLUsersDao implements Users {
                         rs.getLong("id"),
                         rs.getString("username")
                 );
-                if(!user.getUsername().equals("admin") && rs.getInt("is_admin") < 1) {
+                if(rs.getInt("is_admin") < 1) {
                     usersList.add(user);
                 }
             }
             return usersList;
         } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving all ads.", e);
+            throw new RuntimeException("Error retrieving user List.", e);
+        }
+    }
+
+    @Override
+    public List<User> viewAdmins(String currentUsername) {
+        String query = "Select username, id, is_admin from comrade_snifter_db.users";
+        List<User> adminList = new ArrayList<>();
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.executeQuery();
+            ResultSet rs = stmt.getResultSet();
+            while (rs.next()) {
+                User user = new User(
+                        rs.getLong("id"),
+                        rs.getString("username")
+                );
+                if(rs.getInt("is_admin") > 0 && !rs.getString("username").equals(currentUsername)) {
+                    adminList.add(user);
+                }
+            }
+            return adminList;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving admin List.", e);
         }
     }
 
@@ -180,10 +203,10 @@ public class MySQLUsersDao implements Users {
     @Override
     public void updateUserInformation(User user)  {
         //update info based on current user's id
-        PreparedStatement stmt =null;
-        String sqlQuery ="UPDATE comrade_snifter_db.users SET username = ?,email = ?,password=?, image=? WHERE id = ?";
+        PreparedStatement stmt = null;
+        String sqlQuery ="UPDATE comrade_snifter_db.users SET username = ?, email = ?, password = ?, image = ? WHERE id = ?";
         try{
-            stmt=connection.prepareStatement(sqlQuery,Statement.RETURN_GENERATED_KEYS);
+            stmt = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1,user.getUsername());
             stmt.setString( 2,user.getEmail());
             stmt.setString(  3,user.getPassword());
@@ -191,7 +214,7 @@ public class MySQLUsersDao implements Users {
             stmt.setLong(5,user.getId());
             stmt.executeUpdate();
         }catch(SQLException e){
-            throw new RuntimeException("Error retrieving drink.", e);
+            throw new RuntimeException("Error updating profile.", e);
         }
     }
 

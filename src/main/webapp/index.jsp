@@ -32,6 +32,15 @@
         body {
             background: #cccecf;
         }
+        body::-webkit-scrollbar-thumb{
+            background: #141719;
+        }
+        body::-webkit-scrollbar-track{
+            background: #343a40;
+        }
+        body::-webkit-scrollbar{
+            width: .15rem;
+        }
     </style>
 </head>
 <body>
