@@ -9,6 +9,7 @@ import java.util.List;
 
 public class Password {
     private static final int ROUNDS = 12;
+    private static List<String> createdPasswords = new ArrayList<>();
 
     public static String hash(String password) {
         return BCrypt.hashpw(password, BCrypt.gensalt(ROUNDS));
@@ -29,7 +30,13 @@ public class Password {
             out.append(RandomStringUtils.randomAlphabetic(1));
             out.append(RandomStringUtils.randomAlphanumeric(1));
         }
+        createdPasswords.add(out.toString());
+        System.out.println("String created and stored is : " + out.toString());
         return out.toString();
+    }
+
+    public static List<String> getThePassword (){
+        return createdPasswords;
     }
 
 }

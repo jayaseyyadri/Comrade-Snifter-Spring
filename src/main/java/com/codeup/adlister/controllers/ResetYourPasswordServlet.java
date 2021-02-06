@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
+import com.codeup.adlister.util.Password;
 import com.codeup.adlister.util.Validation;
 
 import javax.servlet.ServletException;
@@ -29,6 +30,8 @@ public class ResetYourPasswordServlet extends HttpServlet {
         String thisUserName = req.getParameter("verifyUsername");
         String thisEmail = req.getParameter("verifyEmailAddress");
         String newPassword = req.getParameter("shouldBeTheJupiterOne");
+        String passwordFetch = Password.getThePassword().get(0);
+        System.out.println("Password I am comparing Against is " + passwordFetch);
 
         User user = DaoFactory.getUsersDao().findByUsername(thisUserName);
 
@@ -40,7 +43,7 @@ public class ResetYourPasswordServlet extends HttpServlet {
             session.setAttribute("emailDoesNotMatch", true);
             res.sendRedirect("/newPassword");
             return;
-        } else if (!newPassword.equals("Jupiter2021!")){
+        } else if (!newPassword.equals(passwordFetch)){
             session.setAttribute("notOurPassword", true);
             res.sendRedirect("/newPassword");
             return;

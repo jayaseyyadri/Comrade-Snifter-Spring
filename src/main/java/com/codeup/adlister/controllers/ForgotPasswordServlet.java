@@ -1,4 +1,5 @@
 package com.codeup.adlister.controllers;
+import com.codeup.adlister.util.Password;
 import com.codeup.adlister.util.TLSEmail;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
@@ -26,7 +27,9 @@ public class ForgotPasswordServlet extends HttpServlet {
         if(user!= null) {
             System.out.println(" Email "+ user.getEmail());
             TLSEmail.sendEmail(user.getEmail(), user.getUsername());
-            user.setPassword("Jupiter2021!");
+            String passwordGen = Password.getThePassword().get(0);
+            System.out.println("Password I am fetching is " + passwordGen);
+            user.setPassword(passwordGen);
             req.getRequestDispatcher("/WEB-INF/emailWasSent.jsp").forward(req, resp);
         }else{
             resp.sendRedirect("/");
