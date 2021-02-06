@@ -15,4 +15,5 @@ public interface Users {
     boolean isAdmin(long userId);
     void  updateUserInformation(User user);
     void deleteUser(long userId);
+    void updateUserPassword(String userName, String newPassword);
 }

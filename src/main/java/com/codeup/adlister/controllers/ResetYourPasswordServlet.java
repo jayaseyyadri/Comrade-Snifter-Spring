@@ -31,7 +31,6 @@ public class ResetYourPasswordServlet extends HttpServlet {
         String thisEmail = req.getParameter("verifyEmailAddress");
         String newPassword = req.getParameter("shouldBeTheJupiterOne");
         String passwordFetch = Password.getThePassword().get(0);
-        System.out.println("Password I am comparing Against is " + passwordFetch);
 
         User user = DaoFactory.getUsersDao().findByUsername(thisUserName);
 

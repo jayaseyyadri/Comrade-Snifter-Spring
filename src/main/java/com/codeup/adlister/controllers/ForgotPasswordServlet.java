@@ -33,6 +33,7 @@ public class ForgotPasswordServlet extends HttpServlet {
             TLSEmail.sendEmail(user.getEmail(), user.getUsername());
             String passwordGen = Password.getThePassword().get(0);
             user.setPassword(passwordGen);
+            DaoFactory.getUsersDao().updateUserPassword(userName, Password.hash(passwordGen));
             req.getRequestDispatcher("/WEB-INF/emailWasSent.jsp").forward(req, resp);
         }else{
             session.setAttribute("userNameNotInRecord", true);

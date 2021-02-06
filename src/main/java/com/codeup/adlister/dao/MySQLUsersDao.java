@@ -218,4 +218,18 @@ public class MySQLUsersDao implements Users {
         }
     }
 
+    @Override
+    public void updateUserPassword(String userName, String newPassword){
+        String query = "Update comrade_snifter_db.users set password = ? where username = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, newPassword);
+            statement.setString(2, userName);
+            statement.executeUpdate();
+
+        } catch (SQLException e ){
+            throw new RuntimeException("Error changing your password", e);
+        }
+    }
+
 }

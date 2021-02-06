@@ -44,9 +44,8 @@ public class TLSEmail {
         };
         Session session = Session.getInstance(props, auth);
         String randomPassword = Password.randomGen();
-        System.out.println("Email is sending " + randomPassword);
 
-        EmailUtil.sendEmail(session, toEmail, "TLSEmail Testing Subject", "Hello " + userName + " your new password is "+ randomPassword +" please go to http://localhost:8080/newPassword");
+        EmailUtil.sendEmail(session, toEmail, "TLSEmail Testing Subject", "Hello " + userName + " your temporary password is "+ randomPassword +" please go to http://localhost:8080/newPassword");
         System.out.println("Email Sent");
     }
 

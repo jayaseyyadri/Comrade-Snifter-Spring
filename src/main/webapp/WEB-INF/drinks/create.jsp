@@ -53,23 +53,23 @@
             </div>
                 Drink Category<br>
                 <label>
-                    <input type="checkbox" value="Brandy" name="Brandy"/>
+                    <input type="checkbox" value="Brandy" name="drinkCat"/>
                     Brandy
                 </label>
                 <label>
-                    <input type="checkbox" value="Bourbon" name="Bourbon"/>
+                    <input type="checkbox" value="Bourbon" name="drinkCat"/>
                     Bourbon
                 </label>
                 <label>
-                    <input type="checkbox" value="Whiskey" name="Whiskey"/>
+                    <input type="checkbox" value="Whiskey" name="drinkCat"/>
                     Whiskey
                 </label>
                 <label>
-                    <input type="checkbox" value="Fruity" name="Fruity"/>
+                    <input type="checkbox" value="Fruity" name="drinkCat"/>
                     Fruity
                 </label>
                 <label>
-                    <input type="checkbox" value="Desert" name="Desert"/>
+                    <input type="checkbox" value="Desert" name="drinkCat"/>
                     Desert
                 </label>
 

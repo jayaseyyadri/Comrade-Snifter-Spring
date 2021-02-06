@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/drinks/create")
@@ -37,12 +38,7 @@ public class CreateDrinkServlet extends HttpServlet {
         String instructions = request.getParameter("instructions");
         String ingredients = request.getParameter("ingredients");
 
-        List<String> newDrinkCategoryList = new ArrayList<>();
-        String catBrandy = request.getParameter("Brandy");
-        String catBourbon = request.getParameter("Bourbon");
-        String catWhiskey = request.getParameter("Whiskey");
-        String catFruity = request.getParameter("Fruity");
-        String catDesert = request.getParameter("Desert");
+        List<String> newDrinkCategoryList = new ArrayList<>(Arrays.asList(request.getParameterValues("drinkCat")));
 
         if(name.isEmpty()){
             session.setAttribute("blankName", true);
@@ -58,22 +54,6 @@ public class CreateDrinkServlet extends HttpServlet {
             return;
         } else if(imageUrl.isEmpty()){
             imageUrl = "/resources/img/logo.png";
-        }
-
-        if(catBrandy != null){
-            newDrinkCategoryList.add(catBrandy);
-        }
-        if(catBourbon != null){
-            newDrinkCategoryList.add(catBourbon);
-        }
-        if(catWhiskey != null){
-            newDrinkCategoryList.add(catWhiskey);
-        }
-        if(catFruity != null){
-            newDrinkCategoryList.add(catFruity);
-        }
-        if(catDesert != null){
-            newDrinkCategoryList.add(catDesert);
         }
 
 
