@@ -6,6 +6,9 @@
         <jsp:param name="title" value="Your Profile" />
     </jsp:include>
     <style>
+        .errorMessage{
+            color: #dc3444;
+        }
         body {
             background: #cccecf;
         }

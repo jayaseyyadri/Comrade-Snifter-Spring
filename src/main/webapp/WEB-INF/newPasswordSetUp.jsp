@@ -7,6 +7,9 @@
         <jsp:param name="title" value="You forgot your Password!?" />
     </jsp:include>
     <style>
+        .errorMessage{
+            color: #dc3444;
+        }
         .footer {
             position: fixed;
             left: 0;
@@ -41,25 +44,10 @@
                 <label for="shouldBeTheJupiterOne">Enter The Password</label>
                 <input id="shouldBeTheJupiterOne" name="shouldBeTheJupiterOne" class="form-control" type="password">
                 <c:if test="${sessionScope.notOurPassword}">
-                    <small class="errorMessage"> * Password must be between 8-20 characters and Include a number, capital letter, and special character ( other than underscore )</small>
+                    <small class="errorMessage"> * Password does not match what was sent to you</small>
                 </c:if>
             </div>
 
-
-<%--            <div class="form-group">--%>
-<%--                <label for="newPassword">Enter New Password</label>--%>
-<%--                <input id="newPassword" name="newPassword" class="form-control" type="password">--%>
-<%--                <c:if test="${sessionScope.newPasswordPoorQuality}">--%>
-<%--                    <small class="errorMessage"> * Password must be between 8-20 characters and Include a number, capital letter, and special character ( other than underscore )</small>--%>
-<%--                </c:if>--%>
-<%--            </div>--%>
-<%--            <div class="form-group">--%>
-<%--                <label for="confirmNewPassword">Confirm Password</label>--%>
-<%--                <input id="confirmNewPassword" name="confirmNewPassword" class="form-control" type="password">--%>
-<%--                <c:if test="${sessionScope.newPasswordDoesNotMatch}">--%>
-<%--                    <small class="errorMessage"> * Passwords Do Not Match</small>--%>
-<%--                </c:if>--%>
-<%--            </div>--%>
             <input type="submit" class="btn btn-danger btn-block">
         </form>
     </div>

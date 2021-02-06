@@ -6,6 +6,9 @@
         <jsp:param name="title" value="Viewing All The Drinks" />
     </jsp:include>
     <style>
+        .errorMessage{
+            color: #dc3444;
+        }
         body {
             background: #cccecf;
         }

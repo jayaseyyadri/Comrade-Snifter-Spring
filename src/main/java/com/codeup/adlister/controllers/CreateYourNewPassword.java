@@ -42,11 +42,7 @@ public class CreateYourNewPassword extends HttpServlet {
         }
 
         passwordResetter.setPassword(newPassword);
-        System.out.println(passwordResetter.getUsername());
-        System.out.println(passwordResetter.getEmail());
-        System.out.println(passwordResetter.getPassword());
         DaoFactory.getUsersDao().updateUserInformation(passwordResetter);
-
         res.sendRedirect("/login");
     }
 
