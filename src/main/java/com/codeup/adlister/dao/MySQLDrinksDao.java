@@ -261,7 +261,6 @@ public class MySQLDrinksDao implements Drinks {
 
     @Override
     public void giveDrinkACategory(long id, int categoryId){
-        System.out.println(id);
         String query = "insert into comrade_snifter_db.category(alcohol_id, liquor_type) VALUES (?, ?)";
         try {
             PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);

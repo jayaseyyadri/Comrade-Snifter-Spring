@@ -167,63 +167,18 @@ public class MySQLUsersDao implements Users {
     public void updateUserInformation(User user)  {
         //update info based on current user's id
         PreparedStatement stmt =null;
-        String sqlQuery ="UPDATE comrade_snifter_db.users SET username = ?,email = ?,password=? WHERE id = ?";
+        String sqlQuery ="UPDATE comrade_snifter_db.users SET username = ?,email = ?,password=?, image=? WHERE id = ?";
         try{
             stmt=connection.prepareStatement(sqlQuery,Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1,user.getUsername());
             stmt.setString( 2,user.getEmail());
             stmt.setString(  3,user.getPassword());
-            stmt.setLong(4,user.getId());
+            stmt.setString(  4,user.getImage());
+            stmt.setLong(5,user.getId());
             stmt.executeUpdate();
         }catch(SQLException e){
             throw new RuntimeException("Error retrieving drink.", e);
         }
     }
 
-
-
-
-
-
-
-
-
-    public User getUser(long userId) {
-        PreparedStatement stmt = null;
-        String sqlQuery = "SELECT * FROM comrade_snifter_db.users WHERE id = ?";
-
-        try {
-            stmt = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS);
-            stmt.setLong(1, userId);
-            stmt.executeQuery();
-            ResultSet rs = stmt.getResultSet();
-            rs.next();
-            User user = new User(
-                    rs.getString("username"),
-                    rs.getString("image"),
-                    makeList(rs.getString("created_drinks")),
-                    makeList(rs.getString("liked_drinks"))
-            );
-            return user;
-        } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving ad.", e);
-        }
-    }
-
-    //    public Long likeDrink(long drinkILikeId, long currentUserId){
-//        String query = "Select liked_drinks from  users where id = ?";
-//        String insertQuery = "UPDATE users SET liked_drinks where id = ?";
-//        // going to query the liked drinks and if there are currently liked drinks in the specific user's list
-//        //
-//    }
-//
-    private static List<Long> makeList(String ids) {
-        List<Long> idList = new ArrayList<>();
-        String[] list = ids.split(" ");
-        for (String s : list) {
-            idList.add(Long.parseLong(s));
-        }
-
-        return idList;
-    }
 }

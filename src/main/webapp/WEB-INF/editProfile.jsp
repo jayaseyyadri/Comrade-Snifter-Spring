@@ -53,6 +53,10 @@
                     <small class="errorMessage"> * Passwords Do Not Match</small>
                 </c:if>
             </div>
+            <div class="form-group">
+                <label for="profilePic">Profile Picture</label>
+                <input id="profilePic" name="profilePic" class="form-control" type="text">
+            </div>
             <input type="submit" class="btn btn-danger btn-block">
         </form>
     </div>

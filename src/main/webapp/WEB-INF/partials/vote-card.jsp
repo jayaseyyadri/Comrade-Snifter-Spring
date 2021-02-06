@@ -83,9 +83,9 @@
                                 <p class="card-text"><c:out value=" ${drink.instructions}"/></p>
                             </div>
                             <div class="card-footer" style="display: flex;justify-content: space-between; align-items: center">
-                                <form action="/show" method="post">
+                                <form action="${sessionScope.previousPage}" method="get">
                                     <input type="hidden" name="drinkId" value="${drink.id}">
-                                    <button type="submit" class="btn btn-danger">View</button>
+                                    <button type="submit" class="btn btn-danger">Go Back</button>
                                 </form>
                                 <c:if test="${sessionScope.user != null}">
                                     <c:if test="${drink.userId == sessionScope.user.id}">
