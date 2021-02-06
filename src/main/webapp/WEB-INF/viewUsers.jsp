@@ -14,20 +14,23 @@
     <jsp:param name="profileTwo" value="Profile"/>
 </jsp:include>
 </body>
-<div align="center">
-    <table border="1" cellpadding="5">
-        <tr>
-            <th>Id</th>
-            <th>User Name</th>
-
-        </tr>
+    <div>
         <c:forEach var="user" items="${sessionScope.allUsers}">
-        <tr>
-            <td><c:out value="${user.id}"/></td>
-                <td><c:out value="${user.username}"/></td>
-        </tr>
+
+            <div class="card">
+                <div class="card-body d-flex justify-content-around">
+                    <h5 class="card-title">Id # <c:out value="${user.id}"/></h5>
+                    <p class="card-text"><c:out value="${user.username}"/></p>
+                    <form action="/users" method="POST">
+                        <input type="hidden" name="idToDelete" value="${user.id}"/>
+                        <button type="submit" class="btn btn-danger">Delete User</button>
+                    </form>
+                </div>
+            </div>
+
         </c:forEach>
 
-        <jsp:include page="./partials/bootstrap.jsp"/>
-</div>
+    </div>
+
+    <jsp:include page="./partials/bootstrap.jsp"/>
 </html>

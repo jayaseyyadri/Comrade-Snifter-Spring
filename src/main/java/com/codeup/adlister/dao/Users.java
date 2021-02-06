@@ -8,9 +8,10 @@ import java.util.Set;
 public interface Users {
     User findByUsername(String username);
     Long insert(User user);
-    boolean isAdmin(long userId);
+    User getDrinkCreator(long drinkId);
     List<User> viewUsers();
     Set<String> currentUsernames();
-    User getDrinkCreator(long drinkId);
+    boolean isAdmin(long userId);
     void  updateUserInformation(User user);
+    void deleteUser(long userId);
 }
