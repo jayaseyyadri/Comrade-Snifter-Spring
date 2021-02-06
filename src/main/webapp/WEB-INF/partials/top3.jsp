@@ -32,7 +32,7 @@
                                     <input type="hidden" name="currentPage" value="${pageContext.request.getRequestURI()}">
                                     <button type="submit" class="btn btn-danger">View</button>
                                 </form>
-                                <form action="/editForm" method="get">
+                                <form action="/editForm" method="post">
                                     <input type="hidden" name="editThisDrink" value="${drink.id}">
                                     <button type="submit" class="btn btn-danger">Edit</button>
                                 </form>
@@ -77,7 +77,7 @@
                                 </form>
                                 <c:if test="${sessionScope.user != null}">
                                     <c:if test="${drink.userId == sessionScope.user.id}">
-                                        <form action="/editForm" method="get">
+                                        <form action="/editForm" method="post">
                                             <input type="hidden" name="editThisDrink" value="${drink.id}">
 
                                             <button type="submit" class="btn btn-danger">Edit</button>

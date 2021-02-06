@@ -11,8 +11,7 @@
         align-items: center;
     }
     #mainCard{
-        border-radius: 5px;
-        width: 35vw;
+        width: 55vw;
         max-width: 450px;
         display: flex;
         justify-content: center;

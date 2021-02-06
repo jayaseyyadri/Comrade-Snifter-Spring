@@ -16,7 +16,7 @@ import java.io.IOException;
 public class EditServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
+        req.getRequestDispatcher("/WEB-INF/drinks/edit.jsp").forward(req, res);
     }
 
     @Override

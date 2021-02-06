@@ -10,6 +10,7 @@ public interface Users {
     Long insert(User user);
     User getDrinkCreator(long drinkId);
     List<User> viewUsers();
+    List<User> viewAdmins(String currentUsername);
     Set<String> currentUsernames();
     boolean isAdmin(long userId);
     void  updateUserInformation(User user);
