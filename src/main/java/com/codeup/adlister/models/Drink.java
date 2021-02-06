@@ -94,6 +94,6 @@ public class Drink {
     }
 
     public void setVotes(long votes) {
-        DaoFactory.getDrinksDao().updateThisDrinksVotes(this.votes, this.id);
+        DaoFactory.getDrinksDao().updateThisDrinksVotes(votes, this.id);
     }
 }

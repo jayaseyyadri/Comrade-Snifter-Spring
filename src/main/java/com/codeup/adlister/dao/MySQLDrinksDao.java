@@ -226,7 +226,7 @@ public class MySQLDrinksDao implements Drinks {
 
 
     @Override
-    public int getDrinkVotes(long id){
+    public long getDrinkVotes(long id){
         String query = "SELECT votes from comrade_snifter_db.drinks where id = ?";
         try {
 
@@ -235,7 +235,7 @@ public class MySQLDrinksDao implements Drinks {
             statement.executeQuery();
             ResultSet rs = statement.getResultSet();
             rs.next();
-            return rs.getInt("votes");
+            return rs.getLong("votes");
 
         } catch (SQLException e){
             throw new RuntimeException("Error retrieving votes", e);

@@ -25,7 +25,7 @@ public class VoteServlet extends HttpServlet {
 
         System.out.printf("Current Votes for drink %s : %d%n", thisDrink.getName(), thisDrink.getVotes());
 
-        if(Integer.parseInt(req.getParameter("vote")) > 0) {
+        if(Long.parseLong(req.getParameter("vote")) > 0) {
             thisDrink.setVotes(thisDrink.getVotes() + 1);
         } else {
             thisDrink.setVotes(thisDrink.getVotes() - 1);

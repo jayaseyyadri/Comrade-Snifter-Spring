@@ -11,7 +11,7 @@ public interface Drinks {
     List<Drink> getUsersDrinks(long user_id);
     Drink getDrink(long drinkId);
     Long insert(Drink drink);
-    int getDrinkVotes(long id);
+    long getDrinkVotes(long id);
     int getCategoryId(String name);
     long getDrinkIdByName(String name);
     void delete(int id);
