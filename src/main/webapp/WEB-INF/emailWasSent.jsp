@@ -5,8 +5,8 @@
         <jsp:param name="title" value="Email Was Sent" />
     </jsp:include>
     <style>
-        .errorMessage{
-            color: #dc3444;
+        #resetPage{
+            text-align: center;
         }
         .footer {
             position: fixed;

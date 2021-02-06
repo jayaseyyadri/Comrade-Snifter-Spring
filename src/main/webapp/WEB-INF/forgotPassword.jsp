@@ -31,6 +31,9 @@
         <div class="form-group">
             <label for="forgotPassword">Enter username</label>
             <input class="form-control" type="text"  id="forgotPassword" name="forgotPassword">
+            <c:if test="${sessionScope.userNameNotInRecord}">
+                <small class="errorMessage">* Username does not match any we have on record, Please try again</small>
+            </c:if>
         </div>
 
     <input type="submit" class="btn btn-danger btn-block" value="Submit">

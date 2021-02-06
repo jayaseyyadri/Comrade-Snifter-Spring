@@ -31,7 +31,6 @@ public class Password {
             out.append(RandomStringUtils.randomAlphanumeric(1));
         }
         createdPasswords.add(out.toString());
-        System.out.println("String created and stored is : " + out.toString());
         return out.toString();
     }
 
