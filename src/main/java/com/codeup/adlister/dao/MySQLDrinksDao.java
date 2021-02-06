@@ -5,7 +5,6 @@ import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class MySQLDrinksDao implements Drinks {
@@ -206,13 +205,13 @@ public class MySQLDrinksDao implements Drinks {
     }
 
     @Override
-    public void updateThisDrinksVotes(int drinkVotes, long drinkIdToUpdate){
+    public void updateThisDrinksVotes(long drinkVotes, long drinkIdToUpdate){
         String query = "UPDATE comrade_snifter_db.drinks set votes = ? where id = ?";
 
         try {
 
             PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            statement.setInt(1, drinkVotes);
+            statement.setLong(1, drinkVotes);
             statement.setLong(2, drinkIdToUpdate);
             statement.executeUpdate();
 

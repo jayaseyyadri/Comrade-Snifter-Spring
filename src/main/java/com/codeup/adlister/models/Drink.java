@@ -9,9 +9,9 @@ public class Drink {
     private String instructions;
     private String ingredients;
     private String image;
-    private int votes;
+    private long votes;
 
-    public Drink(){};
+    public Drink(){}
 
     public Drink(long id, long userId, String name, String instructions, String ingredients, String image) {
         this.id = id;
@@ -30,7 +30,7 @@ public class Drink {
         this.image = image;
     }
 
-    public Drink(long id, long userId, String name, String instructions, String ingredients, String image, int votes) {
+    public Drink(long id, long userId, String name, String instructions, String ingredients, String image, long votes) {
         this.id = id;
         this.userId = userId;
         this.name = name;
@@ -89,11 +89,11 @@ public class Drink {
     }
 
 
-    public int getVotes() {
+    public long getVotes() {
         return DaoFactory.getDrinksDao().getDrinkVotes(this.id);
     }
 
-    public void setVotes(int votes) {
-        DaoFactory.getDrinksDao().updateThisDrinksVotes(votes, this.id);
+    public void setVotes(long votes) {
+        DaoFactory.getDrinksDao().updateThisDrinksVotes(this.votes, this.id);
     }
 }

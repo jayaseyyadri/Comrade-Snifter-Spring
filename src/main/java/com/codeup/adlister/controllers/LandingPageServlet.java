@@ -16,19 +16,19 @@ public class LandingPageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         List<Drink> allDrinks = DaoFactory.getDrinksDao().all();
-        List<Integer> highestVotes = findHighestValues(allDrinks);
+        List<Long> highestVotes = findHighestValues(allDrinks);
 
         List<Drink> top3DrinkList = new ArrayList<>();
-        int count = 0;
+        long count = 0;
         while(top3DrinkList.size() < 3) {
-            for (int i = 0; i < allDrinks.size(); i++) {
+            for (long i = 0; i < allDrinks.size(); i++) {
                 if (count > 2) break;
 
-                int currentDrinkVotes = allDrinks.get(i).getVotes();
-                int highestVoteToMatch = highestVotes.get(count);
+                long currentDrinkVotes = allDrinks.get((int) i).getVotes();
+                long highestVoteToMatch = highestVotes.get((int) count);
 
                 if (currentDrinkVotes == highestVoteToMatch) {
-                    top3DrinkList.add(allDrinks.get(i));
+                    top3DrinkList.add(allDrinks.get((int) i));
                     count++;
                 }
             }
@@ -41,30 +41,30 @@ public class LandingPageServlet extends HttpServlet {
 
 
 
-    private static List<Integer> findHighestValues (List<Drink> list){
-        int a = list.get(0).getVotes();
-        int b = list.get(1).getVotes();
-        int c = list.get(2).getVotes();
-        int[] startingVotes = {a, b, c};
-        List<Integer> highestVoteList = new ArrayList<>();
+    private static List<Long> findHighestValues (List<Drink> list){
+        long a = list.get(0).getVotes();
+        long b = list.get(1).getVotes();
+        long c = list.get(2).getVotes();
+        long[] startingVotes = {a, b, c};
+        List<Long> highestVoteList = new ArrayList<>();
 
-        for(int i = 3; i < list.size(); i++){
-            int potential = list.get(i).getVotes();
-            int currMin = minOf(startingVotes);
+        for(long i = 3; i < list.size(); i++){
+            long potential = list.get((int) i).getVotes();
+            long currMin = minOf(startingVotes);
             if(potential > currMin){
                 swap(potential, currMin, startingVotes);
             }
         }
 
-        for(int x :startingVotes){
+        for(long x :startingVotes){
             highestVoteList.add(x);
         }
         return highestVoteList;
     }
 
-    private static int minOf(int[] list){
-        int currentMin = Integer.MAX_VALUE;
-        for(int newMin : list){
+    private static long minOf(long[] list){
+        long currentMin = Long.MAX_VALUE;
+        for(long newMin : list){
             if(newMin < currentMin){
                 currentMin = newMin;
             }
@@ -72,10 +72,10 @@ public class LandingPageServlet extends HttpServlet {
         return currentMin;
     }
 
-    private static void swap(int newNum, int oldNum, int[] list){
-        for(int i = 0; i < list.length; i++){
-            if(list[i] == oldNum){
-                list[i] = newNum;
+    private static void swap(long newNum,long oldNum, long[] list){
+        for(long i = 0; i < list.length; i++){
+            if(list[(int) i] == oldNum){
+                list[(int) i] = newNum;
                 break;
             }
         }

@@ -34,7 +34,6 @@ public class User {
         this.email = email;
         this.password = password;
     }
-//CREATED NEW CONSTRUCTOR
 
     public User(long id, String username, String email, String password, String image) {
         this.id = id;
