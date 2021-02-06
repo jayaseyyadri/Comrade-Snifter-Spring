@@ -24,7 +24,7 @@
 
    <div class="container" style="margin: 15px auto">
        <h3>Please enter your username </h3>
-       <form action="/forgotPassword" method="post">
+       <form action="/forgot" method="post">
         <div class="form-group">
             <label for="forgotPassword">Enter username</label>
             <input class="form-control" type="text"  id="forgotPassword" name="forgotPassword">
