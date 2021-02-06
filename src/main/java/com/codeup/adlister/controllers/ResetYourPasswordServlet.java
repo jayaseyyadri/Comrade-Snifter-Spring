@@ -29,7 +29,6 @@ public class ResetYourPasswordServlet extends HttpServlet {
         String thisUserName = req.getParameter("verifyUsername");
         String thisEmail = req.getParameter("verifyEmailAddress");
         String newPassword = req.getParameter("shouldBeTheJupiterOne");
-//        String confirmNewPassword = req.getParameter("confirmNewPassword");
 
         User user = DaoFactory.getUsersDao().findByUsername(thisUserName);
 
@@ -48,13 +47,6 @@ public class ResetYourPasswordServlet extends HttpServlet {
         }
 
         session.setAttribute("passwordResetUser", user);
-//        user.setPassword(newPassword);
-//        System.out.println(user.getUsername());
-//        System.out.println(user.getEmail());
-//        System.out.println(user.getPassword());
-//        DaoFactory.getUsersDao().updateUserInformation(user);
-
-
         res.sendRedirect("/createYourNewPassword");
     }
 

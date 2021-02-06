@@ -32,35 +32,35 @@ public class RegisterServlet extends HttpServlet {
         session.setAttribute("currentUserExists", false);
         session.setAttribute("passwordsDoNotMatch", false);
         session.setAttribute("poorQualityPassword", false);
+        session.setAttribute("missingUsername", false);
+        session.setAttribute("missingEmail", false);
 
 
-        boolean inputHasErrors = username.isEmpty()
-            || email.isEmpty()
-            || password.isEmpty();
 
-        if (inputHasErrors) {
+        if (username.isEmpty()) {
+            session.setAttribute("missingUsername", true);
             response.sendRedirect("/register");
             return;
-        }
-        Set<String> allCurrentUsernames = DaoFactory.getUsersDao().currentUsernames();
-        if(Validation.userNameExists(allCurrentUsernames, username)){
-            session.setAttribute("currentUserExists", true);
+        } else if (email.isEmpty()) {
+            session.setAttribute("missingEmail", true);
             response.sendRedirect("/register");
             return;
-        }
-
-        if((!password.equals(passwordConfirmation))){
+        } else if ((!password.equals(passwordConfirmation))){
             session.setAttribute("passwordsDoNotMatch", true);
             response.sendRedirect("/register");
             return;
         }
 
-        if(!Validation.goodQualityPassword(password)){
+        Set<String> allCurrentUsernames = DaoFactory.getUsersDao().currentUsernames();
+        if(Validation.userNameExists(allCurrentUsernames, username)){
+            session.setAttribute("currentUserExists", true);
+            response.sendRedirect("/register");
+            return;
+        } else if (!Validation.goodQualityPassword(password)){
             session.setAttribute("poorQualityPassword", true);
             response.sendRedirect("/register");
             return;
         }
-
 
 
         User user = new User(username, email, password);

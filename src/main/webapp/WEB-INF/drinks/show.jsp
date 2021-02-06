@@ -7,6 +7,9 @@
     </jsp:include>
     <script src="https://kit.fontawesome.com/36f035c426.js" crossorigin="anonymous"></script>
     <style>
+        .errorMessage{
+            color: #dc3444;
+        }
         .voteSection{
             display: flex;
             justify-content: space-around;

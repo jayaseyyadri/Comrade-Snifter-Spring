@@ -27,11 +27,10 @@ public class Validation {
         Matcher matcherNum = digit.matcher(passwordAttempt);
         Matcher special = specialChar.matcher(passwordAttempt);
 
-        return matcherUp.find() && matcherLow.find() && matcherNum.find() && special.find();
-    }
-
-    public static void main(String[] args) {
-        System.out.println(Validation.goodQualityPassword("helloWorld123!"));
+        return matcherUp.find()
+                && matcherLow.find()
+                && matcherNum.find()
+                && special.find();
     }
 
 }

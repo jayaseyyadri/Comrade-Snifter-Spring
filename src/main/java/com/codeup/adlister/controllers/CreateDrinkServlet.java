@@ -37,13 +37,28 @@ public class CreateDrinkServlet extends HttpServlet {
         String instructions = request.getParameter("instructions");
         String ingredients = request.getParameter("ingredients");
 
+        List<String> newDrinkCategoryList = new ArrayList<>();
         String catBrandy = request.getParameter("Brandy");
         String catBourbon = request.getParameter("Bourbon");
         String catWhiskey = request.getParameter("Whiskey");
         String catFruity = request.getParameter("Fruity");
         String catDesert = request.getParameter("Desert");
 
-        List<String> newDrinkCategoryList = new ArrayList<>();
+        if(name.isEmpty()){
+            session.setAttribute("blankName", true);
+            response.sendRedirect("/drinks/create");
+            return;
+        } else if(instructions.isEmpty()){
+            session.setAttribute("blankInstructions", true);
+            response.sendRedirect("/drinks/create");
+            return;
+        } else if(ingredients.isEmpty()){
+            session.setAttribute("blankIngredients", true);
+            response.sendRedirect("/drinks/create");
+            return;
+        } else if(imageUrl.isEmpty()){
+            imageUrl = "/resources/img/logo.png";
+        }
 
         if(catBrandy != null){
             newDrinkCategoryList.add(catBrandy);
@@ -62,24 +77,6 @@ public class CreateDrinkServlet extends HttpServlet {
         }
 
 
-        if(name.isEmpty()){
-            session.setAttribute("blankName", true);
-            response.sendRedirect("/drinks/create");
-            return;
-        } else if(instructions.isEmpty()){
-            session.setAttribute("blankInstructions", true);
-            response.sendRedirect("/drinks/create");
-            return;
-        } else if(ingredients.isEmpty()){
-            session.setAttribute("blankIngredients", true);
-            response.sendRedirect("/drinks/create");
-            return;
-        }
-
-
-        if(imageUrl.isEmpty()){
-            imageUrl = "/resources/img/logo.png";
-        }
         Drink drink = new Drink(
             user.getId(),
             name,
@@ -89,6 +86,7 @@ public class CreateDrinkServlet extends HttpServlet {
         );
         DaoFactory.getDrinksDao().insert(drink);
 
+        // could not get the id from it by drink.getId() so querying the database for it's id after it is created to then give it categories in the database
         long thisDrinkIdJustMade = DaoFactory.getDrinksDao().getDrinkIdByName(drink.getName());
 
         List<Integer> categoryIds = new ArrayList<>();

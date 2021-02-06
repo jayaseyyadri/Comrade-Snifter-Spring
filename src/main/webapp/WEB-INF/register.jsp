@@ -7,6 +7,9 @@
         <jsp:param name="title" value="Register For Our Site!" />
     </jsp:include>
     <style>
+        .errorMessage{
+            color: #dc3444;
+        }
         .footer {
           position: fixed;
           left: 0;
@@ -33,10 +36,16 @@
                 <c:if test="${sessionScope.currentUserExists}">
                     <small class="errorMessage"> * Username Already Exists, Please Try Again</small>
                 </c:if>
+                <c:if test="${sessionScope.missingUsername}">
+                    <small class="errorMessage"> * Username Can not be blank, Please Try Again</small>
+                </c:if>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input id="email" name="email" class="form-control" type="email">
+                <c:if test="${sessionScope.missingEmail}">
+                    <small class="errorMessage"> * Email Can not be blank, Please Try Again</small>
+                </c:if>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>

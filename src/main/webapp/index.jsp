@@ -6,6 +6,9 @@
         <jsp:param name="title" value="Comrade Snifter!" />
     </jsp:include>
     <style>
+        .errorMessage{
+            color: #dc3444;
+        }
         .footer {
           margin: 15px 0 0 0;
           left: 0;

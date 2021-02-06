@@ -1,5 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
+    .errorMessage{
+        color: #dc3444;
+    }
     .profileInfo{
         height: 50%;
         display: flex;

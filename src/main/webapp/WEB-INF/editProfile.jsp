@@ -6,6 +6,9 @@
         <jsp:param name="title" value="Edit your Profile" />
     </jsp:include>
     <style>
+        .errorMessage{
+            color: #dc3444;
+        }
         .footer {
           position: fixed;
           left: 0;
