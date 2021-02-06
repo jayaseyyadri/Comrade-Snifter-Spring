@@ -198,7 +198,7 @@ public class MySQLUsersDao implements Users {
             );
             return user;
         } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving ad.", e);
+            throw new RuntimeException("Error retrieving drinks.", e);
         }
     }
 
