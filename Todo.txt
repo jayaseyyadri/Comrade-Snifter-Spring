@@ -1,5 +1,4 @@
 [ ] Profile page with liked drinks
-[ ] To be able to see Admin status when viewing all users as a different Admin so you do not delete them
 
 Clean up the code
     -You'll notice there is some duplicated code in our ads DAO and our users DAO.
