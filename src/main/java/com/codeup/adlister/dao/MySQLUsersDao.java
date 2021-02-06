@@ -101,7 +101,7 @@ public class MySQLUsersDao implements Users {
     // view all users
     public List<User> viewUsers() {
         PreparedStatement stmt = null;
-        String query = "Select username,id from comrade_snifter_db.users";
+        String query = "Select username, id, is_admin from comrade_snifter_db.users";
         List<User> usersList = new ArrayList<>();
         try {
             stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -112,13 +112,27 @@ public class MySQLUsersDao implements Users {
                         rs.getLong("id"),
                         rs.getString("username")
                 );
-                usersList.add(user);
+                if(!user.getUsername().equals("admin") && rs.getInt("is_admin") < 1) {
+                    usersList.add(user);
+                }
             }
             return usersList;
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving all ads.", e);
         }
+    }
 
+    @Override
+    public void deleteUser(long userId){
+        String query = "delete from users where id = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.setLong(1, userId);
+            statement.execute();
+
+        } catch (SQLException e){
+            throw new RuntimeException("Error deleting user", e);
+        }
     }
 
     @Override

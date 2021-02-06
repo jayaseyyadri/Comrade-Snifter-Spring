@@ -13,6 +13,7 @@ import java.util.*;
 
 @WebServlet(name = "controllers.HelloWorldServlet", urlPatterns = "")
 public class LandingPageServlet extends HttpServlet {
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         List<Drink> allDrinks = DaoFactory.getDrinksDao().all();
         List<Integer> highestVotes = findHighestValues(allDrinks);

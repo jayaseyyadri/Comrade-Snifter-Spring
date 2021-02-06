@@ -41,6 +41,5 @@
     </div>
     <div class="profileInfo">
         <h1>Creator: ${creatorName}</h1>
-        <p>View Profile (?)</p>
     </div>
 </div>

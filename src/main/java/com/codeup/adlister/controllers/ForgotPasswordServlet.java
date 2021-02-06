@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "ForgotPasswordServlet",urlPatterns = "/forgot")
@@ -21,6 +22,9 @@ public class ForgotPasswordServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        session.setAttribute("userNameNotInRecord", false);
+
         String userName = req.getParameter("forgotPassword");
         User user = DaoFactory.getUsersDao().findByUsername(userName);
 
@@ -28,11 +32,11 @@ public class ForgotPasswordServlet extends HttpServlet {
             System.out.println(" Email "+ user.getEmail());
             TLSEmail.sendEmail(user.getEmail(), user.getUsername());
             String passwordGen = Password.getThePassword().get(0);
-            System.out.println("Password I am fetching is " + passwordGen);
             user.setPassword(passwordGen);
             req.getRequestDispatcher("/WEB-INF/emailWasSent.jsp").forward(req, resp);
         }else{
-            resp.sendRedirect("/");
+            session.setAttribute("userNameNotInRecord", true);
+            resp.sendRedirect("/forgot");
         }
     }
 }

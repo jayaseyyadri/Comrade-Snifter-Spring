@@ -17,14 +17,20 @@ public class UsersServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        if(session.getAttribute("isAdmin")!=null){
-            boolean isAdmin = (boolean) session.getAttribute("isAdmin");
-            if(isAdmin) {
-                List<User> users = DaoFactory.getUsersDao().viewUsers();
-                session.setAttribute("allUsers", users);
-                req.getRequestDispatcher("/WEB-INF/viewUsers.jsp").forward(req, resp);
-            }
+        boolean isAdmin = (boolean) session.getAttribute("isAdmin");
+        if(isAdmin) {
+            List<User> users = DaoFactory.getUsersDao().viewUsers();
+            session.setAttribute("allUsers", users);
+            req.getRequestDispatcher("/WEB-INF/viewUsers.jsp").forward(req, resp);
+        } else {
+            resp.sendRedirect("/");
         }
+    }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        long idToDelte = Long.parseLong(req.getParameter("idToDelete"));
+        DaoFactory.getUsersDao().deleteUser(idToDelte);
+        resp.sendRedirect("/users");
     }
 }
