@@ -20,4 +20,5 @@ public interface Drinks {
     void updateThisDrinksVotes(int drinkVotes, long drinkIdToUpdate);
     void giveDrinkACategory(long id, int categoryId);
     void deleteDrinkCategories(int id);
+    void transferOwnershipFromTo(long fromUser, long toUser);
 }

@@ -55,8 +55,14 @@ insert into drinks(user_id, name, instructions, ingredients, image) VALUES (1, '
 select *
 from users;
 
+
+
+#  currently one
 select *
-from drinks;
+from drinks where user_id = 13;
+
+# currently one     after execute of delete logged in as mattB this should be 2 and the above should no longer be a valid user
+select * from drinks where user_id = 12;
 
 
 select *
