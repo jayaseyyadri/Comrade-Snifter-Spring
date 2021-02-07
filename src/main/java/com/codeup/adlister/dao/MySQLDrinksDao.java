@@ -304,4 +304,19 @@ public class MySQLDrinksDao implements Drinks {
         }
     }
 
+    @Override
+    public void transferOwnershipFromTo(long fromUser, long toUser){
+        String query = "UPDATE comrade_snifter_db.drinks SET user_id = ? WHERE user_id = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.setLong(1, toUser);
+            statement.setLong(2, fromUser);
+            statement.executeUpdate();
+
+        } catch (SQLException e){
+            throw new RuntimeException("Error transferring ownership", e);
+        }
+    }
+
+
 }

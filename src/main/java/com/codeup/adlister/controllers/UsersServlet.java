@@ -33,9 +33,10 @@ public class UsersServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         long idToDelete = Long.parseLong(req.getParameter("idToDelete"));
+        User currUser = (User) req.getSession().getAttribute("user");
 
-        // need to delete all categories from each drink the user has created before the user can be deleted
-
+        // need move all drinks from that user to be the current admins' drinks after deletion
+        DaoFactory.getDrinksDao().transferOwnershipFromTo(idToDelete, currUser.getId());
 
         DaoFactory.getUsersDao().deleteUser(idToDelete);
         resp.sendRedirect("/users");
