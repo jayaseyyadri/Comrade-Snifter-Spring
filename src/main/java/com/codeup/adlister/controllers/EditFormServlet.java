@@ -1,5 +1,8 @@
 package com.codeup.adlister.controllers;
 
+import com.codeup.adlister.dao.DaoFactory;
+import com.codeup.adlister.models.Drink;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +21,11 @@ public class EditFormServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
+        Drink currentDrink = DaoFactory.getDrinksDao().getDrink( Long.parseLong(req.getParameter("editThisDrink")));
+
+        session.setAttribute("currentDrinkName", currentDrink.getName());
+        session.setAttribute("currentDrinkInstructions", currentDrink.getInstructions());
+        session.setAttribute("currentDrinkIngredients", currentDrink.getIngredients());
         int editDrinkId = Integer.parseInt(req.getParameter("editThisDrink"));
         session.setAttribute("editDrinkId", editDrinkId);
         res.sendRedirect("/edit");

@@ -30,22 +30,8 @@ public class EditServlet extends HttpServlet {
         session.removeAttribute("blankNewInstructions");
         session.removeAttribute("blankNewIngredients");
 
-        if(newImage.isEmpty()){
+        if (newImage.isEmpty()){
             newImage = "/resources/img/logo.png";
-        }
-
-        if(newName.isEmpty()){
-            session.setAttribute("blankNewName", true);
-            res.sendRedirect("/editForm");
-            return;
-        } else if(newInstructions.isEmpty()){
-            session.setAttribute("blankNewInstructions", true);
-            res.sendRedirect("/editForm");
-            return;
-        } else if(newIngredients.isEmpty()){
-            session.setAttribute("blankNewIngredients", true);
-            res.sendRedirect("/editForm");
-            return;
         }
 
         int editDrinkId = (int) session.getAttribute("editDrinkId");

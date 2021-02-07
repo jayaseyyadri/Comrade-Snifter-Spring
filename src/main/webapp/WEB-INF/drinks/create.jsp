@@ -51,6 +51,9 @@
                     <small class="errorMessage">Ingredients Can Not Be Empty</small>
                 </c:if>
             </div>
+            <c:if test="${sessionScope.blankCat}">
+                <small class="errorMessage">Category Can Not Be Missing</small>
+            </c:if>
                 Drink Category<br>
                 <label>
                     <input type="checkbox" value="Brandy" name="drinkCat"/>

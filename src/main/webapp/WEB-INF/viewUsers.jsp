@@ -16,11 +16,19 @@
 </body>
     <div>
 
+        <div class="card">
+            <div class="card-body d-flex justify-content-around">
+                <h5 class="card-title">Id</h5>
+                <p class="card-text">UserName</p>
+                <p>Admin Status</p>
+            </div>
+        </div>
+
         <c:forEach var="admin" items="${sessionScope.allAdmins}">
 
             <div class="card">
                 <div class="card-body d-flex justify-content-around">
-                    <h5 class="card-title">Id # <c:out value="${admin.id}"/></h5>
+                    <h5 class="card-title"><c:out value="${admin.id}"/></h5>
                     <p class="card-text"><c:out value="${admin.username}"/></p>
                     <p>Admin</p>
                 </div>
@@ -32,7 +40,7 @@
 
             <div class="card">
                 <div class="card-body d-flex justify-content-around">
-                    <h5 class="card-title">Id # <c:out value="${user.id}"/></h5>
+                    <h5 class="card-title"><c:out value="${user.id}"/></h5>
                     <p class="card-text"><c:out value="${user.username}"/></p>
                     <form action="/users" method="POST">
                         <input type="hidden" name="idToDelete" value="${user.id}"/>

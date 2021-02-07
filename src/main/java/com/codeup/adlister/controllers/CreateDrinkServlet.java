@@ -38,6 +38,14 @@ public class CreateDrinkServlet extends HttpServlet {
         String instructions = request.getParameter("instructions");
         String ingredients = request.getParameter("ingredients");
 
+        String[] categories = request.getParameterValues("drinkCat");
+
+        if (categories == null) {
+            session.setAttribute("blankCat", true);
+            response.sendRedirect("/drinks/create");
+            return;
+        }
+
         List<String> newDrinkCategoryList = new ArrayList<>(Arrays.asList(request.getParameterValues("drinkCat")));
 
         if(name.isEmpty()){
@@ -77,6 +85,6 @@ public class CreateDrinkServlet extends HttpServlet {
         for(int id : categoryIds){
             DaoFactory.getDrinksDao().giveDrinkACategory(thisDrinkIdJustMade, id);
         }
-        response.sendRedirect("/drinks");
+        response.sendRedirect("/profile");
     }
 }
