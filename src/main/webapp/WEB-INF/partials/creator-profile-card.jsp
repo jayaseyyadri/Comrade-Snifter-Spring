@@ -3,7 +3,7 @@
 
 
 <div class="col col-md-6 col-lg-4 d-flex" style="display: flex; justify-content: center">
-    <div class="card text-white bg-secondary border-warning mt-4" style="width: 18rem;">
+    <div class="card text-white bg-secondary border-warning mt-4" style="width: 18rem; height: fit-content">
         <div class="card-header">
             <h5 class="card-title text-center">
                 Creator: ${creatorName}
