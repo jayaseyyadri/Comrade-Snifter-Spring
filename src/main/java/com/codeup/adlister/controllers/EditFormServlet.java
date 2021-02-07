@@ -26,6 +26,7 @@ public class EditFormServlet extends HttpServlet {
         session.setAttribute("currentDrinkName", currentDrink.getName());
         session.setAttribute("currentDrinkInstructions", currentDrink.getInstructions());
         session.setAttribute("currentDrinkIngredients", currentDrink.getIngredients());
+        session.setAttribute("currentDrinkImage", currentDrink.getImage());
         int editDrinkId = Integer.parseInt(req.getParameter("editThisDrink"));
         session.setAttribute("editDrinkId", editDrinkId);
         res.sendRedirect("/edit");
