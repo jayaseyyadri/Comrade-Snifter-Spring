@@ -3,6 +3,7 @@ package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Drink;
 import com.codeup.adlister.models.User;
+import com.codeup.adlister.util.Sorter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,7 +22,7 @@ public class ViewProfileServlet extends HttpServlet {
         }
         User user = (User) request.getSession().getAttribute("user");
         long userId = user.getId();
-        List<Drink> drinks = DaoFactory.getDrinksDao().getUsersDrinks(userId);
+        List<Drink> drinks = Sorter.sortDrinksByName(DaoFactory.getDrinksDao().getUsersDrinks(userId));
         request.setAttribute("drinks", drinks);
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
     }

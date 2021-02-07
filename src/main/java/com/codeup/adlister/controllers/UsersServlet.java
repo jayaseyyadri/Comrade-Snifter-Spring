@@ -33,6 +33,10 @@ public class UsersServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         long idToDelete = Long.parseLong(req.getParameter("idToDelete"));
+
+        // need to delete all categories from each drink the user has created before the user can be deleted
+
+
         DaoFactory.getUsersDao().deleteUser(idToDelete);
         resp.sendRedirect("/users");
     }
