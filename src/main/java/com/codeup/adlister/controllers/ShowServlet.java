@@ -23,8 +23,7 @@ public class ShowServlet extends HttpServlet {
         long drinkId = Long.parseLong(request.getParameter("drinkId"));
 
         request.getSession().setAttribute("previousPage", URIPath.findServletPath(request.getParameter("currentPage")));
-        System.out.println(request.getParameter("currentPage"));
-
+        
         request.getSession().setAttribute("viewingDrink", drinkId);
 
         Drink drink = DaoFactory.getDrinksDao().getDrink(drinkId);

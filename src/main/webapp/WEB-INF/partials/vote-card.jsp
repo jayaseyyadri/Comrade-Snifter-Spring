@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div class="container-fluid">
-    <div class="row">
+
+
         <c:choose>
             <%--    admin--%>
             <c:when test="${sessionScope.isAdmin && sessionScope.isLoggedIn}">
@@ -9,14 +9,7 @@
                         <div class="card text-white bg-secondary border-warning mt-4" style="width: 18rem;">
                             <div class="card-header">
                                 <h5 class="card-title text-center">
-                                    <c:choose>
-                                        <c:when test="${drink.name.length() > 23}">
-                                            <c:out value="${drink.name.substring(0,23)}"/>
-                                        </c:when>
-                                        <c:otherwise>
                                             <c:out value="${drink.name}"/>
-                                        </c:otherwise>
-                                    </c:choose>
                                 </h5>
                             </div>
                             <img class="card-img-top" src="<c:out value="${drink.image}"/>" alt="drink">
@@ -61,18 +54,11 @@
             <%--    user--%>
             <c:when test="${sessionScope.isLoggedIn}">
                 <c:forEach var="drink" items="${drinks}">
-                    <div class="col d-flex align-items-stretch">
+                    <div class="col d-flex">
                         <div class="card text-white bg-secondary border-warning mt-4" style="width: 18rem;">
                             <div class="card-header">
                                 <h5 class="card-title text-center">
-                                    <c:choose>
-                                        <c:when test="${drink.name.length() > 23}">
-                                            <c:out value="${drink.name.substring(0,23)}"/>
-                                        </c:when>
-                                        <c:otherwise>
                                             <c:out value="${drink.name}"/>
-                                        </c:otherwise>
-                                    </c:choose>
                                 </h5>
                             </div>
                             <img class="card-img-top" src="<c:out value="${drink.image}"/>" alt="drink">
@@ -121,5 +107,4 @@
                 </c:forEach>
             </c:when>
         </c:choose>
-    </div>
-</div>
+
