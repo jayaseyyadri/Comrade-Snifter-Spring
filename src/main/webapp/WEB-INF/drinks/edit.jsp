@@ -7,9 +7,6 @@
         <jsp:param name="title" value="Edit Drink" />
     </jsp:include>
     <style>
-        .errorMessage{
-            color: #dc3444;
-        }
         .footer {
             position: fixed;
             left: 0;
@@ -32,24 +29,15 @@
     <form action="/edit" method="post">
         <div class="form-group">
             <label for="newName">Drink Name</label>
-            <input id="newName" name="newName" class="form-control" type="text">
-            <c:if test="${sessionScope.blankNewName}">
-                <small class="errorMessage">Name Can Not Be Empty</small>
-            </c:if>
+            <input id="newName" name="newName" class="form-control" type="text" value="${sessionScope.currentDrinkName}"/>
         </div>
         <div class="form-group">
             <label for="newInstructions">Instructions</label>
-            <input id="newInstructions" name="newInstructions" class="form-control"/>
-            <c:if test="${sessionScope.blankNewInstructions}">
-                <small class="errorMessage">Instructions Can Not Be Empty</small>
-            </c:if>
+            <input id="newInstructions" name="newInstructions" class="form-control" value="${sessionScope.currentDrinkInstructions}"/>
         </div>
         <div class="form-group">
             <label for="newIngredients">Ingredients</label>
-            <input id="newIngredients" name="newIngredients" class="form-control"/>
-            <c:if test="${sessionScope.blankNewIngredients}">
-                <small class="errorMessage">Ingredients Can Not Be Empty</small>
-            </c:if>
+            <input id="newIngredients" name="newIngredients" class="form-control" value="${sessionScope.currentDrinkIngredients}"/>
         </div>
         <div class="form-group">
             <label for="newImage">Image URL</label>
