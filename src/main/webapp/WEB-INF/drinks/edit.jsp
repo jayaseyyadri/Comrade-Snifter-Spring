@@ -41,7 +41,7 @@
         </div>
         <div class="form-group">
             <label for="newImage">Image URL</label>
-            <input id="newImage" name="newImage" class="form-control" placeholder="Optional"/>
+            <input id="newImage" name="newImage" class="form-control" placeholder="Optional" value="${sessionScope.currentDrinkImage}"/>
         </div>
         <input type="submit" class="btn btn-block btn-danger">
     </form>
