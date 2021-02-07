@@ -3,6 +3,7 @@ package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Drink;
 import com.codeup.adlister.models.User;
+import com.codeup.adlister.util.Method;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -67,11 +68,12 @@ public class CreateDrinkServlet extends HttpServlet {
 
         Drink drink = new Drink(
             user.getId(),
-            name,
+            Method.capitalFirst(name),
             instructions,
             ingredients,
             imageUrl
         );
+
         DaoFactory.getDrinksDao().insert(drink);
 
         // could not get the id from it by drink.getId() so querying the database for it's id after it is created to then give it categories in the database

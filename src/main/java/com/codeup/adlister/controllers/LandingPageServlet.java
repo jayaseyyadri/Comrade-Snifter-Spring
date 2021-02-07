@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Drink;
+import com.codeup.adlister.util.Sorter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,8 +34,8 @@ public class LandingPageServlet extends HttpServlet {
                 }
             }
         }
-
-        request.getSession().setAttribute("drinks", top3DrinkList);
+        // left to right on landing page, highest votes to lowest votes
+        request.getSession().setAttribute("drinks", Sorter.sortDrinkByVotes(top3DrinkList));
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 

@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Drink;
+import com.codeup.adlister.util.Sorter;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
@@ -30,7 +31,7 @@ public class MySQLDrinksDao implements Drinks {
         try {
             stmt = connection.prepareStatement("SELECT * FROM comrade_snifter_db.drinks");
             ResultSet rs = stmt.executeQuery();
-            return createDrinksFromResults(rs);
+            return Sorter.sortDrinksByName(createDrinksFromResults(rs));
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving all drinks.", e);
         }

@@ -38,7 +38,7 @@ create table if not exists category(
 );
 
 insert into users(username, email, password, is_admin) VALUES ('admin', 'admin@ad.min', '$2a$12$o5y9Peq1GDMgGQiR5gyS6OtROQO4SKe0uWrSg8rq0wSNXoLEEpn5e', 1);
-insert into users(username, email, password, is_admin) VALUES ('mattdb', 'admin1@comrade.snifter', '$2a$12$eYx9QqA/avzbiI3hpklPq.z.rY/Xym7unIoD7VIdyHUZ7pB.9Ylk.', 1);
+insert into users(username, email, password, is_admin, image) VALUES ('mattB', 'mattB@comrade.snifter', '$2a$12$SCUvA7G9YVoVjA7lpATkbeTP8Emhx.2ZTRTDfPPrTi7GKj2wkwJCC', 1, 'http://localhost:8080/resources/img/matt.jpg');
 insert into users(username, email, password, is_admin, image) VALUES ('willCS', 'willCS@comrade.snifter', '$2a$12$o5y9Peq1GDMgGQiR5gyS6OtROQO4SKe0uWrSg8rq0wSNXoLEEpn5e', 1, 'http://localhost:8080/resources/img/will.jpeg');
 
 insert into drinks(user_id, name, instructions, ingredients, image, votes) VALUES (1, 'Bermuda Highball', 'Pour brandy, gin, and dry vermouth into a highball glass over ice cubes. Fill with carbonated water and stir. Add the twist of lemon and serve. (Ginger ale may be substituted for carbonated water, if preferred.', 'Brandy 3/4 oz, Gin 3/4 oz, Dry Vermouth 3/4 oz, Carbonated water, Lemon peel', 'https://www.thecocktaildb.com/images/media/drink/qrvtww1441206528.jpg', 1);
@@ -57,6 +57,7 @@ from users;
 
 select *
 from drinks;
+
 
 select *
 from drink_Category;
@@ -95,7 +96,3 @@ select * from drinks where id in (
 select id from drink_Category where name = 'Brandy';
 
 select * from drink_Category;
-
-select * from category where alcohol_id = 32;
-delete from category where alcohol_id = 32;
-delete from drinks where id = 32;

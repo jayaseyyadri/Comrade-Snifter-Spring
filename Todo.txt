@@ -3,3 +3,5 @@
 Clean up the code
     -You'll notice there is some duplicated code in our ads DAO and our users DAO.
     -How could you create an abstraction for this?
+
+[ ] Sort the drinks on all pages, currently only home page when not logged int
