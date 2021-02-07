@@ -21,13 +21,13 @@
 </jsp:include>
 
 
-    <div class="container-fluid d-flex" style="margin: 0 !important; justify-content: space-around">
+    <div class="container-fluid" style="margin: 0 !important; justify-content: space-around">
         <div class="row">
-            <div class="col col-md-4 d-flex">
+            <div class="col-6 bg-danger d-flex border-warning my-auto">
                 <jsp:include page="/WEB-INF/partials/profile-card.jsp" />
             </div>
 
-            <div class="col col-md-8 flex-column justify-content-center align-items-center d-flex bg-danger border-warning">
+            <div class="col-6 flex-column justify-content-center align-items-center d-flex bg-danger border-warning">
                 <a class="btn btn-warning btn-block" href="/drinks/create"><h3 class="text-center">Add Drink</h3></a>
                 <a class="btn btn-warning btn-block" href="/editProfile"><h3 class="text-center">Edit Profile</h3></a>
                 <c:if test="${sessionScope.isAdmin}">

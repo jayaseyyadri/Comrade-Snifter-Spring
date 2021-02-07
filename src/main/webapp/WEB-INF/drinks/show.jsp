@@ -46,10 +46,13 @@
     <jsp:param name="profileTwo" value="Profile"/>
 </jsp:include>
 
-<jsp:include page="/WEB-INF/partials/creator-profile-card.jsp" />
 
-<div class="container">
-    <jsp:include page="/WEB-INF/partials/vote-card.jsp"/>
+
+<div class="container-fluid">
+    <div class="row">
+        <jsp:include page="/WEB-INF/partials/creator-profile-card.jsp" />
+        <jsp:include page="/WEB-INF/partials/vote-card.jsp"/>
+    </div>
 </div>
 
 <jsp:include page="../partials/bootstrap.jsp"/>
