@@ -12,16 +12,16 @@ import java.io.IOException;
 @WebServlet("/delete")
 public class DeleteDrinkServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        int deleteId = Integer.parseInt(req.getParameter("deleteThisDrink"));
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int deleteId = Integer.parseInt(request.getParameter("deleteThisDrink"));
         DaoFactory.getDrinksDao().deleteDrinkCategories(deleteId);
         DaoFactory.getDrinksDao().delete(deleteId);
-        res.sendRedirect("/drinks");
+        response.sendRedirect("/drinks");
     }
 
 }

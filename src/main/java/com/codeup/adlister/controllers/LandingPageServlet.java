@@ -21,7 +21,7 @@ public class LandingPageServlet extends HttpServlet {
 
         List<Drink> top3DrinkList = new ArrayList<>();
         int count = 0;
-        while(top3DrinkList.size() < 3) {
+        while (top3DrinkList.size() < 3) {
             for (int i = 0; i < allDrinks.size(); i++) {
                 if (count > 2) break;
 
@@ -40,42 +40,40 @@ public class LandingPageServlet extends HttpServlet {
     }
 
 
-
-
-    private static List<Integer> findHighestValues (List<Drink> list){
+    private static List<Integer> findHighestValues(List<Drink> list) {
         int a = list.get(0).getVotes();
         int b = list.get(1).getVotes();
         int c = list.get(2).getVotes();
         int[] startingVotes = {a, b, c};
         List<Integer> highestVoteList = new ArrayList<>();
 
-        for(int i = 3; i < list.size(); i++){
+        for (int i = 3; i < list.size(); i++) {
             int potential = list.get(i).getVotes();
             int currMin = minOf(startingVotes);
-            if(potential > currMin){
+            if (potential > currMin) {
                 swap(potential, currMin, startingVotes);
             }
         }
 
-        for(int x :startingVotes){
+        for (int x : startingVotes) {
             highestVoteList.add(x);
         }
         return highestVoteList;
     }
 
-    private static int minOf(int[] list){
+    private static int minOf(int[] list) {
         int currentMin = Integer.MAX_VALUE;
-        for(int newMin : list){
-            if(newMin < currentMin){
+        for (int newMin : list) {
+            if (newMin < currentMin) {
                 currentMin = newMin;
             }
         }
         return currentMin;
     }
 
-    private static void swap(int newNum, int oldNum, int[] list){
-        for(int i = 0; i < list.length; i++){
-            if(list[i] == oldNum){
+    private static void swap(int newNum, int oldNum, int[] list) {
+        for (int i = 0; i < list.length; i++) {
+            if (list[i] == oldNum) {
                 list[i] = newNum;
                 break;
             }

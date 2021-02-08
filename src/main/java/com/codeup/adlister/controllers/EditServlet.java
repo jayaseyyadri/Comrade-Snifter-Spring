@@ -15,22 +15,22 @@ import java.io.IOException;
 @WebServlet("/edit")
 public class EditServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/drinks/edit.jsp").forward(req, res);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/WEB-INF/drinks/edit.jsp").forward(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        String newName = req.getParameter("newName");
-        String newInstructions = req.getParameter("newInstructions");
-        String newIngredients = req.getParameter("newIngredients");
-        String newImage = req.getParameter("newImage");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String newName = request.getParameter("newName");
+        String newInstructions = request.getParameter("newInstructions");
+        String newIngredients = request.getParameter("newIngredients");
+        String newImage = request.getParameter("newImage");
         session.removeAttribute("blankNewName");
         session.removeAttribute("blankNewInstructions");
         session.removeAttribute("blankNewIngredients");
 
-        if (newImage.isEmpty()){
+        if (newImage.isEmpty()) {
             newImage = "/resources/img/logo.png";
         }
 
@@ -46,7 +46,7 @@ public class EditServlet extends HttpServlet {
 
         DaoFactory.getDrinksDao().edit(editDrinkId, newDrinkInfo);
         session.removeAttribute("editDrinkId");
-        res.sendRedirect("/drinks");
+        response.sendRedirect("/drinks");
     }
 
 }

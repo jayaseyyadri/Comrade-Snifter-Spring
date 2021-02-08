@@ -15,9 +15,9 @@ import java.io.IOException;
 public class VoteServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        HttpSession session = req.getSession();
+        HttpSession session = request.getSession();
 
         long currentViewingDrinkIdToVoteOn =  (long) session.getAttribute("viewingDrink");
 
@@ -25,7 +25,7 @@ public class VoteServlet extends HttpServlet {
 
         System.out.printf("Current Votes for drink %s : %d%n", thisDrink.getName(), thisDrink.getVotes());
 
-        if(Integer.parseInt(req.getParameter("vote")) > 0) {
+        if(Integer.parseInt(request.getParameter("vote")) > 0) {
             thisDrink.setVotes(thisDrink.getVotes() + 1);
         } else {
             thisDrink.setVotes(thisDrink.getVotes() - 1);
@@ -37,7 +37,7 @@ public class VoteServlet extends HttpServlet {
 
 
         session.removeAttribute("viewingDrink");
-        res.sendRedirect("/drinks");
+        response.sendRedirect("/drinks");
     }
 
 }

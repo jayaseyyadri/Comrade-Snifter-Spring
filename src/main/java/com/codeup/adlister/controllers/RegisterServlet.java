@@ -37,7 +37,6 @@ public class RegisterServlet extends HttpServlet {
         session.setAttribute("missingEmail", false);
 
 
-
         if (username.isEmpty()) {
             session.setAttribute("missingUsername", true);
             response.sendRedirect("/register");
@@ -46,18 +45,18 @@ public class RegisterServlet extends HttpServlet {
             session.setAttribute("missingEmail", true);
             response.sendRedirect("/register");
             return;
-        } else if ((!password.equals(passwordConfirmation))){
+        } else if ((!password.equals(passwordConfirmation))) {
             session.setAttribute("passwordsDoNotMatch", true);
             response.sendRedirect("/register");
             return;
         }
 
         Set<String> allCurrentUsernames = DaoFactory.getUsersDao().currentUsernames();
-        if(Validation.userNameExists(allCurrentUsernames, username)){
+        if (Validation.userNameExists(allCurrentUsernames, username)) {
             session.setAttribute("currentUserExists", true);
             response.sendRedirect("/register");
             return;
-        } else if (!Validation.goodQualityPassword(password)){
+        } else if (!Validation.goodQualityPassword(password)) {
             session.setAttribute("poorQualityPassword", true);
             response.sendRedirect("/register");
             return;
