@@ -21,18 +21,18 @@ public class UserTest {
         testUser.notHashedTest("password123");
         testUser.setUsername("matt");
 
-        testUser2.notHashedTest("helloWorld123!");
-        testUser2.setUsername("Matt");
+//        testUser2.notHashedTest("helloWorld123!");
+//        testUser2.setUsername("Matt");
 
-        testUser3.setUsername("matthew");
-        testUser3.notHashedTest("short");
-
+//        testUser3.setUsername("matthew");
+//        testUser3.notHashedTest("short");
+//
         users.add(testUser.getUsername());
-        users.add(testUser2.getUsername());
-        users.add(testUser3.getUsername());
-
-        testUser4.setUsername("tester");
-        testUser4.notHashedTest("Jupiter2021!");
+//        users.add(testUser2.getUsername());
+//        users.add(testUser3.getUsername());
+//
+//        testUser4.setUsername("tester");
+//        testUser4.notHashedTest("Jupiter2021!");
 
 
     }
@@ -50,13 +50,15 @@ public class UserTest {
 
     @Test
     public void userNameAlreadyExists(){
-        assertTrue(Validation.userNameExists(users, "matt"));
-        assertTrue(Validation.userNameExists(users, "Matt"));
-        assertTrue(Validation.userNameExists(users, "matthew"));
+//        assertTrue(Validation.userNameExists(users, "matt"));
 
-        assertFalse(Validation.userNameExists(users, "MATT"));
-        assertFalse(Validation.userNameExists(users, "matt123"));
-        assertFalse(Validation.userNameExists(users, "admin"));
+        assertTrue(Validation.userNameExists(users, "Matt"));
+        assertTrue(Validation.userNameExists(users, "MATT"));
+
+//        assertTrue(Validation.userNameExists(users, "matthew"));
+
+//        assertFalse(Validation.userNameExists(users, "matt123"));
+//        assertFalse(Validation.userNameExists(users, "admin"));
 
     }
 }

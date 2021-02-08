@@ -83,7 +83,7 @@ public class MySQLUsersDao implements Users {
         );
     }
 
-    /**-----------------CHECK IF USER IS AN AMDIN-----------------------*/
+    /**-----------------CHECK IF USER IS AN ADMIN-----------------------*/
     @Override
     public boolean isAdmin(long userId) {
         String query = "SELECT is_admin FROM comrade_snifter_db.users where id = ?";
@@ -127,7 +127,7 @@ public class MySQLUsersDao implements Users {
         }
     }
 
-    /**-----------------VIEW OTHER ADMINS--------------------------------*/
+    /**--------------------- VIEW OTHER ADMINS ------------------------------*/
     @Override
     public List<User> viewAdmins(String currentUsername) {
         String query = "Select username, id, is_admin from comrade_snifter_db.users";

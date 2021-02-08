@@ -7,6 +7,7 @@
             <label class="form-label">Search by Category</label>
                 <select class="selectCategory form-select form-control" name="selectValue">
                     <option disabled value="" selected>--Please choose an option--</option>
+                    <option value="byVotes">By Rating</option>
                     <option value="Brandy">Brandy</option>
                     <option value="Bourbon">Bourbon</option>
                     <option value="Whiskey">Whiskey</option>

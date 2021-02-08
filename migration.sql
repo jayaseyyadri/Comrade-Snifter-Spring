@@ -53,6 +53,7 @@ insert into drinks(user_id, name, instructions, ingredients, image) VALUES (1, '
 insert into drinks(user_id, name, instructions, ingredients, image, votes) VALUES (1, 'Porto flip', 'Shake ingredients together in a mixer with ice. Strain into glass, garnish and serve.', 'Brandy 3 parts, Port 9 parts, Egg Yolk 2 parts', 'https://www.thecocktaildb.com/images/media/drink/64x5j41504351518.jpg', 8);
 insert into drinks(user_id, name, instructions, ingredients, image) VALUES (1, 'Stinger', 'Pour in a mixing glass with ice, stir and strain into a cocktail glass. May also be served on rocks in a rocks glass.', 'Brandy 1 1/2 oz, White Creme de Menthe 1/2 oz', 'https://www.thecocktaildb.com/images/media/drink/2ahv791504352433.jpg');
 insert into drinks(user_id, name, instructions, ingredients, image) VALUES (1, 'Kioki Coffee', 'Stir. Add whipped cream to the top.', 'Kahlua 1 oz, Brandy 1/2 oz, Coffee', 'https://www.thecocktaildb.com/images/media/drink/uppqty1441247374.jpg');
+insert into drinks(user_id, name, instructions, ingredients, image) VALUES (3, 'Smoky Old Fashioned', 'Put the sugar, bitters and orange juice in a tumbler Old Fashioned glass and mix muddle well. Add the ice cube to the glass and pour in the whisky.  Stir a few times and garnish with the orange peel', '1 tsp demerara sugar 3-5 drops tobacco bitters squeeze fresh orange juice (about 1 tbsp) 1 large ice cube (or 2-3 small) 2 oz whiskey of choice (65 ml) orange peel for garnish', 'https://i2.wp.com/slowthecookdown.com/wp-content/uploads/2018/09/smokey-old-fashioned-sq.jpg?resize=768%2C768&ssl=1');
 
 select *
 from users;
@@ -61,7 +62,7 @@ from users;
 
 #  currently one
 select *
-from drinks where user_id = 13;
+from drinks;
 
 # currently one     after execute of delete logged in as mattB this should be 2 and the above should no longer be a valid user
 select * from drinks where user_id = 12;

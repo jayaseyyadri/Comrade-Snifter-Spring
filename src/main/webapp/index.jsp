@@ -23,11 +23,20 @@
           align-items: center;
         }
         .jumbotron {
-            background: linear-gradient(to top, rgba(0,0,0,0.6) 100%,rgba(0,0,0,0.6) 100%), url("${pageContext.request.contextPath}/resources/img/fizzy.jpeg");
+            background: linear-gradient(to top, rgba(0,0,0,0.5) 100%,rgba(0,0,0,0.5) 100%), url("${pageContext.request.contextPath}/resources/img/fizzy2.jpg");
             background-repeat: no-repeat;
             background-size: 100%;
             height: 30vh;
             color: white;
+        }
+        #topVoteContainer:nth-child(1){
+            border: 10px solid #e7ac18;
+        }
+        #topVoteContainer:nth-child(2){
+            border: 10px solid #999898;
+        }
+        #topVoteContainer:nth-child(3){
+            border: 10px solid #c8740c;
         }
         body {
             background: #cccecf;

@@ -40,6 +40,7 @@ public class EditProfileServlet extends HttpServlet {
         if (editUserName.isEmpty()) {
             editUserName = currentUser.getUsername();
         } else if (Validation.userNameExists(DaoFactory.getUsersDao().currentUsernames(), editUserName)) {
+
             session.setAttribute("UsernameExists", true);
             response.sendRedirect(("/editProfile"));
             return;
