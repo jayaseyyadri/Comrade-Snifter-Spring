@@ -26,7 +26,7 @@ public class MySQLUsersDao implements Users {
         }
     }
 
-
+/**----------------------FIND BY USERNAME-----------------------------*/
     @Override
     public User findByUsername(String username) {
         String query = "SELECT * FROM comrade_snifter_db.users WHERE username = ? LIMIT 1";
@@ -39,6 +39,7 @@ public class MySQLUsersDao implements Users {
         }
     }
 
+/**----------------------CREATE A NEW USER----------------------------*/
     @Override
     public Long insert(User user) {
         String query = "INSERT INTO comrade_snifter_db.users(username, email, password, image) VALUES (?, ?, ?, ?)";
@@ -57,6 +58,7 @@ public class MySQLUsersDao implements Users {
         }
     }
 
+    /**--------------------HELPER FUNCTION --------------------------*/
     private User extractUser(ResultSet rs) throws SQLException {
         if (!rs.next()) {
             return null;
@@ -70,6 +72,7 @@ public class MySQLUsersDao implements Users {
         );
     }
 
+    /**------------------VIEW CREATOR OF A DRINK----------------------*/
     private User extractUserPublicInfo(ResultSet rs) throws SQLException {
         if (!rs.next()) {
             return null;
@@ -80,6 +83,7 @@ public class MySQLUsersDao implements Users {
         );
     }
 
+    /**-----------------CHECK IF USER IS AN AMDIN-----------------------*/
     @Override
     public boolean isAdmin(long userId) {
         String query = "SELECT is_admin FROM comrade_snifter_db.users where id = ?";
@@ -98,7 +102,7 @@ public class MySQLUsersDao implements Users {
         return thisId == 1;
     }
 
-
+    /**--------------------- VIEW USERS ------------------------------*/
     @Override
     public List<User> viewUsers() {
         PreparedStatement stmt = null;
@@ -123,6 +127,7 @@ public class MySQLUsersDao implements Users {
         }
     }
 
+    /***/
     @Override
     public List<User> viewAdmins(String currentUsername) {
         String query = "Select username, id, is_admin from comrade_snifter_db.users";
@@ -146,6 +151,7 @@ public class MySQLUsersDao implements Users {
         }
     }
 
+    /**--------------------DELETE USER--------------------------------*/
     @Override
     public void deleteUser(long userId){
         String query = "delete from users where id = ?";
@@ -159,6 +165,7 @@ public class MySQLUsersDao implements Users {
         }
     }
 
+    /**-----------------------CURRENT USER--------------------------- */
     @Override
     public Set<String> currentUsernames(){
         Set<String> allCurrentUserNames = new HashSet<>();
@@ -182,6 +189,7 @@ public class MySQLUsersDao implements Users {
         return allCurrentUserNames;
     }
 
+    /**------------------FIND CREATOR OF DRINK-----------------------*/
     @Override
     public User getDrinkCreator(long drinkId){
         Drink thisDrink = DaoFactory.getDrinksDao().getDrink(drinkId);
@@ -201,6 +209,7 @@ public class MySQLUsersDao implements Users {
 
     }
 
+    /**------------------UPDATE USER PROFILE------------------------*/
     @Override
     public void updateUserInformation(User user)  {
         //update info based on current user's id
@@ -219,6 +228,7 @@ public class MySQLUsersDao implements Users {
         }
     }
 
+    /**------------------UPDATE USER PASSWORD------------------------*/
     @Override
     public void updateUserPassword(String userName, String newPassword){
         String query = "Update comrade_snifter_db.users set password = ? where username = ?";
