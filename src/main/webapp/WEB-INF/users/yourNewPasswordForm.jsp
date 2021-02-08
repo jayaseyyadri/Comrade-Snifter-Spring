@@ -6,21 +6,6 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Your New Password" />
     </jsp:include>
-    <style>
-        .errorMessage{
-            color: #dc3444;
-        }
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            height: 20%;
-            width: 100%;
-            background-color: #343a40;
-            color: white;
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
 

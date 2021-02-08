@@ -6,12 +6,7 @@
         <jsp:param name="title" value="Your Profile" />
     </jsp:include>
     <style>
-        .errorMessage{
-            color: #dc3444;
-        }
-        body {
-            background: #cccecf;
-        }
+       <%@include file="../resources/css/footer.css"%>
     </style>
 </head>
 <body>
@@ -40,6 +35,12 @@
 
     <jsp:include page="../partials/drink-cards.jsp"/>
 
+<<<<<<< HEAD:src/main/webapp/WEB-INF/profile.jsp
+<div class="footer"></div>
+
+    <jsp:include page="./partials/bootstrap.jsp"/>
+=======
 <jsp:include page="../partials/bootstrap.jsp"/>
+>>>>>>> e61ed495f5429456460eda07759783568021442a:src/main/webapp/WEB-INF/users/profile.jsp
 </body>
 </html>

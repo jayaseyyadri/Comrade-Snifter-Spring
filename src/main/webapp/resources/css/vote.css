@@ -1,0 +1,25 @@
+.voteSection{
+    display: flex;
+    justify-content: space-around;
+    height: 30px;
+}
+.upVote{
+    background-color: #0707c6;
+    color: aliceblue;
+}
+.downVote{
+    background-color: #dc3444;
+}
+.vote{
+    width: 50%;
+    height: 100%;
+    text-align: center;
+}
+.voteForm{
+    margin: 0;
+    height: 100%;
+}
+.thumbButton{
+    width: 100%;
+    height: 100%;
+}

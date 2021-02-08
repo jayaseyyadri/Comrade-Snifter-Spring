@@ -6,50 +6,7 @@
         <jsp:param name="title" value="Comrade Snifter!" />
     </jsp:include>
     <style>
-        .errorMessage{
-            color: #dc3444;
-        }
-        .footer {
-          margin: 15px 0 0 0;
-          left: 0;
-          bottom: 0;
-          height: 40%;
-          width: 100%;
-          background-color: #343a40;
-          color: white;
-          text-align: center;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        .jumbotron {
-            background: linear-gradient(to top, rgba(0,0,0,0.5) 100%,rgba(0,0,0,0.5) 100%), url("${pageContext.request.contextPath}/resources/img/fizzy2.jpg");
-            background-repeat: no-repeat;
-            background-size: 100%;
-            height: 30vh;
-            color: white;
-        }
-        #topVoteContainer:nth-child(1){
-            border: 10px solid #e7ac18;
-        }
-        #topVoteContainer:nth-child(2){
-            border: 10px solid #999898;
-        }
-        #topVoteContainer:nth-child(3){
-            border: 10px solid #c8740c;
-        }
-        body {
-            background: #cccecf;
-        }
-        body::-webkit-scrollbar-thumb{
-            background: #141719;
-        }
-        body::-webkit-scrollbar-track{
-            background: #343a40;
-        }
-        body::-webkit-scrollbar{
-            width: .15rem;
-        }
+        <%@include file="resources/css/index.css"%>
     </style>
 </head>
 <body>
@@ -76,7 +33,7 @@
         <jsp:include page="/WEB-INF/partials/top3.jsp" />
     </div>
 
-    <div class="footer">
+    <div class="pageInfo">
         <div class="container-fluid" style="display: flex; justify-content: space-around">
             <div>
                 <p>Learn how to mix drinks like a pro!</p>
