@@ -10,4 +10,10 @@
     body::-webkit-scrollbar{
         width: .3rem;
     }
+    .errorMessage{
+            color: #dc3444;
+        }
+    body {
+            background: #cccecf;
+        }
 </style>
