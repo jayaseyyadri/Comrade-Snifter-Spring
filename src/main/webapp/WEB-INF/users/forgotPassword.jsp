@@ -30,7 +30,9 @@
 
 
     <div class="footer"></div>
-
+<script>
+<%@include file="/resources/js/styling.js"%>
+</script>
 <jsp:include page="../partials/bootstrap.jsp"/>
 </body>
 </html>
