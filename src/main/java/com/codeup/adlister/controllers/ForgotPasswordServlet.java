@@ -18,7 +18,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/forgotPassword.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/users/forgotPassword.jsp").forward(request, response);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ForgotPasswordServlet extends HttpServlet {
             String passwordGen = Password.getThePassword().get(0);
             user.setPassword(passwordGen);
             DaoFactory.getUsersDao().updateUserPassword(userName, Password.hash(passwordGen));
-            request.getRequestDispatcher("/WEB-INF/emailWasSent.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/users/emailWasSent.jsp").forward(request, response);
         } else {
             session.setAttribute("userNameNotInRecord", true);
             response.sendRedirect("/forgot");

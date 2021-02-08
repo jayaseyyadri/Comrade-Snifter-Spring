@@ -33,10 +33,14 @@
 
     </div>
 
-    <jsp:include page="partials/drink-cards.jsp"/>
+    <jsp:include page="../partials/drink-cards.jsp"/>
 
+<<<<<<< HEAD:src/main/webapp/WEB-INF/profile.jsp
 <div class="footer"></div>
 
     <jsp:include page="./partials/bootstrap.jsp"/>
+=======
+<jsp:include page="../partials/bootstrap.jsp"/>
+>>>>>>> e61ed495f5429456460eda07759783568021442a:src/main/webapp/WEB-INF/users/profile.jsp
 </body>
 </html>
