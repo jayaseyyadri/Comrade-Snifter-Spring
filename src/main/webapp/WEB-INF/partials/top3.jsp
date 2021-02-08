@@ -5,8 +5,8 @@
 <%--    admin--%>
             <c:when test="${sessionScope.isAdmin && sessionScope.isLoggedIn}">
                 <c:forEach var="drink" items="${drinks}">
-                    <div class="col-4 d-flex align-items-stretch"  id="topVoteContainer" style="display: flex; justify-content: center">
-                        <div class="card text-white bg-secondary border-warning mt-4 mb-4" style="width: 18rem;">
+                    <div class="col-4 d-flex align-items-stretch frame"  id="topVoteContainer" style="display: flex; justify-content: center">
+                        <div class="card text-white bg-secondary mt-4 mb-4" style="width: 18rem;">
                             <div class="card-header">
                                 <h5 class="card-title text-center">
                                     <c:choose>
@@ -19,7 +19,7 @@
                                     </c:choose>
                                 </h5>
                             </div>
-                            <img class="card-img-top" src="<c:out value="${drink.image}"/>" alt="drink">
+                            <img class=" topImage card-img-top" src="<c:out value="${drink.image}"/>" alt="drink">
                             <div class="card-body">
                                 <small><strong>Ingredients</strong></small>
                                 <p class="card-text"><c:out value="${drink.ingredients}"/></p>
@@ -51,8 +51,8 @@
 <%--    user--%>
             <c:when test="${sessionScope.isLoggedIn}">
                 <c:forEach var="drink" items="${drinks}">
-                    <div class="col-4 d-flex align-items-stretch"  id="topVoteContainer" style="display: flex; justify-content: center">
-                        <div class="card text-white bg-secondary border-warning mt-4 mb-4" style="width: 18rem;">
+                    <div class="col-4 d-flex align-items-stretch frame"  id="topVoteContainer" style="display: flex; justify-content: center">
+                        <div class="card text-white bg-secondary mt-4 mb-4" style="width: 18rem;">
                             <div class="card-header">
                                 <h5 class="card-title text-center">
                                     <c:choose>
@@ -65,7 +65,7 @@
                                     </c:choose>
                                 </h5>
                             </div>
-                            <img class="card-img-top" src="<c:out value="${drink.image}"/>" alt="drink">
+                            <img class=" topImage card-img-top" src="<c:out value="${drink.image}"/>" alt="drink">
                             <div class="card-body">
                                 <small><strong>Ingredients</strong></small>
                                 <p class="card-text"><c:out value="${drink.ingredients}"/></p>
@@ -102,8 +102,8 @@
         <%--    visitor--%>
             <c:otherwise>
                 <c:forEach var="drink" items="${drinks}">
-                    <div class="col-4 d-flex align-items-stretch"  id="topVoteContainer" style="display: flex; justify-content: center">
-                        <div class="card text-white bg-secondary border-warning mt-4 mb-4" style="width: 18rem;">
+                    <div class="col-4 d-flex align-items-stretch frame"  id="topVoteContainer" style="display: flex; justify-content: center">
+                        <div class="card text-white bg-secondary mt-4 mb-4" style="width: 18rem;">
                             <div class="card-header">
                                 <h5 class="card-title text-center">
                                     <c:choose>
@@ -116,7 +116,7 @@
                                     </c:choose>
                                 </h5>
                             </div>
-                            <img class="card-img-top" src="<c:out value="${drink.image}"/>" alt="drink">
+                            <img class=" topImage card-img-top" src="<c:out value="${drink.image}"/>" alt="drink">
                         </div>
                     </div>
                 </c:forEach>
