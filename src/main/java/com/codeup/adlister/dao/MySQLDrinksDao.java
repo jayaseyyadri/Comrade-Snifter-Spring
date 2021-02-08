@@ -25,6 +25,7 @@ public class MySQLDrinksDao implements Drinks {
         }
     }
 
+    /**----------------------VIEW ALL DRINKS-----------------------------*/
     @Override
     public List<Drink> all() {
         PreparedStatement stmt = null;
@@ -37,6 +38,7 @@ public class MySQLDrinksDao implements Drinks {
         }
     }
 
+    /**----------------------CREATE A NEW DRINK----------------------------*/
     @Override
     public Long insert(Drink drink) {
         try {
@@ -56,6 +58,7 @@ public class MySQLDrinksDao implements Drinks {
         }
     }
 
+    /**----------------------HELPER FUNCTION-----------------------------*/
     private Drink extractDrink(ResultSet rs) throws SQLException {
         return new Drink(
             rs.getLong("id"),
@@ -76,6 +79,7 @@ public class MySQLDrinksDao implements Drinks {
         return drinks;
     }
 
+    /**----------------------SEARCH FOR DRINK-----------------------------*/
     @Override
     public List<Drink> searchDrinks(String search) {
         PreparedStatement stmt = null;
@@ -107,7 +111,8 @@ public class MySQLDrinksDao implements Drinks {
         }
     }
 
-     public Drink getDrink(long drinkId) {
+    /**----------------------VIEW DRINK BY ID-----------------------------*/
+    public Drink getDrink(long drinkId) {
         PreparedStatement stmt = null;
         String sqlQuery = "SELECT * FROM comrade_snifter_db.drinks WHERE id = ?";
 
@@ -135,7 +140,7 @@ public class MySQLDrinksDao implements Drinks {
         }
     }
 
-
+    /**----------------------VIEW DRINKS CREATED BY DIFFERENT USERS----------------------------*/
     @Override
     public List<Drink> getUsersDrinks(long userId) {
         PreparedStatement stmt = null;
@@ -163,6 +168,7 @@ public class MySQLDrinksDao implements Drinks {
         }
     }
 
+    /**----------------------DELETE USER ----------------------------*/
     @Override
     public void delete(int id){
         try{
@@ -175,6 +181,7 @@ public class MySQLDrinksDao implements Drinks {
         }
     }
 
+    /**----------------------HELPER FUNCTION -----------------------------*/
     @Override
     public void deleteDrinkCategories(int id){
         try{
@@ -187,6 +194,7 @@ public class MySQLDrinksDao implements Drinks {
         }
     }
 
+    /**----------------------EDIT DRINK INFO-----------------------------*/
     @Override
     public void edit(int id, Drink newDrink){
         try{
@@ -204,6 +212,7 @@ public class MySQLDrinksDao implements Drinks {
 
     }
 
+    /**----------------------UPDATE VOTES OF DRINK-----------------------------*/
     @Override
     public void updateThisDrinksVotes(int drinkVotes, long drinkIdToUpdate){
         String query = "UPDATE comrade_snifter_db.drinks set votes = ? where id = ?";
@@ -221,10 +230,7 @@ public class MySQLDrinksDao implements Drinks {
     }
 
 
-
-
-
-
+    /**--------------------GET VOTES BY ID-------------------------------*/
     @Override
     public int getDrinkVotes(long id){
         String query = "SELECT votes from comrade_snifter_db.drinks where id = ?";
@@ -242,7 +248,7 @@ public class MySQLDrinksDao implements Drinks {
         }
     }
 
-
+    /**----------------------SEARCH BY CATEGORY-----------------------------*/
     @Override
     public List<Drink> getAllByCategory(String category){
         String query = "SELECT * FROM comrade_snifter_db.drinks where id IN ( select alcohol_id from comrade_snifter_db.category where liquor_type in ( select id from comrade_snifter_db.drink_Category where drink_Category.name = ?))";
@@ -258,6 +264,8 @@ public class MySQLDrinksDao implements Drinks {
         }
     }
 
+
+    /**----------------------ASSIGN CATEGORY DRINK-----------------------------*/
     @Override
     public void giveDrinkACategory(long id, int categoryId){
         String query = "insert into comrade_snifter_db.category(alcohol_id, liquor_type) VALUES (?, ?)";
@@ -272,6 +280,7 @@ public class MySQLDrinksDao implements Drinks {
         }
     }
 
+    /**----------------------HELPER FUNCTION-----------------------------*/
     @Override
     public int getCategoryId(String name){
         String query = "select id from comrade_snifter_db.drink_Category where name = ?";
@@ -288,6 +297,7 @@ public class MySQLDrinksDao implements Drinks {
         }
     }
 
+    /**----------------------SEARCH DRINK BY ID-----------------------------*/
     @Override
     public long getDrinkIdByName(String name){
         String query = "SELECT id from comrade_snifter_db.drinks where name = ?";
@@ -304,6 +314,7 @@ public class MySQLDrinksDao implements Drinks {
         }
     }
 
+    /**----------------------HELPER FUNCTION-----------------------------*/
     @Override
     public void transferOwnershipFromTo(long fromUser, long toUser){
         String query = "UPDATE comrade_snifter_db.drinks SET user_id = ? WHERE user_id = ?";
