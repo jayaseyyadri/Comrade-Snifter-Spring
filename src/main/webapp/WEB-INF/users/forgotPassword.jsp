@@ -7,19 +7,7 @@
         <jsp:param name="title" value="Please Log In" />
     </jsp:include>
     <style>
-        .errorMessage{
-            color: #dc3444;
-        }
-        .footer {
-          position: fixed;
-          left: 0;
-          bottom: 0;
-          height: 20%;
-          width: 100%;
-          background-color: #343a40;
-          color: white;
-          text-align: center;
-        }
+        <%@include file="../resources/css/footer.css"%>
     </style>
 </head>
 <body>
@@ -43,7 +31,7 @@
 
     <div class="footer"></div>
 
-<jsp:include page="./partials/bootstrap.jsp"/>
+<jsp:include page="../partials/bootstrap.jsp"/>
 </body>
 </html>
 

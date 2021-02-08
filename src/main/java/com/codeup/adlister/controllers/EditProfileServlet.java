@@ -22,7 +22,7 @@ public class EditProfileServlet extends HttpServlet {
             return;
         }
 
-        request.getRequestDispatcher("/WEB-INF/editProfile.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/users/editProfile.jsp").forward(request, response);
     }
 
     @Override

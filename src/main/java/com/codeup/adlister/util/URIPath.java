@@ -4,7 +4,7 @@ public class URIPath {
 
     public static String findServletPath(String uri){
         String urlPattern = "/";
-        if(uri.equals("/WEB-INF/profile.jsp")){
+        if(uri.equals("/WEB-INF/users/profile.jsp")){
             urlPattern = "/profile";
             return urlPattern;
         } else if(uri.equals("/index.jsp")){

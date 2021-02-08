@@ -7,37 +7,8 @@
     </jsp:include>
     <script src="https://kit.fontawesome.com/36f035c426.js" crossorigin="anonymous"></script>
     <style>
-        .errorMessage{
-            color: #dc3444;
-        }
-        .voteSection{
-            display: flex;
-            justify-content: space-around;
-            height: 30px;
-        }
-        .upVote{
-            background-color: #0707c6;
-            color: aliceblue;
-        }
-        .downVote{
-            background-color: #dc3444;
-        }
-        .vote{
-            width: 50%;
-            height: 100%;
-            text-align: center;
-        }
-        .voteForm{
-            margin: 0;
-            height: 100%;
-        }
-        .thumbButton{
-            width: 100%;
-            height: 100%;
-        }
-        body {
-            background: #cccecf;
-        }
+        <%@include file="/resources/css/vote.css"%>
+        <%@include file="/resources/css/footer.css"%>
     </style>
 </head>
 <body>
@@ -56,6 +27,8 @@
 </div>
 
 <jsp:include page="../partials/bootstrap.jsp"/>
+
+<div class="footer"></div>
 
 
 </body>

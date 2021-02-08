@@ -28,15 +28,6 @@
             height: 30vh;
             color: white;
         }
-        /*#topVoteContainer:nth-child(1){*/
-        /*    border: 10px solid #e7ac18;*/
-        /*}*/
-        /*#topVoteContainer:nth-child(2){*/
-        /*    border: 10px solid #999898;*/
-        /*}*/
-        /*#topVoteContainer:nth-child(3){*/
-        /*    border: 10px solid #c8740c;*/
-        /*}*/
         body {
             background: #cccecf;
         }
@@ -103,6 +94,9 @@
             max-height:100%;
             max-width:100%;
         }
+
+        <%@include file="resources/css/index.css"%>
+
     </style>
 </head>
 <body>
@@ -130,6 +124,7 @@
     </div>
 
     <div class="pageInfo">
+
         <div class="container-fluid" style="display: flex; justify-content: space-around; flex-direction: column">
             <div class="homePageAbout" id="howTo" style="margin: 5px auto 5px 0; display: flex">
                 <div>

@@ -1,4 +1,3 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -6,7 +5,9 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="seeUsers" value="Viewing Users"/>
     </jsp:include>
-
+    <style>
+        <%@include file="../resources/css/footer.css"%>
+    </style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp">
@@ -52,6 +53,8 @@
         </c:forEach>
 
     </div>
+
+<div class="footer"></div>
 
     <jsp:include page="./partials/bootstrap.jsp"/>
 </html>

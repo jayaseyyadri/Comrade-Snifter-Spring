@@ -24,6 +24,6 @@ public class ViewProfileServlet extends HttpServlet {
         long userId = user.getId();
         List<Drink> drinks = Sorter.sortDrinksByName(DaoFactory.getDrinksDao().getUsersDrinks(userId));
         request.setAttribute("drinks", drinks);
-        request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/users/profile.jsp").forward(request, response);
     }
 }
