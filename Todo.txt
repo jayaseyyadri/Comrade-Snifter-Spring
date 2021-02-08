@@ -4,6 +4,6 @@ Clean up the code
     -You'll notice there is some duplicated code in our ads DAO and our users DAO.
     -How could you create an abstraction for this?
 
-[ ] Maybe a 1st, 2nd, 3rd place on main page since they are sorted (?)
+[ ] Links to add on the drinks for how to make them
 
 [ ] Handle Drink duplicates ?
