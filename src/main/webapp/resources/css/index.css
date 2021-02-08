@@ -1,0 +1,73 @@
+.pageInfo {
+  margin: 15px 0 0 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.jumbotron {
+    background: linear-gradient(to top, rgba(0,0,0,0.5) 100%,rgba(0,0,0,0.5) 100%), url("${pageContext.request.contextPath}/resources/img/fizzy2.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 30vh;
+    color: white;
+}
+.frame:nth-child(1) {
+    background-color: #ddc;
+    border: solid 2vmin goldenrod;
+    border-bottom-color: #dfae32;
+    border-left-color: goldenrod;
+    border-radius: 2px;
+    border-right-color: goldenrod;
+    border-top-color: #b18107;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .25) inset, 0 5px 10px 5px rgba(0, 0, 0, .25);
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 2vmin;
+    position: relative;
+    text-align: center;
+}
+.frame:nth-child(2) {
+    background-color: #ddc;
+    border: solid 2vmin silver;
+    border-bottom-color: #dfdede;
+    border-left-color: silver;
+    border-right-color: silver;
+    border-top-color: #9c9c9c;
+    border-radius: 2px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .25) inset, 0 5px 10px 5px rgba(0, 0, 0, .25);
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 2vmin;
+    position: relative;
+    text-align: center;
+}
+.frame:nth-child(3) {
+    background-color: #ddc;
+    border: solid 2vmin #a74e0d;
+    border-bottom-color: #bf560a;
+    border-left-color: #a74e0d;
+    border-right-color: #a74e0d;
+    border-top-color: #89400b;
+    border-radius: 2px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .25) inset, 0 5px 10px 5px rgba(0, 0, 0, .25);
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 2vmin;
+    position: relative;
+    text-align: center;
+}
+.topImage {
+    border:solid 2px;
+    border-bottom-color:#ffe;
+    border-left-color:#eed;
+    border-right-color:#eed;
+    border-top-color:#ccb;
+    max-height:100%;
+    max-width:100%;
+}

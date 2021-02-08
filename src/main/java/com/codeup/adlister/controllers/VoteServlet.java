@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Drink;
+import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,29 +16,26 @@ import java.io.IOException;
 public class VoteServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        HttpSession session = req.getSession();
+        HttpSession session = request.getSession();
 
         long currentViewingDrinkIdToVoteOn =  (long) session.getAttribute("viewingDrink");
+        User creator = DaoFactory.getUsersDao().getDrinkCreator(currentViewingDrinkIdToVoteOn);
+        session.setAttribute("creatorName", creator.getUsername());
+        session.setAttribute("creatorImage", creator.getImage());
 
         Drink thisDrink = DaoFactory.getDrinksDao().getDrink(currentViewingDrinkIdToVoteOn);
 
-        System.out.printf("Current Votes for drink %s : %d%n", thisDrink.getName(), thisDrink.getVotes());
-
-        if(Integer.parseInt(req.getParameter("vote")) > 0) {
+        if(Integer.parseInt(request.getParameter("vote")) > 0) {
             thisDrink.setVotes(thisDrink.getVotes() + 1);
         } else {
             thisDrink.setVotes(thisDrink.getVotes() - 1);
         }
 
-        System.out.printf("New Votes for drink %s : %d%n", thisDrink.getName(), thisDrink.getVotes());
-
         DaoFactory.getDrinksDao().updateThisDrinksVotes(thisDrink.getVotes(), thisDrink.getId());
 
-
-        session.removeAttribute("viewingDrink");
-        res.sendRedirect("/drinks");
+        response.sendRedirect("/show");
     }
 
 }

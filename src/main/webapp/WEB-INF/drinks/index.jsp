@@ -5,18 +5,23 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Viewing All The Drinks" />
     </jsp:include>
+    <style>
+        <%@include file="/resources/css/footer.css"%>
+    </style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp">
-    <jsp:param name="link" value="/home"/>
-    <jsp:param name="linkTitle" value="Home"/>
+    <jsp:param name="linkV" value="/login"/>
+    <jsp:param name="linkVisitor" value="Login"/>
+    <jsp:param name="profileOne" value="/profile"/>
+    <jsp:param name="profileTwo" value="Profile"/>
 </jsp:include>
 
 <c:if test="${sessionScope.user == null}">
 
     <div class="container-fluid" style="display: flex; justify-content: center">
 
-        <img src="${pageContext.request.contextPath}/resources/img/comrade.png" alt="Comrade">
+        <img class="sideBySide" src="${pageContext.request.contextPath}/resources/img/comrade.png" alt="Comrade">
 
 
                 <div class="card text-white bg-secondary border-warning mt-4" style="width: 18rem;">
@@ -40,18 +45,24 @@
 
 
 
-        <img src="${pageContext.request.contextPath}/resources/img/Snifter.png" alt="Snifter">
+        <img class="sideBySide" src="${pageContext.request.contextPath}/resources/img/Snifter.png" alt="Snifter">
 
     </div>
 
 </c:if>
+<c:if test="${sessionScope.user != null}">
+    <jsp:include page="../partials/select-category.jsp"/>
+</c:if>
 
-<div class="container">
 
-    <jsp:include page="/WEB-INF/partials/drink-cards.jsp"/>
+<jsp:include page="/WEB-INF/partials/drink-cards.jsp"/>
 
-</div>
+<div class="footer"></div>
 
+
+<script>
+<%@include file="/resources/js/styling.js"%>
+</script>
 <jsp:include page="../partials/bootstrap.jsp"/>
 </body>
 </html>

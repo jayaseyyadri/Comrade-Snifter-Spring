@@ -1,48 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<style>
-    .profileInfo{
-        height: 50%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-color: #b6babe;
-    }
-    #mainCard{
-        border: 2px solid black;
-        border-radius: 5px;
-        width: 35vw;
-        max-width: 450px;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        height: 45vh;
-        float: right;
-        margin-right: 15px;
-    }
-    #profileImage{
-        height: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 2px solid black;
-        border-radius: 110px;
-        width: 50%;
-        margin: auto;
-    }
-    #image{
-        width: 100%;
-        height: 100%;
-    }
-</style>
 
 
-<div id="mainCard">
-    <div id="profileImage">
-        <img src="${creatorImage}" alt="Creator's Profile Picture" id="image" />
-    </div>
-    <div class="profileInfo">
-        <h1>Creator: ${creatorName}</h1>
-        <p>View Profile (?)</p>
+
+<div class="col col-md-6 col-lg-4 d-flex" style="display: flex; justify-content: center">
+    <div class="card text-white bg-secondary border-warning mt-4" style="width: 18rem; height: fit-content">
+        <div class="card-header">
+            <h5 class="card-title text-center">
+                Creator: ${creatorName}
+            </h5>
+        </div>
+        <img class="card-img-top" src="<c:out value="${creatorImage}"/>" alt="drink">
     </div>
 </div>

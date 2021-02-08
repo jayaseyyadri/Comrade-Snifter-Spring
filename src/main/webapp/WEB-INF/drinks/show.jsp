@@ -3,13 +3,20 @@
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Ad" />
+        <jsp:param name="title" value="${sessionScope.name}" />
     </jsp:include>
     <script src="https://kit.fontawesome.com/36f035c426.js" crossorigin="anonymous"></script>
+    <style>
+        <%@include file="/resources/css/vote.css"%>
+        <%@include file="/resources/css/footer.css"%>
+    </style>
 </head>
 <body>
-<jsp:include page="/WEB-INF/partials/navbar.jsp" />
-<jsp:include page="/WEB-INF/partials/creator-profile-card.jsp" />
+<jsp:include page="/WEB-INF/partials/navbar.jsp">
+    <jsp:param name="profileOne" value="/profile"/>
+    <jsp:param name="profileTwo" value="Profile"/>
+</jsp:include>
+
 
 
 <div class="container">
@@ -21,23 +28,20 @@
         <button type="submit">Go Back</button>
     </form>
 
+
+<div class="container-fluid">
+    <div class="row">
+        <jsp:include page="/WEB-INF/partials/creator-profile-card.jsp" />
+        <jsp:include page="/WEB-INF/partials/vote-card.jsp"/>
+    </div>
 </div>
 
 
-<form action="/vote" method="POST">
-    <input type="hidden" value="1" name="vote">
-    <button type="submit"><i class="fas fa-thumbs-up"></i></button>
-</form>
 
-<form action="/vote" method="POST">
-    <input type="hidden" value="0" name="vote">
-    <button type="submit"><i class="fas fa-thumbs-down"></i></button>
-</form>
-
-
-
+<div class="footer"></div>
+<script>
+<%@include file="/resources/js/styling.js"%>
+</script>
 <jsp:include page="../partials/bootstrap.jsp"/>
-
-
 </body>
 </html>

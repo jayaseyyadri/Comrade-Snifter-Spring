@@ -5,7 +5,7 @@
 <%--    admin--%>
             <c:when test="${sessionScope.isAdmin && sessionScope.isLoggedIn}">
                 <c:forEach var="drink" items="${drinks}">
-                    <div class="col col-md-6 col-lg-4 d-flex align-items-stretch">
+                    <div class="col col-md-6 col-lg-4 d-flex align-items-stretch" style="display: flex; justify-content: center">
                         <div class="card text-white bg-secondary border-warning mt-4" style="width: 18rem;">
                             <div class="card-header">
                                 <h5 class="card-title text-center">
@@ -25,15 +25,18 @@
                                 <p class="card-text"><c:out value="${drink.ingredients}"/></p>
                                 <small><strong>Instructions</strong></small>
                                 <p class="card-text"><c:out value=" ${drink.instructions}"/></p>
+                                <small><strong>Votes</strong></small>
+                                <p class="card-text"><c:out value=" ${drink.votes}"/></p>
                             </div>
                             <div class="card-footer" style="display: flex;justify-content: space-between; align-items: center">
                                 <form action="/show" method="post">
                                     <input type="hidden" name="drinkId" value="${drink.id}">
-
+                                    <input type="hidden" name="currentPage" value="${pageContext.request.getRequestURI()}">
                                     <button type="submit" class="btn btn-danger">View</button>
                                 </form>
-                                <form action="/editForm" method="get">
+                                <form action="/editForm" method="post">
                                     <input type="hidden" name="editThisDrink" value="${drink.id}">
+                                    <input type="hidden" name="currentPage" value="${pageContext.request.getRequestURI()}">
                                     <button type="submit" class="btn btn-danger">Edit</button>
                                 </form>
                                <form action="/delete" method="post">
@@ -48,7 +51,7 @@
 <%--    user--%>
             <c:when test="${sessionScope.isLoggedIn}">
                 <c:forEach var="drink" items="${drinks}">
-                    <div class="col col-md-6 col-lg-4 d-flex align-items-stretch">
+                    <div class="col col-md-6 col-lg-4 d-flex align-items-stretch" style="display: flex; justify-content: center">
                         <div class="card text-white bg-secondary border-warning mt-4" style="width: 18rem;">
                             <div class="card-header">
                                 <h5 class="card-title text-center">
@@ -68,17 +71,20 @@
                                 <p class="card-text"><c:out value="${drink.ingredients}"/></p>
                                 <small><strong>Instructions</strong></small>
                                 <p class="card-text"><c:out value=" ${drink.instructions}"/></p>
+                                <small><strong>Votes</strong></small>
+                                <p class="card-text"><c:out value=" ${drink.votes}"/></p>
                             </div>
                             <div class="card-footer" style="display: flex;justify-content: space-between; align-items: center">
                                 <form action="/show" method="post">
                                     <input type="hidden" name="drinkId" value="${drink.id}">
+                                    <input type="hidden" name="currentPage" value="${pageContext.request.getRequestURI()}">
                                     <button type="submit" class="btn btn-danger">View</button>
                                 </form>
                                 <c:if test="${sessionScope.user != null}">
                                     <c:if test="${drink.userId == sessionScope.user.id}">
-                                        <form action="/editForm" method="get">
+                                        <form action="/editForm" method="post">
                                             <input type="hidden" name="editThisDrink" value="${drink.id}">
-
+                                            <input type="hidden" name="currentPage" value="${pageContext.request.getRequestURI()}">
                                             <button type="submit" class="btn btn-danger">Edit</button>
                                         </form>
                                        <form action="/delete" method="post">
@@ -96,7 +102,7 @@
         <%--    visitor--%>
             <c:otherwise>
                 <c:forEach var="drink" items="${drinks}">
-                    <div class="col col-md-6 col-lg-4 d-flex align-items-stretch">
+                    <div class="col col-md-6 col-lg-4 d-flex align-items-stretch" style="display: flex; justify-content: center">
                         <div class="card text-white bg-secondary border-warning mt-4" style="width: 18rem;">
                             <div class="card-header">
                                 <h5 class="card-title text-center">

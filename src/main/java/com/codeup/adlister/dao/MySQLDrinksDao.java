@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Drink;
+import com.codeup.adlister.util.Sorter;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
@@ -24,18 +25,20 @@ public class MySQLDrinksDao implements Drinks {
         }
     }
 
+    /**----------------------VIEW ALL DRINKS-----------------------------*/
     @Override
     public List<Drink> all() {
         PreparedStatement stmt = null;
         try {
             stmt = connection.prepareStatement("SELECT * FROM comrade_snifter_db.drinks");
             ResultSet rs = stmt.executeQuery();
-            return createDrinksFromResults(rs);
+            return Sorter.sortDrinksByName(createDrinksFromResults(rs));
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving all drinks.", e);
         }
     }
 
+    /**----------------------CREATE A NEW DRINK----------------------------*/
     @Override
     public Long insert(Drink drink) {
         try {
@@ -55,26 +58,8 @@ public class MySQLDrinksDao implements Drinks {
         }
     }
 
-    private Drink extractAd(ResultSet rs) throws SQLException {
-        return new Drink(
-            rs.getLong("id"),
-            rs.getLong("user_id"),
-            rs.getString("name"),
-            rs.getString("instructions"),
-            rs.getString("ingredients"),
-            rs.getString("image"),
-            rs.getInt("votes")
-        );
-    }
 
-    private List<Drink> createDrinksFromResults(ResultSet rs) throws SQLException {
-        List<Drink> drinks = new ArrayList<>();
-        while (rs.next()) {
-            drinks.add(extractAd(rs));
-        }
-        return drinks;
-    }
-
+    /**----------------------SEARCH FOR DRINK-----------------------------*/
     @Override
     public List<Drink> searchDrinks(String search) {
         PreparedStatement stmt = null;
@@ -84,9 +69,7 @@ public class MySQLDrinksDao implements Drinks {
         try {
             stmt = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, userInput);
-
             stmt.executeQuery();
-
             ResultSet rs = stmt.getResultSet();
 
             while(rs.next()){
@@ -101,14 +84,15 @@ public class MySQLDrinksDao implements Drinks {
                 drinks.add(drink);
             };
 
-
             return drinks;
+
         } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving ad.", e);
+            throw new RuntimeException("Error retrieving drink List.", e);
         }
     }
 
-     public Drink getDrink(long drinkId) {
+    /**----------------------VIEW DRINK BY ID-----------------------------*/
+    public Drink getDrink(long drinkId) {
         PreparedStatement stmt = null;
         String sqlQuery = "SELECT * FROM comrade_snifter_db.drinks WHERE id = ?";
 
@@ -136,7 +120,7 @@ public class MySQLDrinksDao implements Drinks {
         }
     }
 
-
+    /**----------------------VIEW DRINKS CREATED BY DIFFERENT USERS----------------------------*/
     @Override
     public List<Drink> getUsersDrinks(long userId) {
         PreparedStatement stmt = null;
@@ -160,24 +144,13 @@ public class MySQLDrinksDao implements Drinks {
             }
             return drinks;
         } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving all ads.", e);
+            throw new RuntimeException("Error retrieving all drinks.", e);
         }
     }
 
-    @Override
-    public void delete(int id){
-        try{
-            String deleteQuery = "Delete from comrade_snifter_db.drinks where id = ?";
-            PreparedStatement statement = connection.prepareStatement(deleteQuery, Statement.RETURN_GENERATED_KEYS);
-            statement.setInt(1, id);
-            statement.execute();
-            ResultSet rs = statement.getGeneratedKeys();
-            rs.next();
-        } catch (SQLException e){
-            throw new RuntimeException("Error deleting ad", e);
-        }
-    }
 
+
+    /**----------------------EDIT DRINK INFO-----------------------------*/
     @Override
     public void edit(int id, Drink newDrink){
         try{
@@ -190,11 +163,12 @@ public class MySQLDrinksDao implements Drinks {
             statement.setInt(5, id);
             statement.executeUpdate();
         } catch (SQLException e){
-            throw new RuntimeException("Error editing ad", e);
+            throw new RuntimeException("Error editing drink", e);
         }
 
     }
 
+    /**----------------------UPDATE VOTES OF DRINK-----------------------------*/
     @Override
     public void updateThisDrinksVotes(int drinkVotes, long drinkIdToUpdate){
         String query = "UPDATE comrade_snifter_db.drinks set votes = ? where id = ?";
@@ -212,10 +186,7 @@ public class MySQLDrinksDao implements Drinks {
     }
 
 
-
-
-
-
+    /**--------------------GET VOTES BY ID-------------------------------*/
     @Override
     public int getDrinkVotes(long id){
         String query = "SELECT votes from comrade_snifter_db.drinks where id = ?";
@@ -225,11 +196,147 @@ public class MySQLDrinksDao implements Drinks {
             statement.setLong(1, id);
             statement.executeQuery();
             ResultSet rs = statement.getResultSet();
+            rs.next();
             return rs.getInt("votes");
 
         } catch (SQLException e){
             throw new RuntimeException("Error retrieving votes", e);
         }
+    }
+
+    /**----------------------SEARCH BY CATEGORY-----------------------------*/
+    @Override
+    public List<Drink> getAllByCategory(String category){
+        String query = "SELECT * FROM comrade_snifter_db.drinks where id IN ( select alcohol_id from comrade_snifter_db.category where liquor_type in ( select id from comrade_snifter_db.drink_Category where drink_Category.name = ?))";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, category);
+            statement.executeQuery();
+            ResultSet rs = statement.getResultSet();
+            return createDrinksFromResults(rs);
+
+        } catch (SQLException e){
+            throw new RuntimeException("Unable to find drinks for this category", e);
+        }
+    }
+
+
+    /**----------------------ASSIGN CATEGORY DRINK-----------------------------*/
+    @Override
+    public void giveDrinkACategory(long id, int categoryId){
+        String query = "insert into comrade_snifter_db.category(alcohol_id, liquor_type) VALUES (?, ?)";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.setLong(1, id);
+            statement.setInt(2, categoryId);
+            statement.executeUpdate();
+
+        } catch (SQLException e){
+            throw new RuntimeException("Error adding category to this drink", e);
+        }
+    }
+
+    /**----------------------HELPER FUNCTION-----------------------------*/
+    @Override
+    public int getCategoryId(String name){
+        String query = "select id from comrade_snifter_db.drink_Category where name = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, name);
+            statement.executeQuery();
+            ResultSet rs = statement.getResultSet();
+            rs.next();
+            return rs.getInt("id");
+
+        } catch (SQLException e){
+            throw new RuntimeException("Error finding category id", e);
+        }
+    }
+
+    /**----------------------SEARCH DRINK BY ID-----------------------------*/
+    @Override
+    public long getDrinkIdByName(String name){
+        String query = "SELECT id from comrade_snifter_db.drinks where name = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, name);
+            statement.executeQuery();
+            ResultSet rs = statement.getResultSet();
+            rs.next();
+            return rs.getLong("id");
+
+        } catch (SQLException e){
+            throw new RuntimeException("Error finding drink id by name", e);
+        }
+    }
+
+
+
+
+    /**----------------------DELETE USER ----------------------------*/
+    @Override
+    public void delete(int id){
+        try{
+            String deleteQuery = "Delete from comrade_snifter_db.drinks where id = ?";
+            PreparedStatement statement = connection.prepareStatement(deleteQuery, Statement.RETURN_GENERATED_KEYS);
+            statement.setInt(1, id);
+            statement.execute();
+        } catch (SQLException e){
+            throw new RuntimeException("Error deleting drink", e);
+        }
+    }
+
+    /**----------------------HELPER FUNCTION -----------------------------*/
+    @Override
+    public void deleteDrinkCategories(int id){
+        try{
+            String deleteQuery = "Delete from comrade_snifter_db.category where alcohol_id = ?";
+            PreparedStatement statement = connection.prepareStatement(deleteQuery, Statement.RETURN_GENERATED_KEYS);
+            statement.setInt(1, id);
+            statement.execute();
+        } catch (SQLException e){
+            throw new RuntimeException("Error deleting drink categories", e);
+        }
+    }
+
+    /**----------------------HELPER FUNCTION-----------------------------*/
+    @Override
+    public void transferOwnershipFromTo(long fromUser, long toUser){
+        String query = "UPDATE comrade_snifter_db.drinks SET user_id = ? WHERE user_id = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.setLong(1, toUser);
+            statement.setLong(2, fromUser);
+            statement.executeUpdate();
+
+        } catch (SQLException e){
+            throw new RuntimeException("Error transferring ownership", e);
+        }
+    }
+
+
+
+
+
+    /**----------------------HELPER FUNCTION-----------------------------*/
+    private Drink extractDrink(ResultSet rs) throws SQLException {
+        return new Drink(
+                rs.getLong("id"),
+                rs.getLong("user_id"),
+                rs.getString("name"),
+                rs.getString("instructions"),
+                rs.getString("ingredients"),
+                rs.getString("image"),
+                rs.getInt("votes")
+        );
+    }
+
+    private List<Drink> createDrinksFromResults(ResultSet rs) throws SQLException {
+        List<Drink> drinks = new ArrayList<>();
+        while (rs.next()) {
+            drinks.add(extractDrink(rs));
+        }
+        return drinks;
     }
 
 

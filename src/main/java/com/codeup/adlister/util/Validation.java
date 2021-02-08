@@ -1,6 +1,6 @@
 package com.codeup.adlister.util;
 
-import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,9 +8,9 @@ public class Validation {
 
     public Validation(){}
 
-    public static boolean userNameExists(List<String> currentUsers, String registerAttemptName){
-        for(String name : currentUsers){
-            if(registerAttemptName.equals(name)){
+    public static boolean userNameExists(Set<String> currentUsers, String registerAttemptName){
+        for(String userName : currentUsers){
+            if(userName.equalsIgnoreCase(registerAttemptName)){
                 return true;
             }
         }
@@ -32,7 +32,10 @@ public class Validation {
         Matcher matcherNum = digit.matcher(passwordAttempt);
         Matcher special = specialChar.matcher(passwordAttempt);
 
-        return matcherUp.find() && matcherLow.find() && matcherNum.find() && special.find();
+        return matcherUp.find()
+                && matcherLow.find()
+                && matcherNum.find()
+                && ( special.find() || passwordAttempt.contains("_") );
     }
 
 }
