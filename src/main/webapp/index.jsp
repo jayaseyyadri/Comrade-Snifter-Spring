@@ -55,7 +55,9 @@
             </div>
            </div>
     </div>
-
+<script>
+<%@include file="/resources/js/styling.js"%>
+</script>
     <jsp:include page="WEB-INF/partials/bootstrap.jsp"/>
 </body>
 </html>

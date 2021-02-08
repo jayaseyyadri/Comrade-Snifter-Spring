@@ -21,7 +21,7 @@
 
     <div class="container-fluid" style="display: flex; justify-content: center">
 
-        <img src="${pageContext.request.contextPath}/resources/img/comrade.png" alt="Comrade">
+        <img class="sideBySide" src="${pageContext.request.contextPath}/resources/img/comrade.png" alt="Comrade">
 
 
                 <div class="card text-white bg-secondary border-warning mt-4" style="width: 18rem;">
@@ -45,7 +45,7 @@
 
 
 
-        <img src="${pageContext.request.contextPath}/resources/img/Snifter.png" alt="Snifter">
+        <img class="sideBySide" src="${pageContext.request.contextPath}/resources/img/Snifter.png" alt="Snifter">
 
     </div>
 
@@ -60,7 +60,9 @@
 <div class="footer"></div>
 
 
-
+<script>
+<%@include file="/resources/js/styling.js"%>
+</script>
 <jsp:include page="../partials/bootstrap.jsp"/>
 </body>
 </html>
