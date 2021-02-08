@@ -30,7 +30,7 @@ public class Validation {
         return matcherUp.find()
                 && matcherLow.find()
                 && matcherNum.find()
-                && special.find();
+                && ( special.find() || passwordAttempt.contains("_") );
     }
 
 }

@@ -30,7 +30,7 @@
                 <label for="newPassword">Enter New Password</label>
                 <input id="newPassword" name="newPassword" class="form-control" type="password">
                 <c:if test="${sessionScope.newPasswordPoorQuality}">
-                    <small class="errorMessage"> * Password must be between 8-20 characters and Include a number, capital letter, and special character ( other than underscore )</small>
+                    <small class="errorMessage"> * Password must be between 8-20 characters and Include a number, capital letter, and special character</small>
                 </c:if>
             </div>
             <div class="form-group">
