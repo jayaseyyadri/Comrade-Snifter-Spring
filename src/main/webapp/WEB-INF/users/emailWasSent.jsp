@@ -5,7 +5,7 @@
         <jsp:param name="title" value="Email Was Sent" />
     </jsp:include>
     <style>
-        <%@include file="../resources/css/footer.css"%>
+        <%@include file="/resources/css/footer.css"%>
     </style>
 </head>
 <body>

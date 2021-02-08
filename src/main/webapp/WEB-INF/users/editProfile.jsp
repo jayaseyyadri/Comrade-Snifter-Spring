@@ -6,7 +6,7 @@
         <jsp:param name="title" value="Edit your Profile" />
     </jsp:include>
     <style>
-        <%@include file="../resources/css/footer.css"%>
+        <%@include file="/resources/css/footer.css"%>
     </style>
 </head>
 <body>
