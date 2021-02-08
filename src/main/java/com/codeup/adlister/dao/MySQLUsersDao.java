@@ -26,6 +26,56 @@ public class MySQLUsersDao implements Users {
         }
     }
 
+    /**--------------------- VIEW USERS ------------------------------*/
+    @Override
+    public List<User> viewUsers() {
+        PreparedStatement stmt = null;
+        String query = "Select username, id, is_admin from comrade_snifter_db.users";
+        List<User> usersList = new ArrayList<>();
+        try {
+            stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.executeQuery();
+            ResultSet rs = stmt.getResultSet();
+            while (rs.next()) {
+                User user = new User(
+                        rs.getLong("id"),
+                        rs.getString("username")
+                );
+                if(rs.getInt("is_admin") < 1) {
+                    usersList.add(user);
+                }
+            }
+            return usersList;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving user List.", e);
+        }
+    }
+
+
+    /**--------------------- VIEW OTHER ADMINS ------------------------------*/
+    @Override
+    public List<User> viewAdmins(String currentUsername) {
+        String query = "Select username, id, is_admin from comrade_snifter_db.users";
+        List<User> adminList = new ArrayList<>();
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.executeQuery();
+            ResultSet rs = stmt.getResultSet();
+            while (rs.next()) {
+                User user = new User(
+                        rs.getLong("id"),
+                        rs.getString("username")
+                );
+                if(rs.getInt("is_admin") > 0 && !rs.getString("username").equals(currentUsername)) {
+                    adminList.add(user);
+                }
+            }
+            return adminList;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving admin List.", e);
+        }
+    }
+
 /**----------------------FIND BY USERNAME-----------------------------*/
     @Override
     public User findByUsername(String username) {
@@ -58,31 +108,6 @@ public class MySQLUsersDao implements Users {
         }
     }
 
-    /**--------------------HELPER FUNCTION --------------------------*/
-    private User extractUser(ResultSet rs) throws SQLException {
-        if (!rs.next()) {
-            return null;
-        }
-        return new User(
-                rs.getLong("id"),
-                rs.getString("username"),
-                rs.getString("email"),
-                rs.getString("password"),
-                rs.getString("image")
-        );
-    }
-
-    /**------------------VIEW CREATOR OF A DRINK----------------------*/
-    private User extractUserPublicInfo(ResultSet rs) throws SQLException {
-        if (!rs.next()) {
-            return null;
-        }
-        return new User(
-                rs.getString("username"),
-                rs.getString("image")
-        );
-    }
-
     /**-----------------CHECK IF USER IS AN ADMIN-----------------------*/
     @Override
     public boolean isAdmin(long userId) {
@@ -102,54 +127,6 @@ public class MySQLUsersDao implements Users {
         return thisId == 1;
     }
 
-    /**--------------------- VIEW USERS ------------------------------*/
-    @Override
-    public List<User> viewUsers() {
-        PreparedStatement stmt = null;
-        String query = "Select username, id, is_admin from comrade_snifter_db.users";
-        List<User> usersList = new ArrayList<>();
-        try {
-            stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            stmt.executeQuery();
-            ResultSet rs = stmt.getResultSet();
-            while (rs.next()) {
-                User user = new User(
-                        rs.getLong("id"),
-                        rs.getString("username")
-                );
-                if(rs.getInt("is_admin") < 1) {
-                    usersList.add(user);
-                }
-            }
-            return usersList;
-        } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving user List.", e);
-        }
-    }
-
-    /**--------------------- VIEW OTHER ADMINS ------------------------------*/
-    @Override
-    public List<User> viewAdmins(String currentUsername) {
-        String query = "Select username, id, is_admin from comrade_snifter_db.users";
-        List<User> adminList = new ArrayList<>();
-        try {
-            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            stmt.executeQuery();
-            ResultSet rs = stmt.getResultSet();
-            while (rs.next()) {
-                User user = new User(
-                        rs.getLong("id"),
-                        rs.getString("username")
-                );
-                if(rs.getInt("is_admin") > 0 && !rs.getString("username").equals(currentUsername)) {
-                    adminList.add(user);
-                }
-            }
-            return adminList;
-        } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving admin List.", e);
-        }
-    }
 
     /**--------------------DELETE USER--------------------------------*/
     @Override
@@ -181,12 +158,12 @@ public class MySQLUsersDao implements Users {
                   rs.getString("username")
                 );
             }
+            return allCurrentUserNames;
 
         } catch (SQLException e){
             throw new RuntimeException("Error retrieving current user list", e);
         }
 
-        return allCurrentUserNames;
     }
 
     /**------------------FIND CREATOR OF DRINK-----------------------*/
@@ -241,6 +218,32 @@ public class MySQLUsersDao implements Users {
         } catch (SQLException e ){
             throw new RuntimeException("Error changing your password", e);
         }
+    }
+
+
+    /**--------------------HELPER FUNCTION --------------------------*/
+    private User extractUser(ResultSet rs) throws SQLException {
+        if (!rs.next()) {
+            return null;
+        }
+        return new User(
+                rs.getLong("id"),
+                rs.getString("username"),
+                rs.getString("email"),
+                rs.getString("password"),
+                rs.getString("image")
+        );
+    }
+
+    /**------------------VIEW CREATOR OF A DRINK----------------------*/
+    private User extractUserPublicInfo(ResultSet rs) throws SQLException {
+        if (!rs.next()) {
+            return null;
+        }
+        return new User(
+                rs.getString("username"),
+                rs.getString("image")
+        );
     }
 
 }
