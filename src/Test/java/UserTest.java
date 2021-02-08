@@ -43,6 +43,9 @@ public class UserTest {
         assertTrue(Validation.goodQualityPassword(testUser2.getPassword()));
         assertFalse(Validation.goodQualityPassword(testUser3.getPassword()));
         assertTrue(Validation.goodQualityPassword(testUser4.getPassword()));
+
+        testUser4.notHashedTest("Jupiter2021_");
+        assertTrue(Validation.goodQualityPassword(testUser4.getPassword()));
     }
 
     @Test

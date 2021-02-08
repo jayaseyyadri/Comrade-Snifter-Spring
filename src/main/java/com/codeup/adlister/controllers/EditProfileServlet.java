@@ -53,11 +53,15 @@ public class EditProfileServlet extends HttpServlet {
             resp.sendRedirect("/editProfile");
             return;
         } else {
-            editPassword=Password.hash(editPassword);
+            editPassword = Password.hash(editPassword);
         }
 
         if (editEmailAddress.isEmpty()){
             editEmailAddress = currentUser.getEmail();
+        }
+
+        if(editProfilePic.isEmpty()){
+            editProfilePic = currentUser.getImage();
         }
 
 
