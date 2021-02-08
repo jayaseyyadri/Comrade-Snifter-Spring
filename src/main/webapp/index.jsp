@@ -23,7 +23,7 @@
           align-items: center;
         }
         .jumbotron {
-            background: linear-gradient(to top, rgba(0,0,0,0.6) 100%,rgba(0,0,0,0.6) 100%), url("${pageContext.request.contextPath}/resources/img/fizzy.jpeg");
+            background: linear-gradient(to top, rgba(0,0,0,0.5) 100%,rgba(0,0,0,0.5) 100%), url("${pageContext.request.contextPath}/resources/img/fizzy2.jpg");
             background-repeat: no-repeat;
             background-size: 100%;
             height: 30vh;
