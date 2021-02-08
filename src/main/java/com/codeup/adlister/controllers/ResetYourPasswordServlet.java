@@ -16,40 +16,40 @@ import java.io.IOException;
 @WebServlet("/passwordReset")
 public class ResetYourPasswordServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        HttpSession session = req.getSession();
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
 
         session.setAttribute("emailDoesNotMatch", false);
         session.setAttribute("userNameDoesNotMatch", false);
 
-        String thisUserName = req.getParameter("verifyUsername");
-        String thisEmail = req.getParameter("verifyEmailAddress");
-        String newPassword = req.getParameter("shouldBeTheJupiterOne");
+        String thisUserName = request.getParameter("verifyUsername");
+        String thisEmail = request.getParameter("verifyEmailAddresponses");
+        String newPassword = request.getParameter("shouldBeTheJupiterOne");
         String passwordFetch = Password.getThePassword().get(0);
 
         User user = DaoFactory.getUsersDao().findByUsername(thisUserName);
 
-        if (user == null){
+        if (user == null) {
             session.setAttribute("userNameDoesNotMatch", true);
-            res.sendRedirect("/newPassword");
+            response.sendRedirect("/newPassword");
             return;
-        } else if (!user.getEmail().equals(thisEmail)){
+        } else if (!user.getEmail().equals(thisEmail)) {
             session.setAttribute("emailDoesNotMatch", true);
-            res.sendRedirect("/newPassword");
+            response.sendRedirect("/newPassword");
             return;
-        } else if (!newPassword.equals(passwordFetch)){
+        } else if (!newPassword.equals(passwordFetch)) {
             session.setAttribute("notOurPassword", true);
-            res.sendRedirect("/newPassword");
+            response.sendRedirect("/newPassword");
             return;
         }
 
         session.setAttribute("passwordResetUser", user);
-        res.sendRedirect("/createYourNewPassword");
+        response.sendRedirect("/createYourNewPassword");
     }
 
 }

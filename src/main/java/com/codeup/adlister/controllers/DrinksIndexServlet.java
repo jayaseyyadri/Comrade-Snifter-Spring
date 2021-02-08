@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "controllers.AdsIndexServlet", urlPatterns = "/drinks")
+@WebServlet(name = "controllers.DrinksIndexServlet", urlPatterns = "/drinks")
 public class DrinksIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("drinks", DaoFactory.getDrinksDao().all());
@@ -24,7 +24,7 @@ public class DrinksIndexServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String searchBy = request.getParameter("searchBy");
-        if(searchBy != null) {
+        if (searchBy != null) {
             request.setAttribute("drinks", Sorter.sortDrinksByName(DaoFactory.getDrinksDao().searchDrinks(searchBy)));
         } else {
             String selectValue = request.getParameter("selectValue");

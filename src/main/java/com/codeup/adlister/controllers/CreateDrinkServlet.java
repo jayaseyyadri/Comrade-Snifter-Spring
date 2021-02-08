@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/drinks/create")
+@WebServlet(name = "controllers.CreateDrinkServlet", urlPatterns = "/drinks/create")
 public class CreateDrinkServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getSession().getAttribute("user") == null) {
@@ -24,21 +24,22 @@ public class CreateDrinkServlet extends HttpServlet {
             return;
         }
         request.getRequestDispatcher("/WEB-INF/drinks/create.jsp")
-            .forward(request, response);
+                .forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
         HttpSession session = request.getSession();
         session.removeAttribute("blankName");
         session.removeAttribute("blankInstructions");
         session.removeAttribute("blankIngredients");
 
         User user = (User) session.getAttribute("user");
+
         String imageUrl = request.getParameter("image");
         String name = request.getParameter("name");
         String instructions = request.getParameter("instructions");
         String ingredients = request.getParameter("ingredients");
-
         String[] categories = request.getParameterValues("drinkCat");
 
         if (categories == null) {
@@ -49,29 +50,29 @@ public class CreateDrinkServlet extends HttpServlet {
 
         List<String> newDrinkCategoryList = new ArrayList<>(Arrays.asList(request.getParameterValues("drinkCat")));
 
-        if(name.isEmpty()){
+        if (name.isEmpty()) {
             session.setAttribute("blankName", true);
             response.sendRedirect("/drinks/create");
             return;
-        } else if(instructions.isEmpty()){
+        } else if (instructions.isEmpty()) {
             session.setAttribute("blankInstructions", true);
             response.sendRedirect("/drinks/create");
             return;
-        } else if(ingredients.isEmpty()){
+        } else if (ingredients.isEmpty()) {
             session.setAttribute("blankIngredients", true);
             response.sendRedirect("/drinks/create");
             return;
-        } else if(imageUrl.isEmpty()){
+        } else if (imageUrl.isEmpty()) {
             imageUrl = "/resources/img/logo.png";
         }
 
 
         Drink drink = new Drink(
-            user.getId(),
-            Method.capitalFirst(name),
-            instructions,
-            ingredients,
-            imageUrl
+                user.getId(),
+                Method.capitalFirst(name),
+                instructions,
+                ingredients,
+                imageUrl
         );
 
         DaoFactory.getDrinksDao().insert(drink);
@@ -80,11 +81,11 @@ public class CreateDrinkServlet extends HttpServlet {
         long thisDrinkIdJustMade = DaoFactory.getDrinksDao().getDrinkIdByName(drink.getName());
 
         List<Integer> categoryIds = new ArrayList<>();
-        for(String category : newDrinkCategoryList) {
+        for (String category : newDrinkCategoryList) {
             categoryIds.add(DaoFactory.getDrinksDao().getCategoryId(category));
         }
 
-        for(int id : categoryIds){
+        for (int id : categoryIds) {
             DaoFactory.getDrinksDao().giveDrinkACategory(thisDrinkIdJustMade, id);
         }
         response.sendRedirect("/profile");

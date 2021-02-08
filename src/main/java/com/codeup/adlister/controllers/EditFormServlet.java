@@ -14,22 +14,22 @@ import java.io.IOException;
 @WebServlet("/editForm")
 public class EditFormServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/drinks/edit.jsp").forward(req, res);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/WEB-INF/drinks/edit.jsp").forward(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        Drink currentDrink = DaoFactory.getDrinksDao().getDrink( Long.parseLong(req.getParameter("editThisDrink")));
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Drink currentDrink = DaoFactory.getDrinksDao().getDrink(Long.parseLong(request.getParameter("editThisDrink")));
 
         session.setAttribute("currentDrinkName", currentDrink.getName());
         session.setAttribute("currentDrinkInstructions", currentDrink.getInstructions());
         session.setAttribute("currentDrinkIngredients", currentDrink.getIngredients());
         session.setAttribute("currentDrinkImage", currentDrink.getImage());
-        int editDrinkId = Integer.parseInt(req.getParameter("editThisDrink"));
+        int editDrinkId = Integer.parseInt(request.getParameter("editThisDrink"));
         session.setAttribute("editDrinkId", editDrinkId);
-        res.sendRedirect("/edit");
+        response.sendRedirect("/edit");
     }
 
 }
