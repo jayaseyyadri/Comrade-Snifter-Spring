@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Drink;
+import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,10 +21,11 @@ public class VoteServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         long currentViewingDrinkIdToVoteOn =  (long) session.getAttribute("viewingDrink");
+        User creator = DaoFactory.getUsersDao().getDrinkCreator(currentViewingDrinkIdToVoteOn);
+        session.setAttribute("creatorName", creator.getUsername());
+        session.setAttribute("creatorImage", creator.getImage());
 
         Drink thisDrink = DaoFactory.getDrinksDao().getDrink(currentViewingDrinkIdToVoteOn);
-
-        System.out.printf("Current Votes for drink %s : %d%n", thisDrink.getName(), thisDrink.getVotes());
 
         if(Integer.parseInt(request.getParameter("vote")) > 0) {
             thisDrink.setVotes(thisDrink.getVotes() + 1);
@@ -31,13 +33,9 @@ public class VoteServlet extends HttpServlet {
             thisDrink.setVotes(thisDrink.getVotes() - 1);
         }
 
-        System.out.printf("New Votes for drink %s : %d%n", thisDrink.getName(), thisDrink.getVotes());
-
         DaoFactory.getDrinksDao().updateThisDrinksVotes(thisDrink.getVotes(), thisDrink.getId());
 
-
-        session.removeAttribute("viewingDrink");
-        response.sendRedirect("/drinks");
+        response.sendRedirect("/show");
     }
 
 }

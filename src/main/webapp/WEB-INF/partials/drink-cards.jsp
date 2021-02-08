@@ -25,6 +25,8 @@
                                 <p class="card-text"><c:out value="${drink.ingredients}"/></p>
                                 <small><strong>Instructions</strong></small>
                                 <p class="card-text"><c:out value=" ${drink.instructions}"/></p>
+                                <small><strong>Votes</strong></small>
+                                <p class="card-text"><c:out value=" ${drink.votes}"/></p>
                             </div>
                             <div class="card-footer" style="display: flex;justify-content: space-between; align-items: center">
                                 <form action="/show" method="post">
@@ -34,6 +36,7 @@
                                 </form>
                                 <form action="/editForm" method="post">
                                     <input type="hidden" name="editThisDrink" value="${drink.id}">
+                                    <input type="hidden" name="currentPage" value="${pageContext.request.getRequestURI()}">
                                     <button type="submit" class="btn btn-danger">Edit</button>
                                 </form>
                                <form action="/delete" method="post">
@@ -68,6 +71,8 @@
                                 <p class="card-text"><c:out value="${drink.ingredients}"/></p>
                                 <small><strong>Instructions</strong></small>
                                 <p class="card-text"><c:out value=" ${drink.instructions}"/></p>
+                                <small><strong>Votes</strong></small>
+                                <p class="card-text"><c:out value=" ${drink.votes}"/></p>
                             </div>
                             <div class="card-footer" style="display: flex;justify-content: space-between; align-items: center">
                                 <form action="/show" method="post">
@@ -79,6 +84,7 @@
                                     <c:if test="${drink.userId == sessionScope.user.id}">
                                         <form action="/editForm" method="post">
                                             <input type="hidden" name="editThisDrink" value="${drink.id}">
+                                            <input type="hidden" name="currentPage" value="${pageContext.request.getRequestURI()}">
                                             <button type="submit" class="btn btn-danger">Edit</button>
                                         </form>
                                        <form action="/delete" method="post">

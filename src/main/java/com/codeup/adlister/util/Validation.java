@@ -9,7 +9,12 @@ public class Validation {
     public Validation(){}
 
     public static boolean userNameExists(Set<String> currentUsers, String registerAttemptName){
-        return currentUsers.contains(registerAttemptName);
+        for(String userName : currentUsers){
+            if(userName.equalsIgnoreCase(registerAttemptName)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public static boolean goodQualityPassword(String passwordAttempt){
