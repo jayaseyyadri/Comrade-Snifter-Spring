@@ -29,6 +29,15 @@
             height: 30vh;
             color: white;
         }
+        #topVoteContainer:nth-child(1){
+            border: 10px solid #e7ac18;
+        }
+        #topVoteContainer:nth-child(2){
+            border: 10px solid #999898;
+        }
+        #topVoteContainer:nth-child(3){
+            border: 10px solid #c8740c;
+        }
         body {
             background: #cccecf;
         }

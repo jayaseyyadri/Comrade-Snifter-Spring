@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Drink;
+import com.codeup.adlister.util.URIPath;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,6 +23,7 @@ public class EditFormServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         Drink currentDrink = DaoFactory.getDrinksDao().getDrink(Long.parseLong(request.getParameter("editThisDrink")));
+        session.setAttribute("previousPage", URIPath.findServletPath(request.getParameter("currentPage")));
 
         session.setAttribute("currentDrinkName", currentDrink.getName());
         session.setAttribute("currentDrinkInstructions", currentDrink.getInstructions());

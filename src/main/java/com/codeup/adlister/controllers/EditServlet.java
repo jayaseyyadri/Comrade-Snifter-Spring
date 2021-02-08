@@ -46,7 +46,8 @@ public class EditServlet extends HttpServlet {
 
         DaoFactory.getDrinksDao().edit(editDrinkId, newDrinkInfo);
         session.removeAttribute("editDrinkId");
-        response.sendRedirect("/drinks");
+//        response.sendRedirect("/drinks");
+        response.sendRedirect((String) session.getAttribute("previousPage"));
     }
 
 }
