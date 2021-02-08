@@ -38,8 +38,8 @@
 
     </div>
 
-    <jsp:include page="partials/drink-cards.jsp"/>
+    <jsp:include page="../partials/drink-cards.jsp"/>
 
-<jsp:include page="./partials/bootstrap.jsp"/>
+<jsp:include page="../partials/bootstrap.jsp"/>
 </body>
 </html>

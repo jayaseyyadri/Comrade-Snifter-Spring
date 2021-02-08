@@ -127,7 +127,7 @@ public class MySQLUsersDao implements Users {
         }
     }
 
-    /**------------------- TO SEE CURRENT ADMINS OTHER THAN YOURSELF IN THE VIEW ALL USERS TABLE ------------------------**/
+    /**--------------------- VIEW OTHER ADMINS ------------------------------*/
     @Override
     public List<User> viewAdmins(String currentUsername) {
         String query = "Select username, id, is_admin from comrade_snifter_db.users";

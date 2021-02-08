@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <jsp:include page="partials/head.jsp">
+    <jsp:include page="../partials/head.jsp">
         <jsp:param name="title" value="Register For Our Site!" />
     </jsp:include>
     <style>
@@ -67,6 +67,6 @@
 
     <div class="footer"></div>
 
-<jsp:include page="./partials/bootstrap.jsp"/>
+<jsp:include page="../partials/bootstrap.jsp"/>
 </body>
 </html>

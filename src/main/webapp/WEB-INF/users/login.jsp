@@ -56,6 +56,6 @@
 
     <div class="footer"></div>
 
-<jsp:include page="./partials/bootstrap.jsp"/>
+<jsp:include page="../partials/bootstrap.jsp"/>
 </body>
 </html>
