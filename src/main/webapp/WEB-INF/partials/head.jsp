@@ -14,6 +14,8 @@
             color: #dc3444;
         }
     body {
-            background: #cccecf;
+        background: #cccecf;
+        display: flex;
+        flex-direction: column;
         }
 </style>
