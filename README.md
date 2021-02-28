@@ -1,4 +1,4 @@
-# Group-Ad-Lister
+#Comrade -Snifter- This is the Spring Boot Version!
 
 Comrade Snifter is a web app for socialising over drinks!
 A visitor can view the top 3 drinks on the landing page and register for an account 
